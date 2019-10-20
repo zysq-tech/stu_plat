@@ -1,7 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'common.dart';
 
-part 'session.g.dart';
+part 'user.g.dart';
 
 @JsonSerializable(createFactory: false)
 class Login implements IToJson {
@@ -22,18 +22,6 @@ class LoginResponse with CommonResponseMixin {
 
   factory LoginResponse.fromJson(Map<String, dynamic> json) =>
       _$LoginResponseFromJson(json);
-}
-
-@JsonSerializable()
-class LoginResponseData implements IToJson {
-  LoginResponseData(this.token);
-  final String token;
-
-  @override
-  Map<String, dynamic> toJson() => _$LoginResponseDataToJson(this);
-
-  factory LoginResponseData.fromJson(Map<String, dynamic> json) =>
-      _$LoginResponseDataFromJson(json);
 }
 
 @JsonSerializable(createToJson: false)
@@ -129,4 +117,17 @@ class SetNickNameEmailResponse with CommonResponseMixin {
 
   factory SetNickNameEmailResponse.fromJson(Map<String, dynamic> json) =>
       _$SetNickNameEmailResponseFromJson(json);
+}
+
+//Data
+@JsonSerializable()
+class LoginResponseData implements IToJson {
+  LoginResponseData(this.token);
+  final String token;
+
+  @override
+  Map<String, dynamic> toJson() => _$LoginResponseDataToJson(this);
+
+  factory LoginResponseData.fromJson(Map<String, dynamic> json) =>
+      _$LoginResponseDataFromJson(json);
 }

@@ -142,4 +142,121 @@ class _RestClient implements RestClient {
     var value = GetAppDetailResponse.fromJson(_result.data);
     return Future.value(value);
   }
+
+  @override
+  commentApp(token, commentAppBody) async {
+    ArgumentError.checkNotNull(token, 'token');
+    ArgumentError.checkNotNull(commentAppBody, 'commentAppBody');
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{'token': token};
+    final _data = commentAppBody;
+    final _result = await _dio.request('/userAppraise',
+        queryParameters: queryParameters,
+        options: RequestOptions(method: 'POST', headers: {}, extra: _extra),
+        data: _data);
+    var value = CommentAppResponse.fromJson(_result.data);
+    return Future.value(value);
+  }
+
+  @override
+  getAppCommentPage(token, getAppCommentsPage) async {
+    ArgumentError.checkNotNull(token, 'token');
+    ArgumentError.checkNotNull(getAppCommentsPage, 'getAppCommentsPage');
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{'token': token};
+    queryParameters.addAll(getAppCommentsPage ?? {});
+    const _data = null;
+    final _result = await _dio.request('/userAppraise/pageList',
+        queryParameters: queryParameters,
+        options: RequestOptions(method: 'GET', headers: {}, extra: _extra),
+        data: _data);
+    var value = GetAppCommentsPageResponse.fromJson(_result.data);
+    return Future.value(value);
+  }
+
+  @override
+  getAppLabelList(getAppLabelListQueries) async {
+    ArgumentError.checkNotNull(
+        getAppLabelListQueries, 'getAppLabelListQueries');
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(getAppLabelListQueries ?? {});
+    const _data = null;
+    final _result = await _dio.request('/appLabel/rest/list',
+        queryParameters: queryParameters,
+        options: RequestOptions(method: 'GET', headers: {}, extra: _extra),
+        data: _data);
+    var value = GetAppLabelListResponse.fromJson(_result.data);
+    return Future.value(value);
+  }
+
+  @override
+  getAppPageWithLabel(labelId, getAppPageWithLabelQueries) async {
+    ArgumentError.checkNotNull(labelId, 'labelId');
+    ArgumentError.checkNotNull(
+        getAppPageWithLabelQueries, 'getAppPageWithLabelQueries');
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(getAppPageWithLabelQueries ?? {});
+    const _data = null;
+    final _result = await _dio.request('/appLabelRelation/rest/$labelId',
+        queryParameters: queryParameters,
+        options: RequestOptions(method: 'GET', headers: {}, extra: _extra),
+        data: _data);
+    var value = GetAppPageWithLabelResponse.fromJson(_result.data);
+    return Future.value(value);
+  }
+
+  @override
+  getChoosenAppList() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    const _data = null;
+    final _result = await _dio.request('/appChoose/rest',
+        queryParameters: queryParameters,
+        options: RequestOptions(method: 'GET', headers: {}, extra: _extra),
+        data: _data);
+    var value = GetChoosenAppListResponse.fromJson(_result.data);
+    return Future.value(value);
+  }
+
+  @override
+  getLatestVersion() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    const _data = null;
+    final _result = await _dio.request('/appVersion/rest/newest',
+        queryParameters: queryParameters,
+        options: RequestOptions(method: 'GET', headers: {}, extra: _extra),
+        data: _data);
+    var value = GetLatestVersionResponse.fromJson(_result.data);
+    return Future.value(value);
+  }
+
+  @override
+  getAllQuestionTypes() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    const _data = null;
+    final _result = await _dio.request('/appQuestion/rest/typelist',
+        queryParameters: queryParameters,
+        options: RequestOptions(method: 'GET', headers: {}, extra: _extra),
+        data: _data);
+    var value = GetAllQuestionTypesResponse.fromJson(_result.data);
+    return Future.value(value);
+  }
+
+  @override
+  postUserQuestion(postUserQuestion) async {
+    ArgumentError.checkNotNull(postUserQuestion, 'postUserQuestion');
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _data = postUserQuestion;
+    final _result = await _dio.request('/appQuestion/rest',
+        queryParameters: queryParameters,
+        options: RequestOptions(method: 'POST', headers: {}, extra: _extra),
+        data: _data);
+    var value = PostUserQuestionResponse.fromJson(_result.data);
+    return Future.value(value);
+  }
 }

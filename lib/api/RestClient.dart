@@ -40,4 +40,35 @@ abstract class RestClient {
 
   @GET('/appInfo/rest/detail/{appId}')
   Future<GetAppDetailResponse> getAppDetail(@Path() int appId);
+
+  @POST('/userAppraise')
+  Future<CommentAppResponse> commentApp(
+      @Query('token') String token, @Body() CommentApp commentAppBody);
+
+  @GET('/userAppraise/pageList')
+  Future<GetAppCommentsPageResponse> getAppCommentPage(
+      @Query('token') String token,
+      @Queries() Map<String, dynamic> getAppCommentsPage);
+
+  @GET('/appLabel/rest/list')
+  Future<GetAppLabelListResponse> getAppLabelList(
+      @Queries() Map<String, dynamic> getAppLabelListQueries);
+
+  @GET('/appLabelRelation/rest/{labelId}')
+  Future<GetAppPageWithLabelResponse> getAppPageWithLabel(
+      @Path('labelId') String labelId,
+      @Queries() Map<String, dynamic> getAppPageWithLabelQueries);
+
+  @GET('/appChoose/rest')
+  Future<GetChoosenAppListResponse> getChoosenAppList();
+
+  @GET('/appVersion/rest/newest')
+  Future<GetLatestVersionResponse> getLatestVersion();
+
+  @GET('/appQuestion/rest/typelist')
+  Future<GetAllQuestionTypesResponse> getAllQuestionTypes();
+
+  @POST('/appQuestion/rest')
+  Future<PostUserQuestionResponse> postUserQuestion(
+      @Body() PostUserQuestion postUserQuestion);
 }

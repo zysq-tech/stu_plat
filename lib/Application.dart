@@ -5,8 +5,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:dio/dio.dart';
-import 'package:stu_plat/data/common.dart';
 
+import './data/common.dart';
 import './api/RestClient.dart';
 
 class Application {

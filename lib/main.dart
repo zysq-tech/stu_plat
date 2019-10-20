@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+
 import './pages/LaunchPage.dart';
 import './Application.dart';
+import './providers/index.dart';
 
 void main() async {
   await Application().initAppAsync();
@@ -9,12 +11,15 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Student Platform',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return AppProvider().initProvider(
+      context: context,
+      child: MaterialApp(
+        title: 'Student Platform',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: LaunchPage(),
       ),
-      home: LaunchPage(),
     );
   }
 }
