@@ -119,6 +119,108 @@ class SetNickNameEmailResponse with CommonResponseMixin {
       _$SetNickNameEmailResponseFromJson(json);
 }
 
+@JsonSerializable(createFactory: false)
+class RegisterUserInfo implements IToJson {
+  RegisterUserInfo(this.userType, this.idfRealName, this.code,
+      {this.schoolName, this.collegeName, this.className});
+
+  ///身份:/1学生/2教师
+  final int userType;
+  final String idfRealName;
+  @JsonKey(name: 'studentCode')
+  final String code;
+  final String schoolName;
+  final String collegeName;
+  final String className;
+
+  @override
+  Map<String, dynamic> toJson() => _$RegisterUserInfoToJson(this);
+}
+
+@JsonSerializable(createToJson: false)
+class RegisterUserInfoResponse with CommonResponseMixin {
+  ///code == 110:已存在认证或安全数据
+  RegisterUserInfoResponse();
+
+  factory RegisterUserInfoResponse.fromJson(Map<String, dynamic> json) =>
+      _$RegisterUserInfoResponseFromJson(json);
+}
+
+@JsonSerializable(createToJson: false)
+class GetUserInfoResponse with CommonResponseMixin {
+  GetUserInfoResponse(this.data);
+  final UserInfoData data;
+
+  factory GetUserInfoResponse.fromJson(Map<String, dynamic> json) =>
+      _$GetUserInfoResponseFromJson(json);
+}
+
+@JsonSerializable(createToJson: false)
+class UnregisterAccountResponse with CommonResponseMixin {
+  UnregisterAccountResponse();
+
+  factory UnregisterAccountResponse.fromJson(Map<String, dynamic> json) =>
+      _$UnregisterAccountResponseFromJson(json);
+}
+
+@JsonSerializable(createFactory: false)
+class UpdatePassword implements IToJson {
+  UpdatePassword(this.userName, this.userPassword);
+  final String userName;
+  final String userPassword;
+
+  @override
+  Map<String, dynamic> toJson() => _$UpdatePasswordToJson(this);
+}
+
+@JsonSerializable(createToJson: false)
+class UpdatePasswordResponse with CommonResponseMixin {
+  UpdatePasswordResponse();
+
+  factory UpdatePasswordResponse.fromJson(Map<String, dynamic> json) =>
+      _$UpdatePasswordResponseFromJson(json);
+}
+
+@JsonSerializable(createFactory: false)
+class AppealAccount implements IToJson {
+  AppealAccount(this.idfRealName, this.studentCode, this.schoolName,
+      this.collegeName, this.className, this.userType);
+  final String idfRealName;
+  final String studentCode;
+  final String schoolName;
+  final String collegeName;
+  final String className;
+  final int userType;
+
+  @override
+  Map<String, dynamic> toJson() => _$AppealAccountToJson(this);
+}
+
+@JsonSerializable(createToJson: false)
+class AppealAccountResponse with CommonResponseMixin {
+  AppealAccountResponse();
+
+  factory AppealAccountResponse.fromJson(Map<String, dynamic> json) =>
+      _$AppealAccountResponseFromJson(json);
+}
+
+@JsonSerializable(createToJson: false)
+class GetAppealListResponse {
+  GetAppealListResponse(this.data);
+  final AppealListData data;
+
+  factory GetAppealListResponse.fromJson(Map<String, dynamic> json) =>
+      _$GetAppealListResponseFromJson(json);
+}
+
+@JsonSerializable(createToJson: false)
+class UpdateAvatarResponse with CommonResponseMixin {
+  UpdateAvatarResponse();
+
+  factory UpdateAvatarResponse.fromJson(Map<String, dynamic> json) =>
+      _$UpdateAvatarResponseFromJson(json);
+}
+
 //Data
 @JsonSerializable()
 class LoginResponseData implements IToJson {
@@ -130,4 +232,97 @@ class LoginResponseData implements IToJson {
 
   factory LoginResponseData.fromJson(Map<String, dynamic> json) =>
       _$LoginResponseDataFromJson(json);
+}
+
+@JsonSerializable()
+class UserInfoData with CommonTimeMixin implements IToJson {
+  UserInfoData(
+      this.userId,
+      this.nickName,
+      this.userName,
+      this.userPassword,
+      this.userTel,
+      this.userType,
+      this.authEmail,
+      this.authEmailCreateTime,
+      this.studentCode,
+      this.schoolName,
+      this.collegeName,
+      this.className,
+      this.isDelete,
+      this.userStatus,
+      this.idfStatus,
+      this.infoStatus);
+  final String userId;
+  @JsonKey(name: 'nikeName')
+  final String nickName;
+  final String userName;
+  final String userPassword;
+  final String userTel;
+
+  ///身份:/1学生/2教师/0:未注册信息
+  final int userType;
+  final String authEmail;
+  final String authEmailCreateTime;
+  final String studentCode;
+  final String schoolName;
+  final String collegeName;
+  final String className;
+
+  ///注销账号为true
+  final bool isDelete;
+  final bool userStatus;
+  final int idfStatus;
+  final int infoStatus;
+
+  @override
+  Map<String, dynamic> toJson() => _$UserInfoDataToJson(this);
+
+  factory UserInfoData.fromJson(Map<String, dynamic> json) =>
+      _$UserInfoDataFromJson(json);
+}
+
+@JsonSerializable()
+class AppealListData with CommonPageInfoMixin implements IToJson {
+  AppealListData(this.content);
+  final List<AppealInfoData> content;
+
+  @override
+  Map<String, dynamic> toJson() => _$AppealListDataToJson(this);
+
+  factory AppealListData.fromJson(Map<String, dynamic> json) =>
+      _$AppealListDataFromJson(json);
+}
+
+@JsonSerializable()
+class AppealInfoData with CommonTimeMixin implements IToJson {
+  AppealInfoData(
+      this.appealId,
+      this.userId,
+      this.userType,
+      this.idfRealName,
+      this.studentCode,
+      this.schoolName,
+      this.collegeName,
+      this.className,
+      this.userStatus,
+      this.isDelete);
+  final String appealId;
+  final String userId;
+  final int userType;
+  final String idfRealName;
+  final String studentCode;
+  final String schoolName;
+  final String collegeName;
+  final String className;
+
+  ///0:审核中;1:审核通过;2:审核失败
+  final int userStatus;
+  final bool isDelete;
+
+  @override
+  Map<String, dynamic> toJson() => _$AppealInfoDataToJson(this);
+
+  factory AppealInfoData.fromJson(Map<String, dynamic> json) =>
+      _$AppealInfoDataFromJson(json);
 }

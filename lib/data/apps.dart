@@ -1,27 +1,28 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'common.dart';
+import 'user.dart';
 
 part 'apps.g.dart';
 
 @JsonSerializable(createFactory: false)
-class GetAppInfoPage implements IToJson {
-  GetAppInfoPage(this.page, {this.size = 10});
+class GetLeaderBoardAppPage implements IToJson {
+  GetLeaderBoardAppPage(this.page, this.size);
 
   ///开始：1
   final int page;
   final int size;
 
   @override
-  Map<String, dynamic> toJson() => _$GetAppInfoPageToJson(this);
+  Map<String, dynamic> toJson() => _$GetLeaderBoardAppPageToJson(this);
 }
 
 @JsonSerializable(createToJson: false)
-class GetAppInfoPageResponse with CommonResponseMixin {
-  GetAppInfoPageResponse(this.data);
+class GetLeaderBoardAppPageResponse with CommonResponseMixin {
+  GetLeaderBoardAppPageResponse(this.data);
   final AppInfoPageData data;
 
-  factory GetAppInfoPageResponse.fromJson(Map<String, dynamic> json) =>
-      _$GetAppInfoPageResponseFromJson(json);
+  factory GetLeaderBoardAppPageResponse.fromJson(Map<String, dynamic> json) =>
+      _$GetLeaderBoardAppPageResponseFromJson(json);
 }
 
 @JsonSerializable(createToJson: false)
@@ -62,19 +63,19 @@ class CommentAppResponse with CommonResponseMixin {
 }
 
 @JsonSerializable(createFactory: false)
-class GetAppCommentsPage with CommonPageRequestMixin implements IToJson {
-  GetAppCommentsPage();
+class GetUserAppCommentsPage with CommonPageRequestMixin implements IToJson {
+  GetUserAppCommentsPage();
   @override
-  Map<String, dynamic> toJson() => _$GetAppCommentsPageToJson(this);
+  Map<String, dynamic> toJson() => _$GetUserAppCommentsPageToJson(this);
 }
 
 @JsonSerializable(createToJson: false)
-class GetAppCommentsPageResponse with CommonResponseMixin {
-  GetAppCommentsPageResponse(this.data);
+class GetUserAppCommentsPageResponse with CommonResponseMixin {
+  GetUserAppCommentsPageResponse(this.data);
   final AppCommentPageData data;
 
-  factory GetAppCommentsPageResponse.fromJson(Map<String, dynamic> json) =>
-      _$GetAppCommentsPageResponseFromJson(json);
+  factory GetUserAppCommentsPageResponse.fromJson(Map<String, dynamic> json) =>
+      _$GetUserAppCommentsPageResponseFromJson(json);
 }
 
 @JsonSerializable(createFactory: false)
@@ -121,6 +122,50 @@ class GetChoosenAppListResponse with CommonResponseMixin {
 
   factory GetChoosenAppListResponse.fromJson(Map<String, dynamic> json) =>
       _$GetChoosenAppListResponseFromJson(json);
+}
+
+@JsonSerializable(createToJson: false)
+class GetHomeTagListResponse with CommonResponseMixin {
+  GetHomeTagListResponse(this.data);
+  final List<HomeTagData> data;
+
+  factory GetHomeTagListResponse.fromJson(Map<String, dynamic> json) =>
+      _$GetHomeTagListResponseFromJson(json);
+}
+
+@JsonSerializable(createToJson: false)
+class GetHomeTaggedAppListResponse with CommonResponseMixin {
+  GetHomeTaggedAppListResponse(this.data);
+  final List<TaggedAppInfoData> data;
+
+  factory GetHomeTaggedAppListResponse.fromJson(Map<String, dynamic> json) =>
+      _$GetHomeTaggedAppListResponseFromJson(json);
+}
+
+@JsonSerializable(createToJson: false)
+class GetTabListResponse with CommonResponseMixin {
+  GetTabListResponse(this.data);
+  final List<TabInfoData> data;
+
+  factory GetTabListResponse.fromJson(Map<String, dynamic> json) =>
+      _$GetTabListResponseFromJson(json);
+}
+
+@JsonSerializable(createFactory: false)
+class GetAppCommentList with CommonPageRequestMixin implements IToJson {
+  GetAppCommentList();
+
+  @override
+  Map<String, dynamic> toJson() => _$GetAppCommentListToJson(this);
+}
+
+@JsonSerializable(createToJson: false)
+class GetAppCommentListResponse with CommonResponseMixin {
+  GetAppCommentListResponse(this.data);
+  final AppCommentPageData data;
+
+  factory GetAppCommentListResponse.fromJson(Map<String, dynamic> json) =>
+      _$GetAppCommentListResponseFromJson(json);
 }
 
 //Data
@@ -222,13 +267,16 @@ class AppCommentPageData with CommonPageInfoMixin implements IToJson {
 @JsonSerializable()
 class AppCommentData with CommonTimeMixin implements IToJson {
   AppCommentData(this.praiseId, this.appId, this.userId, this.praiseScore,
-      this.praiseContent, this.appInfo);
+      this.praiseContent, this.appInfo, this.userInfo);
   final String praiseId;
   final String appId;
   final String userId;
   final double praiseScore;
   final String praiseContent;
   final AppInfoData appInfo;
+
+  ///null when get self comment
+  final UserInfoData userInfo;
 
   @override
   Map<String, dynamic> toJson() => _$AppCommentDataToJson(this);
@@ -293,4 +341,51 @@ class ChoosenAppData implements IToJson {
 
   factory ChoosenAppData.fromJson(Map<String, dynamic> json) =>
       _$ChoosenAppDataFromJson(json);
+}
+
+@JsonSerializable()
+class HomeTagData implements IToJson {
+  HomeTagData(this.mainId, this.title, this.sortNum, this.createTime);
+  final String mainId;
+  final String title;
+  final int sortNum;
+  final String createTime;
+
+  @override
+  Map<String, dynamic> toJson() => _$HomeTagDataToJson(this);
+
+  factory HomeTagData.fromJson(Map<String, dynamic> json) =>
+      _$HomeTagDataFromJson(json);
+}
+
+@JsonSerializable()
+class TaggedAppInfoData implements IToJson {
+  TaggedAppInfoData(
+      this.appId, this.mainId, this.sortNum, this.relationId, this.appInfo);
+  final String appId;
+  final String mainId;
+  final int sortNum;
+  final String relationId;
+  final AppInfoData appInfo;
+
+  @override
+  Map<String, dynamic> toJson() => _$TaggedAppInfoDataToJson(this);
+
+  factory TaggedAppInfoData.fromJson(Map<String, dynamic> json) =>
+      _$TaggedAppInfoDataFromJson(json);
+}
+
+@JsonSerializable()
+class TabInfoData implements IToJson {
+  TabInfoData(this.tabId, this.tabName, this.tabPath, this.sortNum);
+  final String tabId;
+  final String tabName;
+  final String tabPath;
+  final String sortNum;
+
+  @override
+  Map<String, dynamic> toJson() => _$TabInfoDataToJson(this);
+
+  factory TabInfoData.fromJson(Map<String, dynamic> json) =>
+      _$TabInfoDataFromJson(json);
 }

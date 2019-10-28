@@ -6,15 +6,16 @@ part of 'apps.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Map<String, dynamic> _$GetAppInfoPageToJson(GetAppInfoPage instance) =>
+Map<String, dynamic> _$GetLeaderBoardAppPageToJson(
+        GetLeaderBoardAppPage instance) =>
     <String, dynamic>{
       'page': instance.page,
       'size': instance.size,
     };
 
-GetAppInfoPageResponse _$GetAppInfoPageResponseFromJson(
+GetLeaderBoardAppPageResponse _$GetLeaderBoardAppPageResponseFromJson(
     Map<String, dynamic> json) {
-  return GetAppInfoPageResponse(
+  return GetLeaderBoardAppPageResponse(
     json['data'] == null
         ? null
         : AppInfoPageData.fromJson(json['data'] as Map<String, dynamic>),
@@ -58,15 +59,16 @@ CommentAppResponse _$CommentAppResponseFromJson(Map<String, dynamic> json) {
     ..mess = json['mess'] as String;
 }
 
-Map<String, dynamic> _$GetAppCommentsPageToJson(GetAppCommentsPage instance) =>
+Map<String, dynamic> _$GetUserAppCommentsPageToJson(
+        GetUserAppCommentsPage instance) =>
     <String, dynamic>{
       'page': instance.page,
       'size': instance.size,
     };
 
-GetAppCommentsPageResponse _$GetAppCommentsPageResponseFromJson(
+GetUserAppCommentsPageResponse _$GetUserAppCommentsPageResponseFromJson(
     Map<String, dynamic> json) {
-  return GetAppCommentsPageResponse(
+  return GetUserAppCommentsPageResponse(
     json['data'] == null
         ? null
         : AppCommentPageData.fromJson(json['data'] as Map<String, dynamic>),
@@ -118,6 +120,59 @@ GetChoosenAppListResponse _$GetChoosenAppListResponseFromJson(
             ? null
             : ChoosenAppData.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+  )
+    ..code = json['code'] as int
+    ..mess = json['mess'] as String;
+}
+
+GetHomeTagListResponse _$GetHomeTagListResponseFromJson(
+    Map<String, dynamic> json) {
+  return GetHomeTagListResponse(
+    (json['data'] as List)
+        ?.map((e) =>
+            e == null ? null : HomeTagData.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+  )
+    ..code = json['code'] as int
+    ..mess = json['mess'] as String;
+}
+
+GetHomeTaggedAppListResponse _$GetHomeTaggedAppListResponseFromJson(
+    Map<String, dynamic> json) {
+  return GetHomeTaggedAppListResponse(
+    (json['data'] as List)
+        ?.map((e) => e == null
+            ? null
+            : TaggedAppInfoData.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+  )
+    ..code = json['code'] as int
+    ..mess = json['mess'] as String;
+}
+
+GetTabListResponse _$GetTabListResponseFromJson(Map<String, dynamic> json) {
+  return GetTabListResponse(
+    (json['data'] as List)
+        ?.map((e) =>
+            e == null ? null : TabInfoData.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+  )
+    ..code = json['code'] as int
+    ..mess = json['mess'] as String;
+}
+
+Map<String, dynamic> _$GetAppCommentListToJson(GetAppCommentList instance) =>
+    <String, dynamic>{
+      'page': instance.page,
+      'size': instance.size,
+    };
+
+GetAppCommentListResponse _$GetAppCommentListResponseFromJson(
+    Map<String, dynamic> json) {
+  return GetAppCommentListResponse(
+    json['data'] == null
+        ? null
+        : AppCommentPageData.fromJson(json['data'] as Map<String, dynamic>),
   )
     ..code = json['code'] as int
     ..mess = json['mess'] as String;
@@ -268,6 +323,9 @@ AppCommentData _$AppCommentDataFromJson(Map<String, dynamic> json) {
     json['appInfo'] == null
         ? null
         : AppInfoData.fromJson(json['appInfo'] as Map<String, dynamic>),
+    json['userInfo'] == null
+        ? null
+        : UserInfoData.fromJson(json['userInfo'] as Map<String, dynamic>),
   )
     ..createtime = json['createtime'] as String
     ..updateTime = json['updateTime'] as String;
@@ -283,6 +341,7 @@ Map<String, dynamic> _$AppCommentDataToJson(AppCommentData instance) =>
       'praiseScore': instance.praiseScore,
       'praiseContent': instance.praiseContent,
       'appInfo': instance.appInfo,
+      'userInfo': instance.userInfo,
     };
 
 AppLabelData _$AppLabelDataFromJson(Map<String, dynamic> json) {
@@ -365,5 +424,60 @@ Map<String, dynamic> _$ChoosenAppDataToJson(ChoosenAppData instance) =>
       'chooseId': instance.chooseId,
       'chooseImg': instance.chooseImg,
       'chooseName': instance.chooseName,
+      'sortNum': instance.sortNum,
+    };
+
+HomeTagData _$HomeTagDataFromJson(Map<String, dynamic> json) {
+  return HomeTagData(
+    json['mainId'] as String,
+    json['title'] as String,
+    json['sortNum'] as int,
+    json['createTime'] as String,
+  );
+}
+
+Map<String, dynamic> _$HomeTagDataToJson(HomeTagData instance) =>
+    <String, dynamic>{
+      'mainId': instance.mainId,
+      'title': instance.title,
+      'sortNum': instance.sortNum,
+      'createTime': instance.createTime,
+    };
+
+TaggedAppInfoData _$TaggedAppInfoDataFromJson(Map<String, dynamic> json) {
+  return TaggedAppInfoData(
+    json['appId'] as String,
+    json['mainId'] as String,
+    json['sortNum'] as int,
+    json['relationId'] as String,
+    json['appInfo'] == null
+        ? null
+        : AppInfoData.fromJson(json['appInfo'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$TaggedAppInfoDataToJson(TaggedAppInfoData instance) =>
+    <String, dynamic>{
+      'appId': instance.appId,
+      'mainId': instance.mainId,
+      'sortNum': instance.sortNum,
+      'relationId': instance.relationId,
+      'appInfo': instance.appInfo,
+    };
+
+TabInfoData _$TabInfoDataFromJson(Map<String, dynamic> json) {
+  return TabInfoData(
+    json['tabId'] as String,
+    json['tabName'] as String,
+    json['tabPath'] as String,
+    json['sortNum'] as String,
+  );
+}
+
+Map<String, dynamic> _$TabInfoDataToJson(TabInfoData instance) =>
+    <String, dynamic>{
+      'tabId': instance.tabId,
+      'tabName': instance.tabName,
+      'tabPath': instance.tabPath,
       'sortNum': instance.sortNum,
     };

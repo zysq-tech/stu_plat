@@ -85,6 +85,20 @@ class _RestClient implements RestClient {
   }
 
   @override
+  unregisterAccount(token) async {
+    ArgumentError.checkNotNull(token, 'token');
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{'token': token};
+    const _data = null;
+    final _result = await _dio.request('/logout',
+        queryParameters: queryParameters,
+        options: RequestOptions(method: 'DELETE', headers: {}, extra: _extra),
+        data: _data);
+    var value = UnregisterAccountResponse.fromJson(_result.data);
+    return Future.value(value);
+  }
+
+  @override
   setNickNameEmail(token, setNickNameEmailBody) async {
     ArgumentError.checkNotNull(token, 'token');
     ArgumentError.checkNotNull(setNickNameEmailBody, 'setNickNameEmailBody');
@@ -100,7 +114,81 @@ class _RestClient implements RestClient {
   }
 
   @override
-  getAppInfoPage(searchType, pageSize) async {
+  registerUserInfo(token, registerUserInfoBody) async {
+    ArgumentError.checkNotNull(token, 'token');
+    ArgumentError.checkNotNull(registerUserInfoBody, 'registerUserInfoBody');
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{'token': token};
+    final _data = registerUserInfoBody;
+    final _result = await _dio.request('/info',
+        queryParameters: queryParameters,
+        options: RequestOptions(method: 'PUT', headers: {}, extra: _extra),
+        data: _data);
+    var value = RegisterUserInfoResponse.fromJson(_result.data);
+    return Future.value(value);
+  }
+
+  @override
+  updatePassword(updatePasswordBody) async {
+    ArgumentError.checkNotNull(updatePasswordBody, 'updatePasswordBody');
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _data = updatePasswordBody;
+    final _result = await _dio.request('/rest/updatePwd',
+        queryParameters: queryParameters,
+        options: RequestOptions(method: 'PUT', headers: {}, extra: _extra),
+        data: _data);
+    var value = UpdatePasswordResponse.fromJson(_result.data);
+    return Future.value(value);
+  }
+
+  @override
+  appealAccount(appealAccountBody) async {
+    ArgumentError.checkNotNull(appealAccountBody, 'appealAccountBody');
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _data = appealAccountBody;
+    final _result = await _dio.request('/userAppeal',
+        queryParameters: queryParameters,
+        options: RequestOptions(method: 'POST', headers: {}, extra: _extra),
+        data: _data);
+    var value = AppealAccountResponse.fromJson(_result.data);
+    return Future.value(value);
+  }
+
+  @override
+  getAppealList(token) async {
+    ArgumentError.checkNotNull(token, 'token');
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{'token': token};
+    const _data = null;
+    final _result = await _dio.request('/userAppeal',
+        queryParameters: queryParameters,
+        options: RequestOptions(method: 'GET', headers: {}, extra: _extra),
+        data: _data);
+    var value = GetAppealListResponse.fromJson(_result.data);
+    return Future.value(value);
+  }
+
+  @override
+  updateAvatar(token, file) async {
+    ArgumentError.checkNotNull(token, 'token');
+    ArgumentError.checkNotNull(file, 'file');
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{'token': token};
+    final _data = FormData.from({
+      'file': UploadFileInfo(file, file.path.split(Platform.pathSeparator).last)
+    });
+    final _result = await _dio.request('/updateAvatar',
+        queryParameters: queryParameters,
+        options: RequestOptions(method: 'PUT', headers: {}, extra: _extra),
+        data: _data);
+    var value = UpdateAvatarResponse.fromJson(_result.data);
+    return Future.value(value);
+  }
+
+  @override
+  getLeaderBoardAppPage(searchType, pageSize) async {
     ArgumentError.checkNotNull(searchType, 'searchType');
     ArgumentError.checkNotNull(pageSize, 'pageSize');
     const _extra = <String, dynamic>{};
@@ -111,7 +199,7 @@ class _RestClient implements RestClient {
         queryParameters: queryParameters,
         options: RequestOptions(method: 'GET', headers: {}, extra: _extra),
         data: _data);
-    var value = GetAppInfoPageResponse.fromJson(_result.data);
+    var value = GetLeaderBoardAppPageResponse.fromJson(_result.data);
     return Future.value(value);
   }
 
@@ -170,7 +258,7 @@ class _RestClient implements RestClient {
         queryParameters: queryParameters,
         options: RequestOptions(method: 'GET', headers: {}, extra: _extra),
         data: _data);
-    var value = GetAppCommentsPageResponse.fromJson(_result.data);
+    var value = GetUserAppCommentsPageResponse.fromJson(_result.data);
     return Future.value(value);
   }
 
@@ -221,6 +309,75 @@ class _RestClient implements RestClient {
   }
 
   @override
+  getHomeTagList() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    const _data = null;
+    final _result = await _dio.request('/mainTitle/rest',
+        queryParameters: queryParameters,
+        options: RequestOptions(method: 'GET', headers: {}, extra: _extra),
+        data: _data);
+    var value = GetHomeTagListResponse.fromJson(_result.data);
+    return Future.value(value);
+  }
+
+  @override
+  getHomeTaggedAppList(mainId) async {
+    ArgumentError.checkNotNull(mainId, 'mainId');
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    const _data = null;
+    final _result = await _dio.request('/mainTitle/rest/$mainId',
+        queryParameters: queryParameters,
+        options: RequestOptions(method: 'GET', headers: {}, extra: _extra),
+        data: _data);
+    var value = GetHomeTaggedAppListResponse.fromJson(_result.data);
+    return Future.value(value);
+  }
+
+  @override
+  getAllTabList() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    const _data = null;
+    final _result = await _dio.request('/appTab/rest',
+        queryParameters: queryParameters,
+        options: RequestOptions(method: 'GET', headers: {}, extra: _extra),
+        data: _data);
+    var value = GetTabListResponse.fromJson(_result.data);
+    return Future.value(value);
+  }
+
+  @override
+  getUserInfo(token) async {
+    ArgumentError.checkNotNull(token, 'token');
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{'token': token};
+    const _data = null;
+    final _result = await _dio.request('/userInfo',
+        queryParameters: queryParameters,
+        options: RequestOptions(method: 'GET', headers: {}, extra: _extra),
+        data: _data);
+    var value = GetUserInfoResponse.fromJson(_result.data);
+    return Future.value(value);
+  }
+
+  @override
+  getAppCommentList(appId, getAppCommentListBody) async {
+    ArgumentError.checkNotNull(appId, 'appId');
+    ArgumentError.checkNotNull(getAppCommentListBody, 'getAppCommentListBody');
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _data = getAppCommentListBody;
+    final _result = await _dio.request('/userAppraise/rest/pageList/$appId',
+        queryParameters: queryParameters,
+        options: RequestOptions(method: 'GET', headers: {}, extra: _extra),
+        data: _data);
+    var value = GetAppCommentListResponse.fromJson(_result.data);
+    return Future.value(value);
+  }
+
+  @override
   getLatestVersion() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -247,11 +404,11 @@ class _RestClient implements RestClient {
   }
 
   @override
-  postUserQuestion(postUserQuestion) async {
-    ArgumentError.checkNotNull(postUserQuestion, 'postUserQuestion');
+  postUserQuestion(postUserQuestionBody) async {
+    ArgumentError.checkNotNull(postUserQuestionBody, 'postUserQuestionBody');
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _data = postUserQuestion;
+    final _data = postUserQuestionBody;
     final _result = await _dio.request('/appQuestion/rest',
         queryParameters: queryParameters,
         options: RequestOptions(method: 'POST', headers: {}, extra: _extra),

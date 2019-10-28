@@ -1,14 +1,18 @@
+import 'dart:io';
+
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
 
 import '../data/index.dart';
+import 'config.dart';
 
 part 'RestClient.g.dart';
 
-@RestApi(baseUrl: "http://www.zhiyuantech.net/api/")
+@RestApi(baseUrl: ApiUrl)
 abstract class RestClient {
   factory RestClient(Dio dio) = _RestClient;
 
+  //User
   @POST('/session')
   Future<LoginResponse> login(@Body() Login loginBody);
 
@@ -24,14 +28,40 @@ abstract class RestClient {
   @POST('/rest/register')
   Future<RegisterResponse> register(@Body() Register registerBody);
 
+  @DELETE('/logout')
+  Future<UnregisterAccountResponse> unregisterAccount(
+      @Query('token') String token);
+
   @PUT('/nickemail')
   Future<SetNickNameEmailResponse> setNickNameEmail(
       @Query('token') String token,
       @Body() SetNickNameEmail setNickNameEmailBody);
 
+  @PUT('/info')
+  Future<RegisterUserInfoResponse> registerUserInfo(
+      @Query('token') String token,
+      @Body() RegisterUserInfo registerUserInfoBody);
+
+  @PUT('/rest/updatePwd')
+  Future<UpdatePasswordResponse> updatePassword(
+      @Body() UpdatePassword updatePasswordBody);
+
+  @POST('/userAppeal')
+  Future<AppealAccountResponse> appealAccount(
+      @Body() AppealAccount appealAccountBody);
+
+  @GET('/userAppeal')
+  Future<GetAppealListResponse> getAppealList(@Query('token') String token);
+
+  @PUT('/updateAvatar')
+  Future<UpdateAvatarResponse> updateAvatar(
+      @Query('token') String token, @Field() File file);
+  //
+
+  //Apps
   ///searchType: 1：新秀榜/2：热搜榜/3：下载榜
   @GET('/appInfo/rest/{searchType}')
-  Future<GetAppInfoPageResponse> getAppInfoPage(
+  Future<GetLeaderBoardAppPageResponse> getLeaderBoardAppPage(
       @Path() int searchType, @Queries() Map<String, dynamic> pageSize);
 
   ///searchType: 1：今日最佳/2：精品必备
@@ -46,7 +76,7 @@ abstract class RestClient {
       @Query('token') String token, @Body() CommentApp commentAppBody);
 
   @GET('/userAppraise/pageList')
-  Future<GetAppCommentsPageResponse> getAppCommentPage(
+  Future<GetUserAppCommentsPageResponse> getAppCommentPage(
       @Query('token') String token,
       @Queries() Map<String, dynamic> getAppCommentsPage);
 
@@ -62,6 +92,26 @@ abstract class RestClient {
   @GET('/appChoose/rest')
   Future<GetChoosenAppListResponse> getChoosenAppList();
 
+  @GET('/mainTitle/rest')
+  Future<GetHomeTagListResponse> getHomeTagList();
+
+  @GET('/mainTitle/rest/{mainId}')
+  Future<GetHomeTaggedAppListResponse> getHomeTaggedAppList(
+      @Path('mainId') String mainId);
+
+  @GET('/appTab/rest')
+  Future<GetTabListResponse> getAllTabList();
+
+  @GET('/userInfo')
+  Future<GetUserInfoResponse> getUserInfo(@Query('token') String token);
+
+  @GET('/userAppraise/rest/pageList/{appId}')
+  Future<GetAppCommentListResponse> getAppCommentList(
+      @Path('appId') String appId,
+      @Body() GetAppCommentList getAppCommentListBody);
+  //
+
+  //Other
   @GET('/appVersion/rest/newest')
   Future<GetLatestVersionResponse> getLatestVersion();
 
@@ -70,5 +120,5 @@ abstract class RestClient {
 
   @POST('/appQuestion/rest')
   Future<PostUserQuestionResponse> postUserQuestion(
-      @Body() PostUserQuestion postUserQuestion);
+      @Body() PostUserQuestion postUserQuestionBody);
 }
