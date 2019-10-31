@@ -181,21 +181,6 @@ class UpdatePasswordResponse with CommonResponseMixin {
       _$UpdatePasswordResponseFromJson(json);
 }
 
-@JsonSerializable(createFactory: false)
-class AppealAccount implements IToJson {
-  AppealAccount(this.idfRealName, this.studentCode, this.schoolName,
-      this.collegeName, this.className, this.userType);
-  final String idfRealName;
-  final String studentCode;
-  final String schoolName;
-  final String collegeName;
-  final String className;
-  final int userType;
-
-  @override
-  Map<String, dynamic> toJson() => _$AppealAccountToJson(this);
-}
-
 @JsonSerializable(createToJson: false)
 class AppealAccountResponse with CommonResponseMixin {
   AppealAccountResponse();

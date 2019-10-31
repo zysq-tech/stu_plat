@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 
 import './pages/LaunchPage.dart';
-import './Application.dart';
 import './providers/index.dart';
 
-void main() async {
-  await Application().initAppAsync();
-  runApp(MyApp());
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
@@ -15,9 +11,10 @@ class MyApp extends StatelessWidget {
       context: context,
       child: MaterialApp(
         title: 'Student Platform',
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
+            primarySwatch: Colors.lightBlue,
+            appBarTheme: AppBarTheme(color: Colors.white, elevation: 1)),
         home: LaunchPage(),
       ),
     );

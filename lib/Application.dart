@@ -30,12 +30,15 @@ class Application {
 
   RestClient get restClient => _restClient;
 
+  Completer<Application> appCompleter = Completer<Application>();
+
   Future<void> initAppAsync() async {
     _restClient = RestClient(Dio());
     _router = Router();
     configRoutes(_router);
     ScreenUtil.instance = _screenUtil = ScreenUtil(width: 750, height: 1334);
     _sharedPreferences = await SharedPreferences.getInstance();
+    appCompleter.complete(this);
   }
 
   void initSavedPreference(SharedPreferences sharedPreferences) {

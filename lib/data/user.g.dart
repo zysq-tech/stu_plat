@@ -129,16 +129,6 @@ UpdatePasswordResponse _$UpdatePasswordResponseFromJson(
     ..mess = json['mess'] as String;
 }
 
-Map<String, dynamic> _$AppealAccountToJson(AppealAccount instance) =>
-    <String, dynamic>{
-      'idfRealName': instance.idfRealName,
-      'studentCode': instance.studentCode,
-      'schoolName': instance.schoolName,
-      'collegeName': instance.collegeName,
-      'className': instance.className,
-      'userType': instance.userType,
-    };
-
 AppealAccountResponse _$AppealAccountResponseFromJson(
     Map<String, dynamic> json) {
   return AppealAccountResponse()

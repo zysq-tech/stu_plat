@@ -143,11 +143,26 @@ class _RestClient implements RestClient {
   }
 
   @override
-  appealAccount(appealAccountBody) async {
-    ArgumentError.checkNotNull(appealAccountBody, 'appealAccountBody');
+  appealAccount(token, file, userType, studentCode, idfRealName, schoolName,
+      {collegeName, className}) async {
+    ArgumentError.checkNotNull(token, 'token');
+    ArgumentError.checkNotNull(file, 'file');
+    ArgumentError.checkNotNull(userType, 'userType');
+    ArgumentError.checkNotNull(studentCode, 'studentCode');
+    ArgumentError.checkNotNull(idfRealName, 'idfRealName');
+    ArgumentError.checkNotNull(schoolName, 'schoolName');
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _data = appealAccountBody;
+    final queryParameters = <String, dynamic>{'token': token};
+    final _data = FormData.from({
+      'file':
+          UploadFileInfo(file, file.path.split(Platform.pathSeparator).last),
+      'userType': userType,
+      'studentCode': studentCode,
+      'idfRealName': idfRealName,
+      'schoolName': schoolName,
+      'collegeName': collegeName,
+      'className': className
+    });
     final _result = await _dio.request('/userAppeal',
         queryParameters: queryParameters,
         options: RequestOptions(method: 'POST', headers: {}, extra: _extra),

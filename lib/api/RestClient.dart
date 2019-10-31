@@ -48,7 +48,15 @@ abstract class RestClient {
 
   @POST('/userAppeal')
   Future<AppealAccountResponse> appealAccount(
-      @Body() AppealAccount appealAccountBody);
+    @Query('token') String token,
+    @Field() File file,
+    @Field() int userType,
+    @Field() String studentCode,
+    @Field() String idfRealName,
+    @Field() String schoolName, {
+    @Field() String collegeName,
+    @Field() String className,
+  });
 
   @GET('/userAppeal')
   Future<GetAppealListResponse> getAppealList(@Query('token') String token);
