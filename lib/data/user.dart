@@ -206,6 +206,50 @@ class UpdateAvatarResponse with CommonResponseMixin {
       _$UpdateAvatarResponseFromJson(json);
 }
 
+@JsonSerializable(createFactory: false)
+class VerifyCodeAndRealName extends VerifyCode {
+  VerifyCodeAndRealName(
+      int action, String type, String code, String to, this.realName)
+      : super(action, type, code, to);
+  final String realName;
+
+  @override
+  Map<String, dynamic> toJson() => _$VerifyCodeAndRealNameToJson(this);
+}
+
+@JsonSerializable(createToJson: false)
+class VerifyCodeAndRealNameResponse with CommonResponseMixin {
+  VerifyCodeAndRealNameResponse();
+
+  factory VerifyCodeAndRealNameResponse.fromJson(Map<String, dynamic> json) =>
+      _$VerifyCodeAndRealNameResponseFromJson(json);
+}
+
+@JsonSerializable(createFactory: false)
+class GetInAppNews with CommonPageRequestMixin implements IToJson {
+  GetInAppNews();
+
+  @override
+  Map<String, dynamic> toJson() => _$GetInAppNewsToJson(this);
+}
+
+@JsonSerializable(createToJson: false)
+class GetInAppNewsResponse with CommonResponseMixin {
+  GetInAppNewsResponse(this.data);
+  final InAppNewsPageData data;
+
+  factory GetInAppNewsResponse.fromJson(Map<String, dynamic> json) =>
+      _$GetInAppNewsResponseFromJson(json);
+}
+
+@JsonSerializable(createToJson: false)
+class ReadInAppNewsResponse with CommonResponseMixin {
+  ReadInAppNewsResponse();
+
+  factory ReadInAppNewsResponse.fromJson(Map<String, dynamic> json) =>
+      _$ReadInAppNewsResponseFromJson(json);
+}
+
 //Data
 @JsonSerializable()
 class LoginResponseData implements IToJson {
@@ -310,4 +354,57 @@ class AppealInfoData with CommonTimeMixin implements IToJson {
 
   factory AppealInfoData.fromJson(Map<String, dynamic> json) =>
       _$AppealInfoDataFromJson(json);
+}
+
+@JsonSerializable()
+class InAppNewsPageData with CommonPageInfoMixin implements IToJson {
+  InAppNewsPageData(this.content);
+  final List<InAppNewsWrapperData> content;
+
+  @override
+  Map<String, dynamic> toJson() => _$InAppNewsPageDataToJson(this);
+
+  factory InAppNewsPageData.fromJson(Map<String, dynamic> json) =>
+      _$InAppNewsPageDataFromJson(json);
+}
+
+@JsonSerializable()
+class InAppNewsWrapperData with CommonTimeMixin implements IToJson {
+  InAppNewsWrapperData(
+      this.userNewId, this.newId, this.userId, this.isRead, this.appNews);
+
+  ///用户消息唯一id
+  final String userNewId;
+  final String newId;
+  final String userId;
+  final bool isRead;
+  final InAppNewsData appNews;
+
+  @override
+  Map<String, dynamic> toJson() => _$InAppNewsWrapperDataToJson(this);
+
+  factory InAppNewsWrapperData.fromJson(Map<String, dynamic> json) =>
+      _$InAppNewsWrapperDataFromJson(json);
+}
+
+@JsonSerializable()
+class InAppNewsData with CommonTimeMixin implements IToJson {
+  InAppNewsData(this.newId, this.newTitle, this.newContentType, this.newContent,
+      this.newType, this.newLink);
+  final String newId;
+  final String newTitle;
+
+  ///1显示内容/2链接显示
+  final int newContentType;
+  final String newContent;
+  final String newLink;
+
+  ///1全部人员/2部分人员
+  final int newType;
+
+  @override
+  Map<String, dynamic> toJson() => _$InAppNewsDataToJson(this);
+
+  factory InAppNewsData.fromJson(Map<String, dynamic> json) =>
+      _$InAppNewsDataFromJson(json);
 }

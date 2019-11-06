@@ -8,6 +8,10 @@ import 'package:dio/dio.dart';
 
 import './data/common.dart';
 import './api/RestClient.dart';
+import './api/DownloadClient.dart';
+import './config/routes.dart';
+
+export './config/routes.dart';
 
 class Application {
   static Application _application;
@@ -18,7 +22,7 @@ class Application {
 
   SharedPreferences get sp => _sharedPreferences;
 
-  Router _router;
+  Router _router = Router();
 
   Router get router => _router;
 
@@ -30,13 +34,18 @@ class Application {
 
   RestClient get restClient => _restClient;
 
+  DownloadClient _downloadClient;
+
+  DownloadClient get downloadClient => _downloadClient;
+
   Completer<Application> appCompleter = Completer<Application>();
 
   Future<void> initAppAsync() async {
-    _restClient = RestClient(Dio());
-    _router = Router();
-    configRoutes(_router);
-    ScreenUtil.instance = _screenUtil = ScreenUtil(width: 750, height: 1334);
+    Dio dio = Dio();
+    _restClient = RestClient(dio);
+    _downloadClient = DownloadClient(dio);
+    Routes.configureRoutes(_router);
+    ScreenUtil.instance = _screenUtil = ScreenUtil(width: 1080, height: 1920);
     _sharedPreferences = await SharedPreferences.getInstance();
     appCompleter.complete(this);
   }
@@ -47,14 +56,6 @@ class Application {
 
   void initScreenUtil(BuildContext context) {
     _screenUtil.init(context);
-  }
-
-  void configRoutes(Router router) {
-    // router.notFoundHandler = Handler(
-    //     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-    //   print('>>>ROUTE NOT FOUND!!!<<<');
-    // });
-    // router.define('routePath');
   }
 }
 

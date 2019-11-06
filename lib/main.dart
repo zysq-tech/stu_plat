@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
-import './pages/LaunchPage.dart';
+import './Application.dart';
 import './providers/index.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  Application().initAppAsync();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
@@ -15,7 +18,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
             primarySwatch: Colors.lightBlue,
             appBarTheme: AppBarTheme(color: Colors.white, elevation: 1)),
-        home: LaunchPage(),
+        onGenerateRoute: Application().router.generator,
       ),
     );
   }

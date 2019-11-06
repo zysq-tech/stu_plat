@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:retrofit/retrofit.dart';
-import 'package:dio/dio.dart';
+import 'package:dio/dio.dart' hide Headers;
 
 import '../data/index.dart';
 import 'config.dart';
@@ -64,13 +64,27 @@ abstract class RestClient {
   @PUT('/updateAvatar')
   Future<UpdateAvatarResponse> updateAvatar(
       @Query('token') String token, @Field() File file);
+
+  @POST('/verify')
+  Future<VerifyCodeAndRealNameResponse> verifyCodeAndRealName(
+      @Query('token') String token,
+      @Body() VerifyCodeAndRealName verifyCodeBody);
+
+  @GET('/appUserNews/pageList')
+  Future<GetInAppNewsResponse> getInAppNewsPage(@Query('token') String token,
+      @Queries() Map<String, dynamic> getInAppNewsQueries);
+
+  @PUT('/appUserNews/isRead/{userNewId}')
+  Future<ReadInAppNewsResponse> readInAppNews(
+      @Path('userNewId') String userNewId, @Query('token') String token);
   //
 
   //Apps
   ///searchType: 1：新秀榜/2：热搜榜/3：下载榜
   @GET('/appInfo/rest/{searchType}')
   Future<GetLeaderBoardAppPageResponse> getLeaderBoardAppPage(
-      @Path() int searchType, @Queries() Map<String, dynamic> pageSize);
+      @Path() int searchType,
+      @Queries() Map<String, dynamic> getLeaderBoardAppPageQueries);
 
   ///searchType: 1：今日最佳/2：精品必备
   @GET('/appInfo/rest/list/{searchType}')
@@ -86,7 +100,7 @@ abstract class RestClient {
   @GET('/userAppraise/pageList')
   Future<GetUserAppCommentsPageResponse> getAppCommentPage(
       @Query('token') String token,
-      @Queries() Map<String, dynamic> getAppCommentsPage);
+      @Queries() Map<String, dynamic> getUserAppCommentsPage);
 
   @GET('/appLabel/rest/list')
   Future<GetAppLabelListResponse> getAppLabelList(

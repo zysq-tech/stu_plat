@@ -151,6 +151,46 @@ UpdateAvatarResponse _$UpdateAvatarResponseFromJson(Map<String, dynamic> json) {
     ..mess = json['mess'] as String;
 }
 
+Map<String, dynamic> _$VerifyCodeAndRealNameToJson(
+        VerifyCodeAndRealName instance) =>
+    <String, dynamic>{
+      'action': instance.action,
+      'type': instance.type,
+      'code': instance.code,
+      'to': instance.to,
+      'realName': instance.realName,
+    };
+
+VerifyCodeAndRealNameResponse _$VerifyCodeAndRealNameResponseFromJson(
+    Map<String, dynamic> json) {
+  return VerifyCodeAndRealNameResponse()
+    ..code = json['code'] as int
+    ..mess = json['mess'] as String;
+}
+
+Map<String, dynamic> _$GetInAppNewsToJson(GetInAppNews instance) =>
+    <String, dynamic>{
+      'page': instance.page,
+      'size': instance.size,
+    };
+
+GetInAppNewsResponse _$GetInAppNewsResponseFromJson(Map<String, dynamic> json) {
+  return GetInAppNewsResponse(
+    json['data'] == null
+        ? null
+        : InAppNewsPageData.fromJson(json['data'] as Map<String, dynamic>),
+  )
+    ..code = json['code'] as int
+    ..mess = json['mess'] as String;
+}
+
+ReadInAppNewsResponse _$ReadInAppNewsResponseFromJson(
+    Map<String, dynamic> json) {
+  return ReadInAppNewsResponse()
+    ..code = json['code'] as int
+    ..mess = json['mess'] as String;
+}
+
 LoginResponseData _$LoginResponseDataFromJson(Map<String, dynamic> json) {
   return LoginResponseData(
     json['token'] as String,
@@ -267,4 +307,84 @@ Map<String, dynamic> _$AppealInfoDataToJson(AppealInfoData instance) =>
       'className': instance.className,
       'userStatus': instance.userStatus,
       'isDelete': instance.isDelete,
+    };
+
+InAppNewsPageData _$InAppNewsPageDataFromJson(Map<String, dynamic> json) {
+  return InAppNewsPageData(
+    (json['content'] as List)
+        ?.map((e) => e == null
+            ? null
+            : InAppNewsWrapperData.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+  )
+    ..first = json['first'] as bool
+    ..last = json['last'] as bool
+    ..totalElements = json['totalElements'] as int
+    ..totalPages = json['totalPages'] as int
+    ..numberOfElements = json['numberOfElements'] as int
+    ..size = json['size'] as int
+    ..number = json['number'] as int;
+}
+
+Map<String, dynamic> _$InAppNewsPageDataToJson(InAppNewsPageData instance) =>
+    <String, dynamic>{
+      'first': instance.first,
+      'last': instance.last,
+      'totalElements': instance.totalElements,
+      'totalPages': instance.totalPages,
+      'numberOfElements': instance.numberOfElements,
+      'size': instance.size,
+      'number': instance.number,
+      'content': instance.content,
+    };
+
+InAppNewsWrapperData _$InAppNewsWrapperDataFromJson(Map<String, dynamic> json) {
+  return InAppNewsWrapperData(
+    json['userNewId'] as String,
+    json['newId'] as String,
+    json['userId'] as String,
+    json['isRead'] as bool,
+    json['appNews'] == null
+        ? null
+        : InAppNewsData.fromJson(json['appNews'] as Map<String, dynamic>),
+  )
+    ..createtime = json['createtime'] as String
+    ..updateTime = json['updateTime'] as String;
+}
+
+Map<String, dynamic> _$InAppNewsWrapperDataToJson(
+        InAppNewsWrapperData instance) =>
+    <String, dynamic>{
+      'createtime': instance.createtime,
+      'updateTime': instance.updateTime,
+      'userNewId': instance.userNewId,
+      'newId': instance.newId,
+      'userId': instance.userId,
+      'isRead': instance.isRead,
+      'appNews': instance.appNews,
+    };
+
+InAppNewsData _$InAppNewsDataFromJson(Map<String, dynamic> json) {
+  return InAppNewsData(
+    json['newId'] as String,
+    json['newTitle'] as String,
+    json['newContentType'] as int,
+    json['newContent'] as String,
+    json['newType'] as int,
+    json['newLink'] as String,
+  )
+    ..createtime = json['createtime'] as String
+    ..updateTime = json['updateTime'] as String;
+}
+
+Map<String, dynamic> _$InAppNewsDataToJson(InAppNewsData instance) =>
+    <String, dynamic>{
+      'createtime': instance.createtime,
+      'updateTime': instance.updateTime,
+      'newId': instance.newId,
+      'newTitle': instance.newTitle,
+      'newContentType': instance.newContentType,
+      'newContent': instance.newContent,
+      'newLink': instance.newLink,
+      'newType': instance.newType,
     };

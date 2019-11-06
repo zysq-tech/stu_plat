@@ -1,4 +1,6 @@
+import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
+
 import '../Application.dart';
 
 class LaunchPage extends StatefulWidget {
@@ -12,20 +14,25 @@ class _LaunchPageState extends State<LaunchPage> {
     super.initState();
 
     var app = Application();
-    app.initAppAsync().then((_) {
+    app.appCompleter.future.then((_) {
       app.initSavedPreference(app.sp);
       print('app initialized');
       exitLaunchPage();
     });
   }
 
-  void exitLaunchPage() {}
+  void exitLaunchPage() {
+    Future.delayed(Duration(seconds: 2)).then((_) {
+      Application().router.navigateTo(context, Routes.login,
+          replace: true, transition: TransitionType.fadeIn);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     Application().initScreenUtil(context);
     return Scaffold(
-      body: Container(
+      body: Center(
         child: Text('Launch Page'),
       ),
     );

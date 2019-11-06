@@ -5,12 +5,8 @@ import 'user.dart';
 part 'apps.g.dart';
 
 @JsonSerializable(createFactory: false)
-class GetLeaderBoardAppPage implements IToJson {
-  GetLeaderBoardAppPage(this.page, this.size);
-
-  ///开始：1
-  final int page;
-  final int size;
+class GetLeaderBoardAppPage with CommonPageRequestMixin implements IToJson {
+  GetLeaderBoardAppPage();
 
   @override
   Map<String, dynamic> toJson() => _$GetLeaderBoardAppPageToJson(this);
