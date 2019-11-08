@@ -8,6 +8,7 @@ import '../Application.dart';
 import '../Constant.dart';
 import '../Utils.dart';
 import '../components/customCard.dart';
+import '../data/page_data.dart';
 
 enum LoginPageState {
   personalLogin,
@@ -20,7 +21,9 @@ enum LoginPageState {
 }
 
 class LoginPage extends StatefulWidget {
-  LoginPage();
+  LoginPage({@required this.data});
+
+  final LoginPageData data;
 
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -140,7 +143,8 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
   }
 
   void onTapInfoOption(int type) {
-    Application().router.navigateTo(context, '${Routes.registerInfo}/$type');
+    Application().router.navigateTo(context,
+        '${Routes.registerInfo}?data=${objectToJson(RegisterInfoPageData(type: type))}');
   }
 
   void clearFocus() {

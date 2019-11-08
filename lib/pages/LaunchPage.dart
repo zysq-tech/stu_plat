@@ -2,6 +2,8 @@ import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 
 import '../Application.dart';
+import '../data/page_data.dart';
+import '../Utils.dart';
 
 class LaunchPage extends StatefulWidget {
   @override
@@ -23,7 +25,8 @@ class _LaunchPageState extends State<LaunchPage> {
 
   void exitLaunchPage() {
     Future.delayed(Duration(seconds: 2)).then((_) {
-      Application().router.navigateTo(context, Routes.login,
+      Application().router.navigateTo(
+          context, '${Routes.login}?data=${objectToJson(LoginPageData())}',
           replace: true, transition: TransitionType.fadeIn);
     });
   }

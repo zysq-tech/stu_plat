@@ -38,6 +38,8 @@ dependencies:
   dio: ^3.0.0
   retrofit: ^1.0.1
   progress_dialog: ^1.2.0
+  flutter_picker:
+    git: git://github.com/yangyxd/flutter_picker.git
 
 dev_dependencies:
   flutter_test:

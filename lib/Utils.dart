@@ -7,6 +7,21 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 import './data/common.dart';
 
+///fluro 传递中文参数前，先转换，fluro 不支持中文传递
+String fluroCnParamsEncode(String originalCn) {
+  return jsonEncode(Utf8Encoder().convert(originalCn));
+}
+
+/// fluro 传递后取出参数，解析
+String fluroCnParamsDecode(String encodeCn) {
+  var list = List<int>();
+
+  ///字符串解码
+  jsonDecode(encodeCn).forEach(list.add);
+  String value = Utf8Decoder().convert(list);
+  return value;
+}
+
 String md5fy(String input) {
   return input == null || input.isEmpty
       ? input
