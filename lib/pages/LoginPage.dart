@@ -3,10 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:progress_dialog/progress_dialog.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 import '../Application.dart';
-import '../Constant.dart';
-import '../Utils.dart';
 import '../components/customCard.dart';
 import '../data/page_data.dart';
 
@@ -29,7 +28,8 @@ class LoginPage extends StatefulWidget {
   _LoginPageState createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
+class _LoginPageState extends State<LoginPage>
+    with SingleTickerProviderStateMixin {
   LoginPageState _pageState;
 
   TabController _tabController;
@@ -118,7 +118,12 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
     setState(() {});
   }
 
-  void tryLogin() {}
+  void tryLogin() {
+    // showAccountErrorDialog();
+    Application().router.navigateTo(
+        context, '${Routes.home}?data=${objectToJson(HomePageData())}',
+        clearStack: true);
+  }
 
   void afterGetCode() {
     setState(() {
@@ -140,6 +145,28 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
     setState(() {
       _pageState = LoginPageState.register_chooseInfoType;
     });
+  }
+
+  void showAccountErrorDialog() {
+    Alert(
+        // type: AlertType.error,
+        context: context,
+        title: '账号异常',
+        desc:
+            '请于48小时内，与客服联系处理异常，48小时候，将视为自动放弃申辩权利系统将自动注销您的账号，据实将无法找回，电话15512341234',
+        style: AlertStyle(
+            isCloseButton: false,
+            animationType: AnimationType.grow,
+            titleStyle: TextStyle(
+                color: hexToColor('#f86b76'),
+                fontSize: su.setSp(50),
+                fontWeight: FontWeight.bold),
+            descStyle: TextStyle(
+                fontSize: su.setSp(43), color: hexToColor('#626262'))),
+        buttons: [],
+        closeFunction: () {
+          print('close');
+        }).show();
   }
 
   void onTapInfoOption(int type) {

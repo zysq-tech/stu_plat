@@ -21,5 +21,6 @@ class Routes {
     router.define(login, handler: loginHandler);
     router.define(registerInfo, handler: registerInfoHandler);
     router.define(appealInfo, handler: appealInfoHandler);
+    router.define(home, handler: homeHandler);
   }
 }

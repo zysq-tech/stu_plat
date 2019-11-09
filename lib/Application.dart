@@ -12,6 +12,8 @@ import './api/DownloadClient.dart';
 import './config/routes.dart';
 
 export './config/routes.dart';
+export './Constant.dart';
+export './Utils.dart';
 
 class Application {
   static Application _application;

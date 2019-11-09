@@ -51,3 +51,14 @@ class AppealPageData implements IToJson {
   factory AppealPageData.fromJson(Map<String, dynamic> json) =>
       _$AppealPageDataFromJson(json);
 }
+
+@JsonSerializable()
+class HomePageData implements IToJson {
+  HomePageData();
+
+  @override
+  Map<String, dynamic> toJson() => _$HomePageDataToJson(this);
+
+  factory HomePageData.fromJson(Map<String, dynamic> json) =>
+      _$HomePageDataFromJson(json);
+}

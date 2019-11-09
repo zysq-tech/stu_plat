@@ -47,3 +47,10 @@ Map<String, dynamic> _$AppealPageDataToJson(AppealPageData instance) =>
       'collegeName': instance.collegeName,
       'className': instance.className,
     };
+
+HomePageData _$HomePageDataFromJson(Map<String, dynamic> json) {
+  return HomePageData();
+}
+
+Map<String, dynamic> _$HomePageDataToJson(HomePageData instance) =>
+    <String, dynamic>{};

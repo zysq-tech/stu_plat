@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 import '../Application.dart';
 import '../data/page_data.dart';
-import '../Utils.dart';
 
 class LaunchPage extends StatefulWidget {
   @override

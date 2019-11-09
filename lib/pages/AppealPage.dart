@@ -5,8 +5,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../Application.dart';
-import '../Utils.dart';
-import '../Constant.dart';
 import '../components/customCard.dart';
 import '../data/page_data.dart';
 

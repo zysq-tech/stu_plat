@@ -40,6 +40,8 @@ dependencies:
   progress_dialog: ^1.2.0
   flutter_picker:
     git: git://github.com/yangyxd/flutter_picker.git
+  rflutter_alert:
+    git: git://github.com/RatelHub/rflutter_alert.git
 
 dev_dependencies:
   flutter_test:

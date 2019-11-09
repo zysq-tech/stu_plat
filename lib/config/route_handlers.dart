@@ -6,6 +6,7 @@ import '../pages/LaunchPage.dart';
 import '../pages/LoginPage.dart';
 import '../pages/RegisterInfoPage.dart';
 import '../pages/AppealPage.dart';
+import '../pages/HomePage.dart';
 
 import '../Utils.dart';
 
@@ -24,4 +25,9 @@ var registerInfoHandler = Handler(
 var appealInfoHandler = Handler(
     handlerFunc: (_, params) => AppealPage(
           data: AppealPageData.fromJson(jsonToObject(params['data'][0])),
+        ));
+
+var homeHandler = Handler(
+    handlerFunc: (_, params) => HomePage(
+          data: HomePageData.fromJson(jsonToObject(params['data'][0])),
         ));
