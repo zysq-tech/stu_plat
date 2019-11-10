@@ -434,9 +434,7 @@ class _RestClient implements RestClient {
   }
 
   @override
-  getAppLabelList(getAppLabelListQueries) async {
-    ArgumentError.checkNotNull(
-        getAppLabelListQueries, 'getAppLabelListQueries');
+  getAppLabelList([getAppLabelListQueries]) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     queryParameters.addAll(getAppLabelListQueries ?? <String, dynamic>{});

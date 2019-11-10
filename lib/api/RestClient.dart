@@ -102,9 +102,10 @@ abstract class RestClient {
       @Query('token') String token,
       @Queries() Map<String, dynamic> getUserAppCommentsPage);
 
+  ///不带参数拿父级列表，用父级参数拿子级列表
   @GET('/appLabel/rest/list')
   Future<GetAppLabelListResponse> getAppLabelList(
-      @Queries() Map<String, dynamic> getAppLabelListQueries);
+      [@Queries() Map<String, dynamic> getAppLabelListQueries]);
 
   @GET('/appLabelRelation/rest/{labelId}')
   Future<GetAppPageWithLabelResponse> getAppPageWithLabel(
