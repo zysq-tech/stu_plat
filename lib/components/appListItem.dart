@@ -25,8 +25,7 @@ class AppListItem extends StatelessWidget {
     final fheight = height ?? designHeight;
     final wFactor = fwidth / designWidth;
     final hFactor = fheight / designHeight;
-    return Align(
-      alignment: Alignment.center,
+    return Center(
       child: Container(
         width: su.setWidth(fwidth),
         height: su.setHeight(fheight),
