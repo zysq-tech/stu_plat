@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../Application.dart';
 import '../../components/imageAppCard.dart';
 import '../../components/customCard.dart';
+import '../../components/appListItem.dart';
 
 class RecommendationBestView extends StatefulWidget {
   @override
@@ -28,8 +29,11 @@ class _RecommendationBestViewState extends State<RecommendationBestView>
     super.build(context);
     return ListView.builder(
       padding: EdgeInsets.symmetric(vertical: su.setHeight(25)),
-      itemBuilder: (_, index) =>
-          index == 1 ? buildRecommendListCard() : ImageAppCard(),
+      itemBuilder: (_, index) => index == 1
+          ? buildRecommendListCard()
+          : ImageAppCard(
+              bestTag: index == 0,
+            ),
     );
   }
 
@@ -39,8 +43,9 @@ class _RecommendationBestViewState extends State<RecommendationBestView>
         width: su.setWidth(985),
         height: su.setHeight(715),
         borderRadius: BorderRadius.circular(su.setHeight(40)),
+        margin: EdgeInsets.symmetric(vertical: su.setHeight(20)),
         padding: EdgeInsets.symmetric(
-            vertical: su.setHeight(45), horizontal: su.setWidth(55)),
+            vertical: su.setHeight(45), horizontal: su.setWidth(50)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -51,8 +56,8 @@ class _RecommendationBestViewState extends State<RecommendationBestView>
                   fontSize: su.setSp(50),
                   letterSpacing: su.setWidth(10),
                   fontWeight: FontWeight.bold),
-            )
-          ],
+            ),
+          ]..addAll([1, 2, 3].map((v) => AppListItem())),
         ),
       ),
     );
