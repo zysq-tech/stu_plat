@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../components/customCard.dart';
 import '../../Application.dart';
 import './RecommendationBestView.dart';
 import './RecommendationRankView.dart';
@@ -27,10 +26,7 @@ class _RecommentdationViewState extends State<RecommentdationView>
     _tabController = TabController(length: 2, initialIndex: 0, vsync: this);
   }
 
-  void onTabTapped(int index) {
-    if (index == _tabController.index) return;
-    _tabController.index = index;
-  }
+  void onTabTapped(int index) {}
 
   @override
   Widget build(BuildContext context) {

@@ -16,6 +16,7 @@ class _RecommendationRankViewState extends State<RecommendationRankView>
   bool get wantKeepAlive => true;
 
   TabController _tabController;
+  int _tabIndex;
   ScrollController _scrollController;
   ScreenUtil su;
 
@@ -23,14 +24,15 @@ class _RecommendationRankViewState extends State<RecommendationRankView>
   void initState() {
     super.initState();
     su = Application().screenUtil;
+    _tabIndex = 0;
     _tabController = TabController(length: 3, initialIndex: 0, vsync: this);
     _scrollController = ScrollController();
   }
 
   void onTabTapped(int index) {
-    if (_tabController.index == index) return;
+    if (index == _tabIndex) return;
     setState(() {
-      _tabController.index = index;
+      _tabIndex = index;
       _scrollController.animateTo(0,
           duration: Duration(milliseconds: 200), curve: Curves.linear);
     });
@@ -97,7 +99,7 @@ class _RecommendationRankViewState extends State<RecommendationRankView>
   }
 
   Widget buildRankTab(String text, int index) {
-    final selected = index == _tabController.index;
+    final selected = index == _tabIndex;
     return Tab(
       child: CustomCard.cricleEnds(
           width: su.setWidth(selected ? 250 : 219),

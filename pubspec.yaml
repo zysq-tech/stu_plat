@@ -42,6 +42,7 @@ dependencies:
     git: git://github.com/yangyxd/flutter_picker.git
   rflutter_alert:
     git: git://github.com/RatelHub/rflutter_alert.git
+  flutter_rating_bar: any
 
 dev_dependencies:
   flutter_test:
