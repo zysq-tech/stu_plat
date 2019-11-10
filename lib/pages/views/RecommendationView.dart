@@ -37,6 +37,7 @@ class _RecommentdationViewState extends State<RecommentdationView>
     super.build(context);
     return Container(
       width: su.setWidth(1080),
+      color: homeBgColor,
       child: Column(
         children: <Widget>[
           Container(
@@ -51,7 +52,9 @@ class _RecommentdationViewState extends State<RecommentdationView>
               onTap: onTabTapped,
             ),
             decoration: BoxDecoration(
-                boxShadow: CustomCard.defaultBoxShadow, color: Colors.white),
+                border: Border(
+                    bottom: BorderSide(color: hexToColor('#dcdcdc'), width: 2)),
+                color: Colors.white),
           ),
           Expanded(
             child: TabBarView(

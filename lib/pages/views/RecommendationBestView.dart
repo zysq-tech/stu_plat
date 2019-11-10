@@ -57,7 +57,9 @@ class _RecommendationBestViewState extends State<RecommendationBestView>
                   letterSpacing: su.setWidth(10),
                   fontWeight: FontWeight.bold),
             ),
-          ]..addAll([1, 2, 3].map((v) => AppListItem())),
+          ]..addAll([1, 2, 3].map((v) => AppListItem(
+                showTag: false,
+              ))),
         ),
       ),
     );

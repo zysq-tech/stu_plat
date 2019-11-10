@@ -6,4 +6,6 @@ const int getCodeCountDown = 60;
 
 Color mainThemeColor = hexToColor('#13b9c7');
 
+Color homeBgColor = Color.fromRGBO(241, 239, 240, 1);
+
 RegExp letterNumberOnly = RegExp(r'^[a-zA-Z0-9]+$');
