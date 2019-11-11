@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:crypto/crypto.dart';
 import 'package:convert/convert.dart';
@@ -6,6 +7,7 @@ import 'package:flutter/widgets.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import './data/common.dart';
+import './Constant.dart';
 
 ///fluro 传递中文参数前，先转换，fluro 不支持中文传递
 String fluroCnParamsEncode(String originalCn) {
@@ -20,6 +22,23 @@ String fluroCnParamsDecode(String encodeCn) {
   jsonDecode(encodeCn).forEach(list.add);
   String value = Utf8Decoder().convert(list);
   return value;
+}
+
+String formatBytesSize(double bytesLength) {
+  var str = packageSizes[0];
+  if (bytesLength != double.infinity)
+    for (var i = 1; i < packageSizes.length; i++) {
+      var size = pow(1024, i);
+      if (bytesLength >= size) {
+        bytesLength /= size;
+        str = packageSizes[i];
+      } else {
+        break;
+      }
+    }
+  else
+    bytesLength = 0;
+  return '${bytesLength.toStringAsFixed(1)}$str';
 }
 
 String md5fy(String input) {
