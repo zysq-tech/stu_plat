@@ -166,23 +166,31 @@ class _RegisterInfoPageState extends State<RegisterInfoPage> {
     return Row(
       children: <Widget>[
         Text('您的身份信息已被注册，请'),
-        FlatButton(
-          child: Text('申诉'),
-          padding: EdgeInsets.zero,
-          onPressed: () {
-            var str = objectToJson(AppealPageData(
-                phone: '123456',
-                school: fluroCnParamsEncode(selectedSchool),
-                code: 'code',
-                name: 'name',
-                collegeName: 'college',
-                className: 'class',
-                type: widget.data.type));
-            print(str);
-            Application()
-                .router
-                .navigateTo(context, '${Routes.appealInfo}?data=$str');
-          },
+        Material(
+          color: Colors.transparent,
+          child: InkWell(
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                  horizontal: su.setWidth(30), vertical: su.setHeight(30)),
+              child: Text(
+                '申诉',
+                style: TextStyle(color: mainThemeColor),
+              ),
+            ),
+            onTap: () {
+              var str = fluroCnParamsEncode(objectToJson(AppealPageData(
+                  phone: '123456',
+                  school: selectedSchool,
+                  code: 'code',
+                  name: 'name',
+                  collegeName: 'college',
+                  className: 'class',
+                  type: widget.data.type)));
+              Application()
+                  .router
+                  .navigateTo(context, '${Routes.appealInfo}?data=$str');
+            },
+          ),
         )
       ],
       mainAxisAlignment: MainAxisAlignment.center,

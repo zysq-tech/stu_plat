@@ -157,7 +157,7 @@ class _AppealPageState extends State<AppealPage> {
         children: <Widget>[
           buildDisplayContainer('手机号', data.phone),
           buildDisplayContainer('身份', data.type == 1 ? '学生' : '教师'),
-          buildDisplayContainer('学校', fluroCnParamsDecode(data.school)),
+          buildDisplayContainer('学校', data.school),
           buildDisplayContainer('证件号码', data.code),
           buildDisplayContainer('姓名', data.name),
         ],

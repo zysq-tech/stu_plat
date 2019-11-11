@@ -120,8 +120,8 @@ class _LoginPageState extends State<LoginPage>
 
   void tryLogin() {
     // showAccountErrorDialog();
-    Application().router.navigateTo(
-        context, '${Routes.home}?data=${objectToJson(HomePageData())}',
+    Application().router.navigateTo(context,
+        '${Routes.home}?data=${fluroCnParamsEncode(objectToJson(HomePageData()))}',
         clearStack: true);
   }
 
@@ -171,7 +171,7 @@ class _LoginPageState extends State<LoginPage>
 
   void onTapInfoOption(int type) {
     Application().router.navigateTo(context,
-        '${Routes.registerInfo}?data=${objectToJson(RegisterInfoPageData(type: type))}');
+        '${Routes.registerInfo}?data=${fluroCnParamsEncode(objectToJson(RegisterInfoPageData(type: type)))}');
   }
 
   void clearFocus() {

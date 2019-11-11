@@ -25,8 +25,8 @@ class _UserViewState extends State<UserView>
   }
 
   void logout() {
-    Application().router.navigateTo(
-        context, '${Routes.login}?data=${objectToJson(LoginPageData())}',
+    Application().router.navigateTo(context,
+        '${Routes.login}?data=${fluroCnParamsEncode(objectToJson(LoginPageData()))}',
         clearStack: true);
   }
 

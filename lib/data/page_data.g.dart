@@ -54,3 +54,16 @@ HomePageData _$HomePageDataFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$HomePageDataToJson(HomePageData instance) =>
     <String, dynamic>{};
+
+UserInfoPageData _$UserInfoPageDataFromJson(Map<String, dynamic> json) {
+  return UserInfoPageData(
+    data: json['data'] == null
+        ? null
+        : UserInfoData.fromJson(json['data'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$UserInfoPageDataToJson(UserInfoPageData instance) =>
+    <String, dynamic>{
+      'data': instance.data,
+    };

@@ -1,6 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import 'common.dart';
+import 'user.dart';
 
 part 'page_data.g.dart';
 
@@ -61,4 +62,17 @@ class HomePageData implements IToJson {
 
   factory HomePageData.fromJson(Map<String, dynamic> json) =>
       _$HomePageDataFromJson(json);
+}
+
+@JsonSerializable()
+class UserInfoPageData implements IToJson {
+  UserInfoPageData({this.data});
+
+  final UserInfoData data;
+
+  @override
+  Map<String, dynamic> toJson() => _$UserInfoPageDataToJson(this);
+
+  factory UserInfoPageData.fromJson(Map<String, dynamic> json) =>
+      _$UserInfoPageDataFromJson(json);
 }
