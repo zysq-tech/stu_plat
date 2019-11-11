@@ -45,17 +45,18 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     setState(() {
       _pageIndex = index;
     });
-    _pageController.animateToPage(index,
-        duration: Duration(milliseconds: 200), curve: Curves.ease);
+    _pageController.jumpToPage(index);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: null,
-        backgroundColor: mainThemeColor,
-      ),
+      appBar: _pageIndex == 4
+          ? null
+          : AppBar(
+              leading: null,
+              backgroundColor: mainThemeColor,
+            ),
       bottomNavigationBar: buildNavBar(),
       body: PageView.builder(
         controller: _pageController,
