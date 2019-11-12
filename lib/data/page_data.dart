@@ -102,3 +102,14 @@ class UnregisterPageData implements IToJson {
   factory UnregisterPageData.fromJson(Map<String, dynamic> json) =>
       _$UnregisterPageDataFromJson(json);
 }
+
+@JsonSerializable()
+class HelpCenterPageData implements IToJson {
+  HelpCenterPageData();
+
+  @override
+  Map<String, dynamic> toJson() => _$HelpCenterPageDataToJson(this);
+
+  factory HelpCenterPageData.fromJson(Map<String, dynamic> json) =>
+      _$HelpCenterPageDataFromJson(json);
+}

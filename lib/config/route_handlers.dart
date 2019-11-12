@@ -49,3 +49,9 @@ var unregisterHandler = Handler(
           data: UnregisterPageData.fromJson(
               jsonToObject(fluroCnParamsDecode(params['data'][0]))),
         ));
+
+var helpCenterHandler = Handler(
+    handlerFunc: (_, params) => HelpCenterPage(
+          data: HelpCenterPageData.fromJson(
+              jsonToObject(fluroCnParamsDecode(params['data'][0]))),
+        ));

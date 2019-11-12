@@ -91,3 +91,10 @@ UnregisterPageData _$UnregisterPageDataFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$UnregisterPageDataToJson(UnregisterPageData instance) =>
     <String, dynamic>{};
+
+HelpCenterPageData _$HelpCenterPageDataFromJson(Map<String, dynamic> json) {
+  return HelpCenterPageData();
+}
+
+Map<String, dynamic> _$HelpCenterPageDataToJson(HelpCenterPageData instance) =>
+    <String, dynamic>{};

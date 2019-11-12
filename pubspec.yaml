@@ -43,6 +43,7 @@ dependencies:
   rflutter_alert:
     git: git://github.com/RatelHub/rflutter_alert.git
   flutter_rating_bar: any
+  expandable: any
   #Android Only
   device_apps: any
 
