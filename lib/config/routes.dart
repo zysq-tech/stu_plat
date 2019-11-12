@@ -11,6 +11,7 @@ class Routes {
   static String home = '/home';
   static String userInfo = '/userInfo';
   static String editPhoneEmail = '/editPhoneEmail';
+  static String unregister = '/unregister';
 
   static void configureRoutes(Router router) {
     router.notFoundHandler = Handler(
@@ -26,5 +27,6 @@ class Routes {
     router.define(home, handler: homeHandler);
     router.define(userInfo, handler: userInfoHandler);
     router.define(editPhoneEmail, handler: editPhoneEmailHandler);
+    router.define(unregister, handler: unregisterHandler);
   }
 }

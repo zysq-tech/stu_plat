@@ -83,7 +83,13 @@ class _UserViewState extends State<UserView>
                   buildEntranceTab('关于产品', onTap: () {}),
                   buildEntranceTab('检查版本', onTap: () {}),
                   buildEntranceTab('意见反馈', onTap: () {}),
-                  buildEntranceTab('注销账号', onTap: () {}),
+                  buildEntranceTab('注销账号', onTap: () {
+                    String str =
+                        fluroCnParamsEncode(objectToJson(UnregisterPageData()));
+                    Application()
+                        .router
+                        .navigateTo(context, '${Routes.unregister}?data=$str');
+                  }),
                   buildLogoutBtn(),
                 ],
               ),

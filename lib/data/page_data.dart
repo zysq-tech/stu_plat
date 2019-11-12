@@ -91,3 +91,14 @@ class EditPhoneEmailPageData implements IToJson {
   factory EditPhoneEmailPageData.fromJson(Map<String, dynamic> json) =>
       _$EditPhoneEmailPageDataFromJson(json);
 }
+
+@JsonSerializable()
+class UnregisterPageData implements IToJson {
+  UnregisterPageData();
+
+  @override
+  Map<String, dynamic> toJson() => _$UnregisterPageDataToJson(this);
+
+  factory UnregisterPageData.fromJson(Map<String, dynamic> json) =>
+      _$UnregisterPageDataFromJson(json);
+}

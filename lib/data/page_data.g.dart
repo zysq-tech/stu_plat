@@ -84,3 +84,10 @@ Map<String, dynamic> _$EditPhoneEmailPageDataToJson(
       'type': instance.type,
       'initialization': instance.initialization,
     };
+
+UnregisterPageData _$UnregisterPageDataFromJson(Map<String, dynamic> json) {
+  return UnregisterPageData();
+}
+
+Map<String, dynamic> _$UnregisterPageDataToJson(UnregisterPageData instance) =>
+    <String, dynamic>{};

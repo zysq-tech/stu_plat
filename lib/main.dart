@@ -5,10 +5,16 @@ import './Application.dart';
 import './providers/index.dart';
 
 void main() {
-  SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(statusBarColor: mainThemeColor));
-  Application().initAppAsync();
-  runApp(MyApp());
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    statusBarColor: mainThemeColor,
+  ));
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]).then((_) {
+    Application().initAppAsync();
+    runApp(MyApp());
+  });
 }
 
 class MyApp extends StatelessWidget {

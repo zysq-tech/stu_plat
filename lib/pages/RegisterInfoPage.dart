@@ -180,7 +180,7 @@ class _RegisterInfoPageState extends State<RegisterInfoPage> {
             onTap: () {
               var str = fluroCnParamsEncode(objectToJson(AppealPageData(
                   phone: '123456',
-                  school: selectedSchool,
+                  school: selectedSchool ?? schoolList[0],
                   code: 'code',
                   name: 'name',
                   collegeName: 'college',

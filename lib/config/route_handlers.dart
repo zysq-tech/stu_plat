@@ -2,13 +2,7 @@ import 'package:fluro/fluro.dart';
 
 import '../data/page_data.dart';
 
-import '../pages/LaunchPage.dart';
-import '../pages/LoginPage.dart';
-import '../pages/RegisterInfoPage.dart';
-import '../pages/AppealPage.dart';
-import '../pages/HomePage.dart';
-import '../pages/UserInfoPage.dart';
-import '../pages/EditPhoneEmailPage.dart';
+import '../pages/index.dart';
 
 import '../Utils.dart';
 
@@ -47,5 +41,11 @@ var userInfoHandler = Handler(
 var editPhoneEmailHandler = Handler(
     handlerFunc: (_, params) => EditPhoneEmailPage(
           data: EditPhoneEmailPageData.fromJson(
+              jsonToObject(fluroCnParamsDecode(params['data'][0]))),
+        ));
+
+var unregisterHandler = Handler(
+    handlerFunc: (_, params) => UnregisterPage(
+          data: UnregisterPageData.fromJson(
               jsonToObject(fluroCnParamsDecode(params['data'][0]))),
         ));
