@@ -145,7 +145,7 @@ class _EditPhoneEmailPageState extends State<EditPhoneEmailPage> {
           child: Image.asset(
             'assets/icon/icon_return.png',
             width: su.setWidth(33),
-            height: su.setHeight(61),
+            height: su.setWidth(61),
           ),
           onPressed: () {
             Navigator.pop(context, false);
@@ -155,7 +155,7 @@ class _EditPhoneEmailPageState extends State<EditPhoneEmailPage> {
       body: GestureDetector(
         onTap: emptyFocus,
         child: SingleChildScrollView(
-          padding: EdgeInsets.symmetric(vertical: su.setHeight(30)),
+          padding: EdgeInsets.symmetric(vertical: su.setWidth(30)),
           physics: NeverScrollableScrollPhysics(),
           child: Center(
             child: Column(
@@ -195,7 +195,7 @@ class _EditPhoneEmailPageState extends State<EditPhoneEmailPage> {
             onTap: requestCode,
             child: CustomCard.cricleEnds(
               width: su.setWidth(240),
-              height: su.setHeight(76),
+              height: su.setWidth(76),
               boxShadow: CustomCard.noneBoxShadow,
               color: mainThemeColor,
               child: Text(
@@ -244,10 +244,10 @@ class _EditPhoneEmailPageState extends State<EditPhoneEmailPage> {
   Widget buildMainBtn() {
     return CustomCard.cricleEnds(
       width: su.setWidth(944),
-      height: su.setHeight(119),
+      height: su.setWidth(119),
       color: mainThemeColor,
       boxShadow: CustomCard.noneBoxShadow,
-      margin: EdgeInsets.only(top: su.setHeight(161), bottom: su.setHeight(76)),
+      margin: EdgeInsets.only(top: su.setWidth(161), bottom: su.setWidth(76)),
       child: FlatButton(
         onPressed: () {
           emptyFocus();
@@ -295,9 +295,9 @@ class _EditPhoneEmailPageState extends State<EditPhoneEmailPage> {
       ),
       CustomCard(
         width: su.setWidth(1006),
-        height: su.setHeight(701),
-        margin: EdgeInsets.symmetric(vertical: su.setHeight(50)),
-        borderRadius: BorderRadius.circular(su.setHeight(20)),
+        height: su.setWidth(701),
+        margin: EdgeInsets.symmetric(vertical: su.setWidth(50)),
+        borderRadius: BorderRadius.circular(su.setWidth(20)),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
@@ -354,10 +354,10 @@ class _EditPhoneEmailPageState extends State<EditPhoneEmailPage> {
       {String header = '', Widget mainChild, Widget tail, Function onTap}) {
     return CustomCard.cricleEnds(
       width: su.setWidth(944),
-      height: su.setHeight(120),
+      height: su.setWidth(120),
       border: Border.all(color: hexToColor('#a0a0a0'), width: su.setWidth(3)),
       boxShadow: CustomCard.noneBoxShadow,
-      margin: EdgeInsets.symmetric(vertical: su.setHeight(18)),
+      margin: EdgeInsets.symmetric(vertical: su.setWidth(18)),
       child: MaterialButton(
         onPressed: onTap,
         child: Row(
@@ -378,7 +378,7 @@ class _EditPhoneEmailPageState extends State<EditPhoneEmailPage> {
                 Image.asset(
                   'assets/icon/icon_edit.png',
                   width: su.setWidth(47),
-                  height: su.setHeight(51),
+                  height: su.setWidth(51),
                 )
           ],
         ),

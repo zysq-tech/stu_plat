@@ -14,16 +14,16 @@ class AppLogoItem extends StatelessWidget {
     final su = ScreenUtil.getInstance();
     return Container(
       width: su.setWidth(150),
-      height: su.setHeight(205),
+      height: su.setWidth(205),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Container(
             width: su.setWidth(144),
-            height: su.setHeight(144),
+            height: su.setWidth(144),
             decoration: BoxDecoration(
                 color: Colors.grey,
-                borderRadius: BorderRadius.circular(su.setHeight(20)),
+                borderRadius: BorderRadius.circular(su.setWidth(20)),
                 image: null),
           ),
           Text(

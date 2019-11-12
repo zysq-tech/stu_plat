@@ -40,7 +40,7 @@ class _HomeCategoryViewState extends State<HomeCategoryView>
   Widget build(BuildContext context) {
     super.build(context);
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: su.setHeight(27)),
+      padding: EdgeInsets.symmetric(vertical: su.setWidth(27)),
       child: Row(
         children: <Widget>[
           Container(
@@ -68,8 +68,8 @@ class _HomeCategoryViewState extends State<HomeCategoryView>
     return Container(
       key: Key('category_index'),
       width: su.setWidth(274),
-      height: su.setHeight(149),
-      margin: EdgeInsets.symmetric(vertical: su.setHeight(4)),
+      height: su.setWidth(149),
+      margin: EdgeInsets.symmetric(vertical: su.setWidth(4)),
       color: selected ? mainThemeColor : Colors.white,
       child: FlatButton(
         child: Center(

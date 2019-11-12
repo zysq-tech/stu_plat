@@ -76,9 +76,9 @@ class _UnregisterPageState extends State<UnregisterPage> {
       buttons: [
         DialogButton(
             width: su.setWidth(253),
-            height: su.setHeight(124),
+            height: su.setWidth(124),
             color: mainThemeColor,
-            radius: BorderRadius.circular(su.setHeight(20)),
+            radius: BorderRadius.circular(su.setWidth(20)),
             onPressed: () {
               Navigator.pop(context);
             },
@@ -91,9 +91,9 @@ class _UnregisterPageState extends State<UnregisterPage> {
             )),
         DialogButton(
             width: su.setWidth(253),
-            height: su.setHeight(124),
+            height: su.setWidth(124),
             color: Colors.red,
-            radius: BorderRadius.circular(su.setHeight(20)),
+            radius: BorderRadius.circular(su.setWidth(20)),
             onPressed: () {
               var str = fluroCnParamsEncode(objectToJson(LoginPageData()));
               Application().router.navigateTo(
@@ -128,7 +128,7 @@ class _UnregisterPageState extends State<UnregisterPage> {
           child: Image.asset(
             'assets/icon/icon_return.png',
             width: su.setWidth(33),
-            height: su.setHeight(61),
+            height: su.setWidth(61),
           ),
           onPressed: () {
             Navigator.pop(context);
@@ -138,7 +138,7 @@ class _UnregisterPageState extends State<UnregisterPage> {
       body: GestureDetector(
         onTap: emptyFocus,
         child: SingleChildScrollView(
-          padding: EdgeInsets.symmetric(vertical: su.setHeight(30)),
+          padding: EdgeInsets.symmetric(vertical: su.setWidth(30)),
           physics: NeverScrollableScrollPhysics(),
           child: Center(
               child: Column(
@@ -146,10 +146,10 @@ class _UnregisterPageState extends State<UnregisterPage> {
               ..addAll(buildInputs())
               ..add(CustomCard.cricleEnds(
                 width: su.setWidth(944),
-                height: su.setHeight(119),
+                height: su.setWidth(119),
                 color: mainThemeColor,
                 boxShadow: CustomCard.noneBoxShadow,
-                margin: EdgeInsets.only(top: su.setHeight(150)),
+                margin: EdgeInsets.only(top: su.setWidth(150)),
                 child: FlatButton(
                   onPressed: tryUnregister,
                   child: Center(
@@ -191,7 +191,7 @@ class _UnregisterPageState extends State<UnregisterPage> {
             onTap: getCode,
             child: CustomCard.cricleEnds(
               width: su.setWidth(240),
-              height: su.setHeight(76),
+              height: su.setWidth(76),
               boxShadow: CustomCard.noneBoxShadow,
               color: mainThemeColor,
               child: Text(
@@ -217,10 +217,10 @@ class _UnregisterPageState extends State<UnregisterPage> {
       Image.asset(
         'assets/icon/icon_warning.png',
         width: su.setWidth(348),
-        height: su.setHeight(348),
+        height: su.setWidth(348),
       ),
       Padding(
-        padding: EdgeInsets.only(top: su.setHeight(43)),
+        padding: EdgeInsets.only(top: su.setWidth(43)),
         child: Text(
           '申请注销账号',
           style: TextStyle(
@@ -232,7 +232,7 @@ class _UnregisterPageState extends State<UnregisterPage> {
       ),
       Container(
         width: su.setWidth(936),
-        margin: EdgeInsets.only(top: su.setHeight(87)),
+        margin: EdgeInsets.only(top: su.setWidth(87)),
         child: Text(
           '在注销账号前，请完整且准确填写身份信息，以确保为本人操作',
           style: TextStyle(
@@ -270,10 +270,10 @@ class _UnregisterPageState extends State<UnregisterPage> {
       {String header = '', Widget mainChild, Widget tail, Function onTap}) {
     return CustomCard.cricleEnds(
       width: su.setWidth(944),
-      height: su.setHeight(120),
+      height: su.setWidth(120),
       border: Border.all(color: hexToColor('#a0a0a0'), width: su.setWidth(3)),
       boxShadow: CustomCard.noneBoxShadow,
-      margin: EdgeInsets.only(top: su.setHeight(40)),
+      margin: EdgeInsets.only(top: su.setWidth(40)),
       child: MaterialButton(
         onPressed: onTap,
         child: Row(
@@ -294,7 +294,7 @@ class _UnregisterPageState extends State<UnregisterPage> {
                 Image.asset(
                   'assets/icon/icon_edit.png',
                   width: su.setWidth(47),
-                  height: su.setHeight(51),
+                  height: su.setWidth(51),
                 )
           ],
         ),

@@ -50,10 +50,10 @@ class _HomeCategorySubViewState extends State<HomeCategorySubView>
       children: <Widget>[
         CustomCard(
           width: su.setWidth(670),
-          height: su.setHeight(188),
+          height: su.setWidth(188),
           image: null,
           color: Colors.lightBlue,
-          borderRadius: BorderRadius.circular(su.setHeight(40)),
+          borderRadius: BorderRadius.circular(su.setWidth(40)),
           child: Text(
             widget.label,
             style: TextStyle(color: Colors.white, fontSize: su.setSp(60)),
@@ -85,7 +85,7 @@ class _HomeCategorySubViewState extends State<HomeCategorySubView>
     return Tab(
       child: CustomCard.cricleEnds(
         width: su.setWidth(202),
-        height: su.setHeight(74),
+        height: su.setWidth(74),
         boxShadow: CustomCard.noneBoxShadow,
         color: mainThemeColor,
         child: Text(
@@ -100,9 +100,9 @@ class _HomeCategorySubViewState extends State<HomeCategorySubView>
     return Center(
       child: CustomCard(
         width: su.setWidth(740),
-        height: su.setHeight(166),
-        borderRadius: BorderRadius.circular(su.setHeight(20)),
-        margin: EdgeInsets.symmetric(vertical: su.setHeight(14)),
+        height: su.setWidth(166),
+        borderRadius: BorderRadius.circular(su.setWidth(20)),
+        margin: EdgeInsets.symmetric(vertical: su.setWidth(14)),
         padding: EdgeInsets.only(left: su.setWidth(10)),
         child: AppListItem(),
       ),

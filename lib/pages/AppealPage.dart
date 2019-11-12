@@ -51,7 +51,7 @@ class _AppealPageState extends State<AppealPage> {
           child: Image.asset(
             'assets/icon/icon_return.png',
             width: su.setWidth(33),
-            height: su.setHeight(61),
+            height: su.setWidth(61),
           ),
           onPressed: () {
             Navigator.pop(context);
@@ -61,7 +61,7 @@ class _AppealPageState extends State<AppealPage> {
       body: Column(
         children: [
           Container(
-            height: su.setHeight(38),
+            height: su.setWidth(38),
           ),
           Expanded(
             child: Center(child: buildMainBtn()),
@@ -73,7 +73,7 @@ class _AppealPageState extends State<AppealPage> {
                 : [
                     Container(
                       width: su.setWidth(964),
-                      margin: EdgeInsets.only(bottom: su.setHeight(50)),
+                      margin: EdgeInsets.only(bottom: su.setWidth(50)),
                       child: Text(
                         '要求：',
                         // textAlign: TextAlign.left,
@@ -108,16 +108,16 @@ class _AppealPageState extends State<AppealPage> {
   Widget buildSelectImage() {
     return Container(
       width: su.setWidth(1006),
-      margin: EdgeInsets.only(top: su.setHeight(246)),
+      margin: EdgeInsets.only(top: su.setWidth(246)),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           CustomCard(
             width: su.setWidth(241),
-            height: su.setHeight(97),
+            height: su.setWidth(97),
             color: mainThemeColor,
-            borderRadius: BorderRadius.circular(su.setHeight(20)),
+            borderRadius: BorderRadius.circular(su.setWidth(20)),
             boxShadow: CustomCard.noneBoxShadow,
             child: InkWell(
               onTap: pickImage,
@@ -132,9 +132,9 @@ class _AppealPageState extends State<AppealPage> {
           ),
           CustomCard(
             width: su.setWidth(1006),
-            height: su.setHeight(528),
-            borderRadius: BorderRadius.circular(su.setHeight(20)),
-            margin: EdgeInsets.symmetric(vertical: su.setHeight(33)),
+            height: su.setWidth(528),
+            borderRadius: BorderRadius.circular(su.setWidth(20)),
+            margin: EdgeInsets.symmetric(vertical: su.setWidth(33)),
             image: pickedImage != null
                 ? DecorationImage(
                     image: FileImage(pickedImage), fit: BoxFit.contain)
@@ -149,9 +149,9 @@ class _AppealPageState extends State<AppealPage> {
     var data = widget.data;
     return CustomCard(
       width: su.setWidth(1006),
-      height: su.setHeight(851),
-      borderRadius: BorderRadius.circular(su.setHeight(20)),
-      margin: EdgeInsets.symmetric(vertical: su.setHeight(50)),
+      height: su.setWidth(851),
+      borderRadius: BorderRadius.circular(su.setWidth(20)),
+      margin: EdgeInsets.symmetric(vertical: su.setWidth(50)),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
@@ -168,10 +168,10 @@ class _AppealPageState extends State<AppealPage> {
   CustomCard buildMainBtn() {
     return CustomCard.cricleEnds(
       width: su.setWidth(944),
-      height: su.setHeight(119),
+      height: su.setWidth(119),
       color: mainThemeColor,
       boxShadow: CustomCard.noneBoxShadow,
-      margin: EdgeInsets.only(top: su.setHeight(200)),
+      margin: EdgeInsets.only(top: su.setWidth(200)),
       child: FlatButton(
         onPressed: () {
           if (_pageState == AppealPageState.displayInfo)
@@ -199,10 +199,10 @@ class _AppealPageState extends State<AppealPage> {
   Widget buildDisplayContainer(String header, String info) {
     return CustomCard.cricleEnds(
       width: su.setWidth(944),
-      height: su.setHeight(119),
+      height: su.setWidth(119),
       border: Border.all(color: hexToColor('#a0a0a0'), width: su.setWidth(3)),
       boxShadow: CustomCard.noneBoxShadow,
-      margin: EdgeInsets.symmetric(vertical: su.setHeight(18)),
+      margin: EdgeInsets.symmetric(vertical: su.setWidth(18)),
       padding: EdgeInsets.symmetric(horizontal: su.setWidth(50)),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

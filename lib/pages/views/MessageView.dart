@@ -92,9 +92,9 @@ class _MessageViewState extends State<MessageView>
     return Center(
         child: CustomCard(
       width: su.setWidth(1013),
-      height: su.setHeight(232),
-      borderRadius: BorderRadius.circular(su.setHeight(20)),
-      margin: EdgeInsets.symmetric(vertical: su.setHeight(12)),
+      height: su.setWidth(232),
+      borderRadius: BorderRadius.circular(su.setWidth(20)),
+      margin: EdgeInsets.symmetric(vertical: su.setWidth(12)),
       padding: EdgeInsets.symmetric(horizontal: su.setWidth(33)),
       child: Row(
         children: <Widget>[
@@ -103,7 +103,7 @@ class _MessageViewState extends State<MessageView>
             child: Image.asset(
               'assets/icon/icon_service.png',
               width: su.setWidth(142),
-              height: su.setHeight(142),
+              height: su.setWidth(142),
             ),
           ),
           Expanded(
@@ -157,10 +157,10 @@ class _MessageViewState extends State<MessageView>
     return Center(
       child: CustomCard(
         width: su.setWidth(1013),
-        height: su.setHeight(397),
-        borderRadius: BorderRadius.circular(su.setHeight(20)),
-        margin: EdgeInsets.symmetric(vertical: su.setHeight(18)),
-        padding: EdgeInsets.symmetric(vertical: su.setHeight(26)),
+        height: su.setWidth(397),
+        borderRadius: BorderRadius.circular(su.setWidth(20)),
+        margin: EdgeInsets.symmetric(vertical: su.setWidth(18)),
+        padding: EdgeInsets.symmetric(vertical: su.setWidth(26)),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -169,8 +169,8 @@ class _MessageViewState extends State<MessageView>
                   right: su.setWidth(39), left: su.setWidth(31)),
               child: CustomCard(
                 width: su.setWidth(144),
-                height: su.setHeight(144),
-                borderRadius: BorderRadius.circular(su.setHeight(20)),
+                height: su.setWidth(144),
+                borderRadius: BorderRadius.circular(su.setWidth(20)),
                 color: Colors.grey,
                 boxShadow: CustomCard.noneBoxShadow,
                 image: null,
@@ -251,7 +251,7 @@ class _MessageViewState extends State<MessageView>
 
   Widget buildCommentTime() {
     return Padding(
-      padding: EdgeInsets.only(top: su.setHeight(50)),
+      padding: EdgeInsets.only(top: su.setWidth(50)),
       child: Text(
         '2019/11/11 11:11',
         style: TextStyle(color: mainThemeColor, fontSize: su.setSp(25)),
@@ -263,7 +263,7 @@ class _MessageViewState extends State<MessageView>
     return Column(
       children: <Widget>[
         Padding(
-          padding: EdgeInsets.only(top: su.setHeight(38)),
+          padding: EdgeInsets.only(top: su.setWidth(38)),
           child: Text(
             'App Name',
             softWrap: false,
@@ -275,7 +275,7 @@ class _MessageViewState extends State<MessageView>
           ),
         ),
         Padding(
-          padding: EdgeInsets.only(top: su.setHeight(21)),
+          padding: EdgeInsets.only(top: su.setWidth(21)),
           child: Text(
             '评论(1234)条',
             style:

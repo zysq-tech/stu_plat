@@ -28,19 +28,19 @@ class AppListItem extends StatelessWidget {
     return Center(
       child: Container(
         width: su.setWidth(fwidth),
-        height: su.setHeight(fheight),
+        height: su.setWidth(fheight),
         padding: EdgeInsets.symmetric(
-            horizontal: su.setWidth(5), vertical: su.setHeight(5)),
+            horizontal: su.setWidth(5), vertical: su.setWidth(5)),
         margin: margin,
         child: Row(
           children: <Widget>[
             Container(
               width: su.setWidth(144),
-              height: su.setHeight(144),
+              height: su.setWidth(144),
               decoration: BoxDecoration(
                   image: null,
                   color: Colors.grey,
-                  borderRadius: BorderRadius.circular(su.setHeight(20))),
+                  borderRadius: BorderRadius.circular(su.setWidth(20))),
             ),
             Expanded(
               child: Padding(

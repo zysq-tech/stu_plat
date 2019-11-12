@@ -70,7 +70,7 @@ class _UserInfoPageState extends State<UserInfoPage> {
           child: Image.asset(
             'assets/icon/icon_return.png',
             width: su.setWidth(33),
-            height: su.setHeight(61),
+            height: su.setWidth(61),
           ),
           onPressed: () {
             Navigator.pop(context);
@@ -87,9 +87,9 @@ class _UserInfoPageState extends State<UserInfoPage> {
               buildNickNameCard(),
               CustomCard(
                 width: su.setWidth(1006),
-                height: su.setHeight(514),
-                borderRadius: BorderRadius.circular(su.setHeight(20)),
-                margin: EdgeInsets.symmetric(vertical: su.setHeight(12)),
+                height: su.setWidth(514),
+                borderRadius: BorderRadius.circular(su.setWidth(20)),
+                margin: EdgeInsets.symmetric(vertical: su.setWidth(12)),
                 padding: EdgeInsets.symmetric(horizontal: su.setWidth(30)),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -134,9 +134,9 @@ class _UserInfoPageState extends State<UserInfoPage> {
   CustomCard buildNickNameCard() {
     return CustomCard(
       width: su.setWidth(1006),
-      height: su.setHeight(315),
-      borderRadius: BorderRadius.circular(su.setHeight(20)),
-      margin: EdgeInsets.symmetric(vertical: su.setHeight(25)),
+      height: su.setWidth(315),
+      borderRadius: BorderRadius.circular(su.setWidth(20)),
+      margin: EdgeInsets.symmetric(vertical: su.setWidth(25)),
       padding: EdgeInsets.symmetric(horizontal: su.setWidth(30)),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -155,7 +155,7 @@ class _UserInfoPageState extends State<UserInfoPage> {
                 onTap: saveNickName,
                 child: CustomCard.cricleEnds(
                   width: su.setWidth(179),
-                  height: su.setHeight(75),
+                  height: su.setWidth(75),
                   boxShadow: CustomCard.noneBoxShadow,
                   border:
                       Border.all(color: mainThemeColor, width: su.setWidth(3)),
@@ -204,10 +204,10 @@ class _UserInfoPageState extends State<UserInfoPage> {
       {Widget mainChild, Function onTap}) {
     return CustomCard.cricleEnds(
       width: su.setWidth(944),
-      height: su.setHeight(119),
+      height: su.setWidth(119),
       border: Border.all(color: hexToColor('#a0a0a0'), width: su.setWidth(3)),
       boxShadow: CustomCard.noneBoxShadow,
-      margin: EdgeInsets.symmetric(vertical: su.setHeight(18)),
+      margin: EdgeInsets.symmetric(vertical: su.setWidth(18)),
       child: MaterialButton(
         onPressed: onTap,
         child: Row(
@@ -226,7 +226,7 @@ class _UserInfoPageState extends State<UserInfoPage> {
             Image.asset(
               'assets/icon/icon_edit.png',
               width: su.setWidth(47),
-              height: su.setHeight(51),
+              height: su.setWidth(51),
             )
           ],
         ),

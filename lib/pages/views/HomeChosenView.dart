@@ -29,7 +29,7 @@ class _HomeChosenViewState extends State<HomeChosenView>
   Widget build(BuildContext context) {
     super.build(context);
     return ListView.builder(
-        padding: EdgeInsets.symmetric(vertical: su.setHeight(12)),
+        padding: EdgeInsets.symmetric(vertical: su.setWidth(12)),
         itemCount: 10,
         itemBuilder: (_, index) {
           if (index == 0)
@@ -45,10 +45,10 @@ class _HomeChosenViewState extends State<HomeChosenView>
     return Center(
       child: CustomCard(
         width: su.setWidth(995),
-        height: su.setHeight(715),
-        borderRadius: BorderRadius.circular(su.setHeight(40)),
-        margin: EdgeInsets.symmetric(vertical: su.setHeight(13)),
-        padding: EdgeInsets.symmetric(vertical: su.setHeight(32)),
+        height: su.setWidth(715),
+        borderRadius: BorderRadius.circular(su.setWidth(40)),
+        margin: EdgeInsets.symmetric(vertical: su.setWidth(13)),
+        padding: EdgeInsets.symmetric(vertical: su.setWidth(32)),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -86,9 +86,9 @@ class _HomeChosenViewState extends State<HomeChosenView>
     return Center(
       child: CustomCard(
         width: su.setWidth(995),
-        height: su.setHeight(349),
-        borderRadius: BorderRadius.circular(su.setHeight(20)),
-        margin: EdgeInsets.symmetric(vertical: su.setHeight(13)),
+        height: su.setWidth(349),
+        borderRadius: BorderRadius.circular(su.setWidth(20)),
+        margin: EdgeInsets.symmetric(vertical: su.setWidth(13)),
         padding: EdgeInsets.symmetric(horizontal: su.setWidth(80)),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -121,14 +121,14 @@ class _HomeChosenViewState extends State<HomeChosenView>
     return Center(
       child: Container(
         width: su.setWidth(991),
-        height: su.setHeight(601),
-        margin: EdgeInsets.symmetric(vertical: su.setHeight(31)),
+        height: su.setWidth(601),
+        margin: EdgeInsets.symmetric(vertical: su.setWidth(31)),
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(su.setHeight(20)),
+          borderRadius: BorderRadius.circular(su.setWidth(20)),
           child: Swiper(
             itemBuilder: (c, i) => Container(
                 width: su.setWidth(991),
-                height: su.setHeight(601),
+                height: su.setWidth(601),
                 color: Colors.red.withOpacity((i + 1) * 0.3)),
             autoplayDelay: 4000,
             autoplay: true,

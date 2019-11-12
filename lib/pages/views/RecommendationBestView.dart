@@ -28,7 +28,7 @@ class _RecommendationBestViewState extends State<RecommendationBestView>
   Widget build(BuildContext context) {
     super.build(context);
     return ListView.builder(
-      padding: EdgeInsets.symmetric(vertical: su.setHeight(25)),
+      padding: EdgeInsets.symmetric(vertical: su.setWidth(25)),
       itemBuilder: (_, index) => index == 1
           ? buildRecommendListCard()
           : ImageAppCard(
@@ -41,11 +41,11 @@ class _RecommendationBestViewState extends State<RecommendationBestView>
     return Center(
       child: CustomCard(
         width: su.setWidth(985),
-        height: su.setHeight(715),
-        borderRadius: BorderRadius.circular(su.setHeight(40)),
-        margin: EdgeInsets.symmetric(vertical: su.setHeight(20)),
+        height: su.setWidth(715),
+        borderRadius: BorderRadius.circular(su.setWidth(40)),
+        margin: EdgeInsets.symmetric(vertical: su.setWidth(20)),
         padding: EdgeInsets.symmetric(
-            vertical: su.setHeight(45), horizontal: su.setWidth(50)),
+            vertical: su.setWidth(45), horizontal: su.setWidth(50)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

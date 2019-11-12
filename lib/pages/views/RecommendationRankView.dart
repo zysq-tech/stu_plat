@@ -45,7 +45,7 @@ class _RecommendationRankViewState extends State<RecommendationRankView>
       children: <Widget>[
         Container(
           width: su.setWidth(1080),
-          height: su.setHeight(150),
+          height: su.setWidth(150),
           child: TabBar(
             controller: _tabController,
             indicatorColor: Colors.transparent,
@@ -72,9 +72,9 @@ class _RecommendationRankViewState extends State<RecommendationRankView>
     return Center(
         child: CustomCard(
       width: su.setWidth(1014),
-      height: su.setHeight(194),
-      borderRadius: BorderRadius.circular(su.setHeight(20)),
-      margin: EdgeInsets.symmetric(vertical: su.setHeight(12)),
+      height: su.setWidth(194),
+      borderRadius: BorderRadius.circular(su.setWidth(20)),
+      margin: EdgeInsets.symmetric(vertical: su.setWidth(12)),
       child: Row(
         children: <Widget>[
           Expanded(
@@ -103,7 +103,7 @@ class _RecommendationRankViewState extends State<RecommendationRankView>
     return Tab(
       child: CustomCard.cricleEnds(
           width: su.setWidth(selected ? 250 : 219),
-          height: su.setHeight(selected ? 100 : 65),
+          height: su.setWidth(selected ? 100 : 65),
           color: mainThemeColor,
           boxShadow:
               selected ? CustomCard.noneBoxShadow : CustomCard.defaultBoxShadow,

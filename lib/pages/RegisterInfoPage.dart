@@ -98,7 +98,7 @@ class _RegisterInfoPageState extends State<RegisterInfoPage> {
           child: Image.asset(
             'assets/icon/icon_return.png',
             width: su.setWidth(33),
-            height: su.setHeight(61),
+            height: su.setWidth(61),
           ),
           onPressed: () {
             Navigator.pop(context);
@@ -111,17 +111,17 @@ class _RegisterInfoPageState extends State<RegisterInfoPage> {
           onTap: emptyFocus,
           child: Container(
             width: su.setWidth(1080),
-            height: su.setHeight(1732),
+            height: su.setWidth(1732),
             color: Colors.white,
             child: Column(
               children: <Widget>[
                 buildTopTip(),
                 CustomCard(
                   width: su.setWidth(1006),
-                  constraints: BoxConstraints(minHeight: su.setHeight(552)),
-                  margin: EdgeInsets.symmetric(vertical: su.setHeight(30)),
-                  padding: EdgeInsets.symmetric(vertical: su.setHeight(35)),
-                  borderRadius: BorderRadius.circular(su.setHeight(20)),
+                  constraints: BoxConstraints(minHeight: su.setWidth(552)),
+                  margin: EdgeInsets.symmetric(vertical: su.setWidth(30)),
+                  padding: EdgeInsets.symmetric(vertical: su.setWidth(35)),
+                  borderRadius: BorderRadius.circular(su.setWidth(20)),
                   child: Column(
                     children: <Widget>[
                       buildInputContainer('学校',
@@ -171,7 +171,7 @@ class _RegisterInfoPageState extends State<RegisterInfoPage> {
           child: InkWell(
             child: Padding(
               padding: EdgeInsets.symmetric(
-                  horizontal: su.setWidth(30), vertical: su.setHeight(30)),
+                  horizontal: su.setWidth(30), vertical: su.setWidth(30)),
               child: Text(
                 '申诉',
                 style: TextStyle(color: mainThemeColor),
@@ -200,10 +200,10 @@ class _RegisterInfoPageState extends State<RegisterInfoPage> {
   Widget buildMainBtn() {
     return CustomCard.cricleEnds(
       width: su.setWidth(944),
-      height: su.setHeight(119),
+      height: su.setWidth(119),
       color: mainThemeColor,
       boxShadow: CustomCard.noneBoxShadow,
-      margin: EdgeInsets.only(top: su.setHeight(200)),
+      margin: EdgeInsets.only(top: su.setWidth(200)),
       child: FlatButton(
         onPressed: tryRegisterInfo,
         child: Center(
@@ -223,7 +223,7 @@ class _RegisterInfoPageState extends State<RegisterInfoPage> {
   Widget buildTopTip() {
     return Container(
         width: su.setWidth(964),
-        padding: EdgeInsets.symmetric(vertical: su.setHeight(35)),
+        padding: EdgeInsets.symmetric(vertical: su.setWidth(35)),
         child: Text(
           '填写信息仅用于身份认证核实，请确保信息真实有效。',
           style: TextStyle(
@@ -258,10 +258,10 @@ class _RegisterInfoPageState extends State<RegisterInfoPage> {
       {Widget mainChild, Function onTap}) {
     return CustomCard.cricleEnds(
       width: su.setWidth(944),
-      height: su.setHeight(119),
+      height: su.setWidth(119),
       border: Border.all(color: hexToColor('#a0a0a0'), width: su.setWidth(3)),
       boxShadow: CustomCard.noneBoxShadow,
-      margin: EdgeInsets.symmetric(vertical: su.setHeight(18)),
+      margin: EdgeInsets.symmetric(vertical: su.setWidth(18)),
       child: MaterialButton(
         onPressed: onTap,
         child: Row(
@@ -280,7 +280,7 @@ class _RegisterInfoPageState extends State<RegisterInfoPage> {
             Image.asset(
               'assets/icon/icon_edit.png',
               width: su.setWidth(47),
-              height: su.setHeight(51),
+              height: su.setWidth(51),
             )
           ],
         ),

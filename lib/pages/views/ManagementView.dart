@@ -81,7 +81,7 @@ class _ManagementViewState extends State<ManagementView>
         children: <Widget>[
           Container(
             width: su.setWidth(1080),
-            height: su.setHeight(108),
+            height: su.setWidth(108),
             padding: EdgeInsets.symmetric(horizontal: su.setWidth(50)),
             alignment: Alignment.centerLeft,
             decoration: BoxDecoration(
@@ -101,7 +101,7 @@ class _ManagementViewState extends State<ManagementView>
           ),
           Expanded(
             child: ListView.builder(
-              padding: EdgeInsets.symmetric(vertical: su.setHeight(10)),
+              padding: EdgeInsets.symmetric(vertical: su.setWidth(10)),
               itemCount: ApkStatus.values.length,
               itemBuilder: (_, index) => buildManagementItem(
                   data: ApkData(status: ApkStatus.values[index])),
@@ -118,16 +118,16 @@ class _ManagementViewState extends State<ManagementView>
     return Center(
       child: CustomCard(
         width: su.setWidth(1016),
-        height: su.setHeight(188),
-        margin: EdgeInsets.symmetric(vertical: su.setHeight(15)),
-        borderRadius: BorderRadius.circular(su.setHeight(20)),
+        height: su.setWidth(188),
+        margin: EdgeInsets.symmetric(vertical: su.setWidth(15)),
+        borderRadius: BorderRadius.circular(su.setWidth(20)),
         padding: EdgeInsets.symmetric(horizontal: su.setWidth(32)),
         child: Row(
           children: <Widget>[
             CustomCard(
               width: su.setWidth(144),
-              height: su.setHeight(144),
-              borderRadius: BorderRadius.circular(su.setHeight(20)),
+              height: su.setWidth(144),
+              borderRadius: BorderRadius.circular(su.setWidth(20)),
               color: Colors.grey,
               boxShadow: CustomCard.noneBoxShadow,
               image: null,
@@ -137,7 +137,7 @@ class _ManagementViewState extends State<ManagementView>
               width: su.setWidth(564),
               margin: EdgeInsets.only(
                   left: su.setWidth(50), right: su.setWidth(35)),
-              padding: EdgeInsets.symmetric(vertical: su.setHeight(32)),
+              padding: EdgeInsets.symmetric(vertical: su.setWidth(32)),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -185,7 +185,7 @@ class _ManagementViewState extends State<ManagementView>
                           ],
                         ),
                         SizedBox(
-                          height: su.setHeight(9),
+                          height: su.setWidth(9),
                           child: LinearProgressIndicator(
                             backgroundColor: hexToColor('#bfbfbf'),
                             value: data.downloadProgress,
@@ -196,7 +196,7 @@ class _ManagementViewState extends State<ManagementView>
             )),
             CustomCard(
               width: su.setWidth(152),
-              height: su.setHeight(62),
+              height: su.setWidth(62),
               color: data.status == ApkStatus.downloading
                   ? hexToColor('#8a8a8a')
                   : mainThemeColor,
@@ -208,7 +208,7 @@ class _ManagementViewState extends State<ManagementView>
                   style: TextStyle(fontSize: su.setSp(26), color: Colors.white),
                 ),
               ),
-              borderRadius: BorderRadius.circular(su.setHeight(10)),
+              borderRadius: BorderRadius.circular(su.setWidth(10)),
             )
           ],
         ),

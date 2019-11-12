@@ -27,19 +27,19 @@ class ImageAppCard extends StatelessWidget {
     return Center(
       child: CustomCard(
         width: su.setWidth(fWidth),
-        height: su.setHeight(fHeight),
-        borderRadius: BorderRadius.circular(su.setHeight(20 * hFactor)),
-        margin: margin ??
-            EdgeInsets.symmetric(vertical: su.setHeight(18 * hFactor)),
+        height: su.setWidth(fHeight),
+        borderRadius: BorderRadius.circular(su.setWidth(20 * hFactor)),
+        margin:
+            margin ?? EdgeInsets.symmetric(vertical: su.setWidth(18 * hFactor)),
         child: Column(
           children: <Widget>[
             Stack(
               children: <Widget>[
                 CustomCard(
                   width: su.setWidth(fWidth),
-                  height: su.setHeight((fHeight) - 144 * hFactor),
+                  height: su.setWidth((fHeight) - 144 * hFactor),
                   borderRadius: BorderRadius.vertical(
-                    top: Radius.circular(su.setHeight(20 * hFactor)),
+                    top: Radius.circular(su.setWidth(20 * hFactor)),
                   ),
                   color: Colors.grey,
                   image: null,
@@ -50,13 +50,13 @@ class ImageAppCard extends StatelessWidget {
                   child: bestTag
                       ? CustomCard(
                           width: su.setWidth(114 * wFactor),
-                          height: su.setHeight(136 * hFactor),
+                          height: su.setWidth(136 * hFactor),
                           image: DecorationImage(
                               image: AssetImage('assets/img/bg_best.png'),
                               fit: BoxFit.fill),
                           boxShadow: CustomCard.noneBoxShadow,
                           padding:
-                              EdgeInsets.only(top: su.setHeight(10 * hFactor)),
+                              EdgeInsets.only(top: su.setWidth(10 * hFactor)),
                           alignment: Alignment.topCenter,
                           color: Colors.transparent,
                           child: Text(
@@ -93,9 +93,9 @@ class ImageAppCard extends StatelessWidget {
                 children: <Widget>[
                   CustomCard(
                     width: su.setWidth(100 * wFactor),
-                    height: su.setHeight(100 * hFactor),
+                    height: su.setWidth(100 * hFactor),
                     borderRadius:
-                        BorderRadius.circular(su.setHeight(33 * hFactor)),
+                        BorderRadius.circular(su.setWidth(33 * hFactor)),
                     boxShadow: CustomCard.noneBoxShadow,
                     color: Colors.grey,
                     margin: EdgeInsets.only(

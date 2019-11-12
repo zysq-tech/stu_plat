@@ -73,7 +73,7 @@ class _HomePageState extends State<HomePage> {
       elevation: 1,
       currentIndex: _pageIndex,
       type: BottomNavigationBarType.fixed,
-      iconSize: su.setHeight(55),
+      iconSize: su.setWidth(55),
       selectedItemColor: mainThemeColor,
       unselectedItemColor: hexToColor('#8a8a8a'),
       selectedFontSize: su.setSp(28),

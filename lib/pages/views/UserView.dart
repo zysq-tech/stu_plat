@@ -44,10 +44,10 @@ class _UserViewState extends State<UserView>
                 backgroundColor: Colors.transparent,
                 child: Container(
                     width: su.setWidth(992),
-                    height: su.setHeight(376),
+                    height: su.setWidth(376),
                     decoration: BoxDecoration(
                         color: Colors.white,
-                        borderRadius: BorderRadius.circular(su.setHeight(40))),
+                        borderRadius: BorderRadius.circular(su.setWidth(40))),
                     child: buildChooseImageOptions()),
               ),
             ),
@@ -75,7 +75,7 @@ class _UserViewState extends State<UserView>
         buildUserInfoDisplay(context),
         Expanded(
           child: SingleChildScrollView(
-            padding: EdgeInsets.symmetric(vertical: su.setHeight(10)),
+            padding: EdgeInsets.symmetric(vertical: su.setWidth(10)),
             child: Center(
               child: Column(
                 children: <Widget>[
@@ -103,14 +103,14 @@ class _UserViewState extends State<UserView>
   Container buildUserInfoDisplay(BuildContext context) {
     return Container(
       width: su.setWidth(1080),
-      height: su.setHeight(615),
+      height: su.setWidth(615),
       decoration: BoxDecoration(
           color: homeBgColor,
           image: DecorationImage(
               image: AssetImage('assets/img/bg_selfTop.png'),
               alignment: Alignment.topCenter,
               fit: BoxFit.fitWidth)),
-      padding: EdgeInsets.only(top: su.setHeight(84), bottom: su.setHeight(71)),
+      padding: EdgeInsets.only(top: su.setWidth(84), bottom: su.setWidth(71)),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
@@ -118,7 +118,7 @@ class _UserViewState extends State<UserView>
             onTap: showChooseImagePopup,
             child: CircleAvatar(
               backgroundColor: Colors.lightBlue,
-              radius: su.setHeight(144),
+              radius: su.setWidth(144),
               backgroundImage: null,
             ),
           ),
@@ -138,7 +138,7 @@ class _UserViewState extends State<UserView>
             },
             child: CustomCard.cricleEnds(
               width: su.setWidth(153),
-              height: su.setHeight(51),
+              height: su.setWidth(51),
               color: Colors.black.withOpacity(0.4),
               boxShadow: CustomCard.noneBoxShadow,
               child: Text(
@@ -158,10 +158,10 @@ class _UserViewState extends State<UserView>
   Widget buildLogoutBtn() {
     return CustomCard.cricleEnds(
       width: su.setWidth(862),
-      height: su.setHeight(139),
+      height: su.setWidth(139),
       boxShadow: CustomCard.noneBoxShadow,
       color: mainThemeColor,
-      margin: EdgeInsets.symmetric(vertical: su.setHeight(15)),
+      margin: EdgeInsets.symmetric(vertical: su.setWidth(15)),
       child: FlatButton(
         onPressed: logout,
         child: Center(
@@ -182,9 +182,9 @@ class _UserViewState extends State<UserView>
       {Function onTap, TabInfoData data}) {
     return CustomCard(
       width: su.setWidth(1009),
-      height: su.setHeight(233),
-      borderRadius: BorderRadius.circular(su.setHeight(20)),
-      margin: EdgeInsets.symmetric(vertical: su.setHeight(10)),
+      height: su.setWidth(233),
+      borderRadius: BorderRadius.circular(su.setWidth(20)),
+      margin: EdgeInsets.symmetric(vertical: su.setWidth(10)),
       padding: EdgeInsets.symmetric(horizontal: su.setWidth(25)),
       child: Material(
         color: Colors.transparent,
@@ -194,7 +194,7 @@ class _UserViewState extends State<UserView>
             child: Row(
               children: <Widget>[
                 Image.asset('assets/icon/icon_service.png',
-                    width: su.setWidth(142), height: su.setHeight(142)),
+                    width: su.setWidth(142), height: su.setWidth(142)),
                 Expanded(
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: su.setWidth(76)),
@@ -211,7 +211,7 @@ class _UserViewState extends State<UserView>
                 Image.asset(
                   ('assets/icon/icon_forward.png'),
                   width: su.setWidth(33),
-                  height: su.setHeight(61),
+                  height: su.setWidth(61),
                 )
               ],
             ),
@@ -227,7 +227,7 @@ class _UserViewState extends State<UserView>
       children: <Widget>[
         Container(
             width: su.setWidth(992),
-            height: su.setHeight(185),
+            height: su.setWidth(185),
             child: FlatButton(
               onPressed: () => selectAvatar(ImageSource.gallery),
               child: Center(
@@ -240,12 +240,12 @@ class _UserViewState extends State<UserView>
             )),
         Container(
           width: su.setWidth(992),
-          height: su.setHeight(5),
+          height: su.setWidth(5),
           color: hexToColor('#dcdcdc'),
         ),
         Container(
             width: su.setWidth(992),
-            height: su.setHeight(185),
+            height: su.setWidth(185),
             child: FlatButton(
               onPressed: () => selectAvatar(ImageSource.camera),
               child: Center(
