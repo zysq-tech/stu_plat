@@ -75,3 +75,12 @@ Future<bool> showToast(String msg,
       timeInSecForIos: timeInSecForIos,
       fontSize: fontSize);
 }
+
+String hidePhone(String phone, {int hideCount = 4, String hideWith = '*'}) {
+  return phone.replaceRange(3, 3 + hideCount, hideWith * hideCount);
+}
+
+String hideEmail(String email, {String hideWith = '*'}) {
+  int spliter = email.indexOf('@');
+  return email.replaceRange(2, spliter, hideWith * (spliter - 2));
+}

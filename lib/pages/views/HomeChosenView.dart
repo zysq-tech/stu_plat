@@ -89,7 +89,7 @@ class _HomeChosenViewState extends State<HomeChosenView>
         height: su.setHeight(349),
         borderRadius: BorderRadius.circular(su.setHeight(20)),
         margin: EdgeInsets.symmetric(vertical: su.setHeight(13)),
-        padding: EdgeInsets.symmetric(horizontal: su.setWidth(15)),
+        padding: EdgeInsets.symmetric(horizontal: su.setWidth(80)),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.start,

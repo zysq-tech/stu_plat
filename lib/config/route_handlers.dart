@@ -8,6 +8,7 @@ import '../pages/RegisterInfoPage.dart';
 import '../pages/AppealPage.dart';
 import '../pages/HomePage.dart';
 import '../pages/UserInfoPage.dart';
+import '../pages/EditPhoneEmailPage.dart';
 
 import '../Utils.dart';
 
@@ -40,5 +41,11 @@ var homeHandler = Handler(
 var userInfoHandler = Handler(
     handlerFunc: (_, params) => UserInfoPage(
           data: UserInfoPageData.fromJson(
+              jsonToObject(fluroCnParamsDecode(params['data'][0]))),
+        ));
+
+var editPhoneEmailHandler = Handler(
+    handlerFunc: (_, params) => EditPhoneEmailPage(
+          data: EditPhoneEmailPageData.fromJson(
               jsonToObject(fluroCnParamsDecode(params['data'][0]))),
         ));

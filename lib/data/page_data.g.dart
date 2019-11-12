@@ -57,13 +57,30 @@ Map<String, dynamic> _$HomePageDataToJson(HomePageData instance) =>
 
 UserInfoPageData _$UserInfoPageDataFromJson(Map<String, dynamic> json) {
   return UserInfoPageData(
-    data: json['data'] == null
-        ? null
-        : UserInfoData.fromJson(json['data'] as Map<String, dynamic>),
+    nickName: json['nickName'] as String,
+    phone: json['phone'] as String,
+    email: json['email'] as String,
   );
 }
 
 Map<String, dynamic> _$UserInfoPageDataToJson(UserInfoPageData instance) =>
     <String, dynamic>{
-      'data': instance.data,
+      'nickName': instance.nickName,
+      'phone': instance.phone,
+      'email': instance.email,
+    };
+
+EditPhoneEmailPageData _$EditPhoneEmailPageDataFromJson(
+    Map<String, dynamic> json) {
+  return EditPhoneEmailPageData(
+    type: json['type'] as int,
+    initialization: json['initialization'] as bool,
+  );
+}
+
+Map<String, dynamic> _$EditPhoneEmailPageDataToJson(
+        EditPhoneEmailPageData instance) =>
+    <String, dynamic>{
+      'type': instance.type,
+      'initialization': instance.initialization,
     };
