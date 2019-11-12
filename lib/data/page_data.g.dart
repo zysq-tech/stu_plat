@@ -98,3 +98,10 @@ HelpCenterPageData _$HelpCenterPageDataFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$HelpCenterPageDataToJson(HelpCenterPageData instance) =>
     <String, dynamic>{};
+
+FeedbackPageData _$FeedbackPageDataFromJson(Map<String, dynamic> json) {
+  return FeedbackPageData();
+}
+
+Map<String, dynamic> _$FeedbackPageDataToJson(FeedbackPageData instance) =>
+    <String, dynamic>{};

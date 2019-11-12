@@ -55,3 +55,9 @@ var helpCenterHandler = Handler(
           data: HelpCenterPageData.fromJson(
               jsonToObject(fluroCnParamsDecode(params['data'][0]))),
         ));
+
+var feedbackHandler = Handler(
+    handlerFunc: (_, params) => FeedbackPage(
+          data: FeedbackPageData.fromJson(
+              jsonToObject(fluroCnParamsDecode(params['data'][0]))),
+        ));

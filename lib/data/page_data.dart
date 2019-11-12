@@ -113,3 +113,14 @@ class HelpCenterPageData implements IToJson {
   factory HelpCenterPageData.fromJson(Map<String, dynamic> json) =>
       _$HelpCenterPageDataFromJson(json);
 }
+
+@JsonSerializable()
+class FeedbackPageData implements IToJson {
+  FeedbackPageData();
+
+  @override
+  Map<String, dynamic> toJson() => _$FeedbackPageDataToJson(this);
+
+  factory FeedbackPageData.fromJson(Map<String, dynamic> json) =>
+      _$FeedbackPageDataFromJson(json);
+}
