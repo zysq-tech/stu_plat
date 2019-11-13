@@ -1,6 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import 'common.dart';
+import './common.dart';
+import './apps.dart';
 
 part 'page_data.g.dart';
 
@@ -123,4 +124,18 @@ class FeedbackPageData implements IToJson {
 
   factory FeedbackPageData.fromJson(Map<String, dynamic> json) =>
       _$FeedbackPageDataFromJson(json);
+}
+
+@JsonSerializable()
+class AppDetailPageData implements IToJson {
+  AppDetailPageData({this.appData, this.firstShow = 0});
+
+  final AppInfoData appData;
+  final int firstShow;
+
+  @override
+  Map<String, dynamic> toJson() => _$AppDetailPageDataToJson(this);
+
+  factory AppDetailPageData.fromJson(Map<String, dynamic> json) =>
+      _$AppDetailPageDataFromJson(json);
 }

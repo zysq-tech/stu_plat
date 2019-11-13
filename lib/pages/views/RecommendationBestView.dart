@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../Application.dart';
+import '../../data/page_data.dart';
+import '../../data/apps.dart';
 import '../../components/imageAppCard.dart';
 import '../../components/customCard.dart';
 import '../../components/appListItem.dart';
@@ -24,6 +26,12 @@ class _RecommendationBestViewState extends State<RecommendationBestView>
     su = Application().screenUtil;
   }
 
+  void onTapApp([AppInfoData data]) {
+    var str =
+        fluroCnParamsEncode(objectToJson(AppDetailPageData(appData: data)));
+    Application().router.navigateTo(context, '${Routes.appDetail}?data=$str');
+  }
+
   @override
   Widget build(BuildContext context) {
     super.build(context);
@@ -33,6 +41,7 @@ class _RecommendationBestViewState extends State<RecommendationBestView>
           ? buildRecommendListCard()
           : ImageAppCard(
               bestTag: index == 0,
+              onTap: onTapApp,
             ),
     );
   }

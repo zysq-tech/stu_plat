@@ -61,3 +61,9 @@ var feedbackHandler = Handler(
           data: FeedbackPageData.fromJson(
               jsonToObject(fluroCnParamsDecode(params['data'][0]))),
         ));
+
+var appDetailHandler = Handler(
+    handlerFunc: (_, params) => AppDetailPage(
+          data: AppDetailPageData.fromJson(
+              jsonToObject(fluroCnParamsDecode(params['data'][0]))),
+        ));

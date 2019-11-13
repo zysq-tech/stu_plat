@@ -8,3 +8,4 @@ export './EditPhoneEmailPage.dart';
 export './UnregisterPage.dart';
 export './HelpCenterPage.dart';
 export './FeedbackPage.dart';
+export './AppDetailPage.dart';

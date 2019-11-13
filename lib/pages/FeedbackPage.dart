@@ -112,39 +112,42 @@ class _FeedbackPageState extends State<FeedbackPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: homeBgColor,
-      appBar: AppBar(
-        title: Text(
-          '意见反馈',
-          style:
-              TextStyle(fontSize: su.setSp(50), color: hexToColor('#313131')),
-        ),
-        leading: MaterialButton(
-          child: Image.asset(
-            'assets/icon/icon_return.png',
-            width: su.setWidth(33),
-            height: su.setWidth(61),
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        backgroundColor: homeBgColor,
+        appBar: AppBar(
+          title: Text(
+            '意见反馈',
+            style:
+                TextStyle(fontSize: su.setSp(50), color: hexToColor('#313131')),
           ),
-          onPressed: () {
-            emptyFocus();
-            Navigator.pop(context);
-          },
+          leading: MaterialButton(
+            child: Image.asset(
+              'assets/icon/icon_return.png',
+              width: su.setWidth(33),
+              height: su.setWidth(61),
+            ),
+            onPressed: () {
+              emptyFocus();
+              Navigator.pop(context);
+            },
+          ),
         ),
-      ),
-      body: GestureDetector(
-        onTap: emptyFocus,
-        child: SingleChildScrollView(
-          physics: NeverScrollableScrollPhysics(),
-          child: Center(
-            child: Column(
-              children: <Widget>[
-                buildTips('问题类型(必选)'),
-                buildTypeSelector(),
-                buildTips('详情描述(必填)'),
-                buildContentInput(),
-                buildSubmitBtn()
-              ],
+        body: GestureDetector(
+          onTap: emptyFocus,
+          child: SingleChildScrollView(
+            physics: NeverScrollableScrollPhysics(),
+            child: Center(
+              child: Column(
+                children: <Widget>[
+                  buildTips('问题类型(必选)'),
+                  buildTypeSelector(),
+                  buildTips('详情描述(必填)'),
+                  buildContentInput(),
+                  buildSubmitBtn()
+                ],
+              ),
             ),
           ),
         ),
@@ -173,27 +176,32 @@ class _FeedbackPageState extends State<FeedbackPage> {
         ));
   }
 
-  CustomCard buildContentInput() {
-    return CustomCard(
-      width: su.setWidth(943),
-      height: su.setWidth(674),
-      color: hexToColor('#f8f8f8'),
-      boxShadow: CustomCard.noneBoxShadow,
-      borderRadius: BorderRadius.circular(su.setWidth(40)),
-      padding: EdgeInsets.symmetric(horizontal: su.setWidth(42)),
-      border: Border.all(color: hexToColor('#a0a0a0'), width: su.setWidth(3)),
-      alignment: Alignment.topLeft,
-      child: TextField(
-        controller: contentController,
-        focusNode: contentFocus,
-        style: _contentStyle,
-        keyboardType: TextInputType.multiline,
-        maxLines: null,
-        inputFormatters: [LengthLimitingTextInputFormatter(100)],
-        decoration: InputDecoration(
-            border: InputBorder.none,
-            hintStyle: _contentStyle,
-            hintText: '至少填写7个字'),
+  Widget buildContentInput() {
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).requestFocus(contentFocus);
+      },
+      child: CustomCard(
+        width: su.setWidth(943),
+        height: su.setWidth(674),
+        color: hexToColor('#f8f8f8'),
+        boxShadow: CustomCard.noneBoxShadow,
+        borderRadius: BorderRadius.circular(su.setWidth(40)),
+        padding: EdgeInsets.symmetric(horizontal: su.setWidth(42)),
+        border: Border.all(color: hexToColor('#a0a0a0'), width: su.setWidth(3)),
+        alignment: Alignment.topLeft,
+        child: TextField(
+          controller: contentController,
+          focusNode: contentFocus,
+          style: _contentStyle,
+          keyboardType: TextInputType.multiline,
+          maxLines: null,
+          inputFormatters: [LengthLimitingTextInputFormatter(100)],
+          decoration: InputDecoration(
+              border: InputBorder.none,
+              hintStyle: _contentStyle,
+              hintText: '至少填写7个字'),
+        ),
       ),
     );
   }

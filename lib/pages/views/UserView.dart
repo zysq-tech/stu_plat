@@ -41,8 +41,8 @@ class _UserViewState extends State<UserView>
     showGeneralDialog(
         context: context,
         pageBuilder: (c, a1, a2) => Center(
-              child: Dialog(
-                backgroundColor: Colors.transparent,
+              child: Material(
+                color: Colors.transparent,
                 child: Container(
                     width: su.setWidth(992),
                     height: su.setWidth(376),

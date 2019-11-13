@@ -105,3 +105,18 @@ FeedbackPageData _$FeedbackPageDataFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$FeedbackPageDataToJson(FeedbackPageData instance) =>
     <String, dynamic>{};
+
+AppDetailPageData _$AppDetailPageDataFromJson(Map<String, dynamic> json) {
+  return AppDetailPageData(
+    appData: json['appData'] == null
+        ? null
+        : AppInfoData.fromJson(json['appData'] as Map<String, dynamic>),
+    firstShow: json['firstShow'] as int,
+  );
+}
+
+Map<String, dynamic> _$AppDetailPageDataToJson(AppDetailPageData instance) =>
+    <String, dynamic>{
+      'appData': instance.appData,
+      'firstShow': instance.firstShow,
+    };
