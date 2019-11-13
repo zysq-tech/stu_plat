@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 import '../../Application.dart';
 import '../../components/customCard.dart';
@@ -67,6 +68,36 @@ class _UserViewState extends State<UserView>
     }
   }
 
+  void showCheckVersionPopup() {
+    Alert(
+        context: context,
+        type: AlertType.none,
+        title: '您已更新到最新版本',
+        style: AlertStyle(
+            isCloseButton: false,
+            animationType: AnimationType.grow,
+            titleStyle: TextStyle(
+                color: hexToColor('#434343'),
+                fontSize: su.setSp(50),
+                fontWeight: FontWeight.bold)),
+        buttons: [
+          DialogButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: Text(
+              '确定',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: su.setSp(40),
+                  fontWeight: FontWeight.bold),
+            ),
+            color: mainThemeColor,
+            radius: BorderRadius.circular(su.setWidth(20)),
+          )
+        ]).show();
+  }
+
   @override
   Widget build(BuildContext context) {
     super.build(context);
@@ -87,7 +118,7 @@ class _UserViewState extends State<UserView>
                         .navigateTo(context, '${Routes.helpCenter}?data=$str');
                   }),
                   buildEntranceTab('关于产品', onTap: () {}),
-                  buildEntranceTab('检查版本', onTap: () {}),
+                  buildEntranceTab('检查版本', onTap: showCheckVersionPopup),
                   buildEntranceTab('意见反馈', onTap: () {
                     String str =
                         fluroCnParamsEncode(objectToJson(FeedbackPageData()));
