@@ -39,6 +39,7 @@ class AppListItem extends StatelessWidget {
           height: su.setWidth(fheight),
           padding: EdgeInsets.symmetric(
               horizontal: su.setWidth(5), vertical: su.setWidth(5)),
+          color: Colors.white.withOpacity(0.1),
           margin: margin,
           child: Row(
             children: <Widget>[

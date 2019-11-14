@@ -48,27 +48,30 @@ class _RecommendationBestViewState extends State<RecommendationBestView>
 
   Widget buildRecommendListCard() {
     return Center(
-      child: CustomCard(
-        width: su.setWidth(985),
-        height: su.setWidth(715),
-        borderRadius: BorderRadius.circular(su.setWidth(40)),
-        margin: EdgeInsets.symmetric(vertical: su.setWidth(20)),
-        padding: EdgeInsets.symmetric(
-            vertical: su.setWidth(45), horizontal: su.setWidth(50)),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Text(
-              '精品必备',
-              style: TextStyle(
-                  fontSize: su.setSp(50),
-                  letterSpacing: su.setWidth(10),
-                  fontWeight: FontWeight.bold),
-            ),
-          ]..addAll([1, 2, 3].map((v) => AppListItem(
-                showTag: false,
-              ))),
+      child: GestureDetector(
+        onTap: onTapApp,
+        child: CustomCard(
+          width: su.setWidth(985),
+          height: su.setWidth(715),
+          borderRadius: BorderRadius.circular(su.setWidth(40)),
+          margin: EdgeInsets.symmetric(vertical: su.setWidth(20)),
+          padding: EdgeInsets.symmetric(
+              vertical: su.setWidth(45), horizontal: su.setWidth(50)),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Text(
+                '精品必备',
+                style: TextStyle(
+                    fontSize: su.setSp(50),
+                    letterSpacing: su.setWidth(10),
+                    fontWeight: FontWeight.bold),
+              ),
+            ]..addAll([1, 2, 3].map((v) => AppListItem(
+                  showTag: false,
+                ))),
+          ),
         ),
       ),
     );
