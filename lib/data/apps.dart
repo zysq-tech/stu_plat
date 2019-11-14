@@ -58,6 +58,14 @@ class CommentAppResponse with CommonResponseMixin {
       _$CommentAppResponseFromJson(json);
 }
 
+@JsonSerializable(createToJson: false)
+class DeleteUserAppCommentResponse with CommonResponseMixin {
+  DeleteUserAppCommentResponse();
+
+  factory DeleteUserAppCommentResponse.fromJson(Map<String, dynamic> json) =>
+      _$DeleteUserAppCommentResponseFromJson(json);
+}
+
 @JsonSerializable(createFactory: false)
 class GetUserAppCommentsPage with CommonPageRequestMixin implements IToJson {
   GetUserAppCommentsPage();
@@ -192,7 +200,11 @@ class AppInfoData with CommonTimeMixin implements IToJson {
       this.appUseRecord,
       this.todayBest,
       this.isBoutique,
-      this.appImgList);
+      this.isDelete,
+      this.appImgList,
+      this.appLabelRelationList,
+      this.appVersion,
+      this.appPackName);
   final String appId;
   final String appLogo;
   final String appName;
@@ -204,12 +216,20 @@ class AppInfoData with CommonTimeMixin implements IToJson {
   final String downloadAddress;
   final AppRecordData appUseRecord;
   final List<AppImgData> appImgList;
+  final List<AppLabelRelationData> appLabelRelationList;
 
   ///是否今日最佳
   final bool todayBest;
 
   ///是否精品
   final bool isBoutique;
+
+  ///删除信息
+  final bool isDelete;
+
+  ///Apk包体数据
+  final String appVersion;
+  final String appPackName;
 
   @override
   Map<String, dynamic> toJson() => _$AppInfoDataToJson(this);
@@ -283,10 +303,16 @@ class AppCommentData with CommonTimeMixin implements IToJson {
 
 @JsonSerializable()
 class AppLabelData implements IToJson {
-  AppLabelData(this.labelId, this.labelName, this.sortNum, this.parentLabelId);
+  AppLabelData(this.labelId, this.labelName, this.sortNum, this.labelImg,
+      this.parentLabelId);
   final String labelId;
   final String labelName;
   final String sortNum;
+
+  ///父标签有图片
+  final String labelImg;
+
+  ///子标签有父标签Id
   final String parentLabelId;
 
   @override
@@ -320,6 +346,22 @@ class AppPageByLabelData with CommonPageInfoMixin implements IToJson {
 
   factory AppPageByLabelData.fromJson(Map<String, dynamic> json) =>
       _$AppPageByLabelDataFromJson(json);
+}
+
+@JsonSerializable()
+class AppLabelRelationData implements IToJson {
+  AppLabelRelationData(
+      this.relationId, this.appId, this.labelId, this.appLabel);
+  final String relationId;
+  final String appId;
+  final String labelId;
+  final AppLabelData appLabel;
+
+  @override
+  Map<String, dynamic> toJson() => _$AppLabelRelationDataToJson(this);
+
+  factory AppLabelRelationData.fromJson(Map<String, dynamic> json) =>
+      _$AppLabelRelationDataFromJson(json);
 }
 
 @JsonSerializable()

@@ -412,7 +412,27 @@ class _RestClient implements RestClient {
   }
 
   @override
-  getAppCommentPage(token, getUserAppCommentsPage) async {
+  deleteUserAppComment(praiseId, token) async {
+    ArgumentError.checkNotNull(praiseId, 'praiseId');
+    ArgumentError.checkNotNull(token, 'token');
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{'token': token};
+    final _data = <String, dynamic>{};
+    final Response<Map<String, dynamic>> _result = await _dio.request(
+        '/userAppraise/$praiseId',
+        queryParameters: queryParameters,
+        options: RequestOptions(
+            method: 'DELETE',
+            headers: <String, dynamic>{},
+            extra: _extra,
+            baseUrl: baseUrl),
+        data: _data);
+    final value = DeleteUserAppCommentResponse.fromJson(_result.data);
+    return Future.value(value);
+  }
+
+  @override
+  getUserAppCommentPage(token, getUserAppCommentsPage) async {
     ArgumentError.checkNotNull(token, 'token');
     ArgumentError.checkNotNull(
         getUserAppCommentsPage, 'getUserAppCommentsPage');
@@ -640,6 +660,24 @@ class _RestClient implements RestClient {
             baseUrl: baseUrl),
         data: _data);
     final value = PostUserQuestionResponse.fromJson(_result.data);
+    return Future.value(value);
+  }
+
+  @override
+  getSchoolList() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final Response<Map<String, dynamic>> _result = await _dio.request(
+        '/schoolInfo/rest/list',
+        queryParameters: queryParameters,
+        options: RequestOptions(
+            method: 'GET',
+            headers: <String, dynamic>{},
+            extra: _extra,
+            baseUrl: baseUrl),
+        data: _data);
+    final value = GetSchoolListResponse.fromJson(_result.data);
     return Future.value(value);
   }
 }

@@ -97,8 +97,12 @@ abstract class RestClient {
   Future<CommentAppResponse> commentApp(
       @Query('token') String token, @Body() CommentApp commentAppBody);
 
+  @DELETE('/userAppraise/{praiseId}')
+  Future<DeleteUserAppCommentResponse> deleteUserAppComment(
+      @Path('praiseId') String praiseId, @Query('token') String token);
+
   @GET('/userAppraise/pageList')
-  Future<GetUserAppCommentsPageResponse> getAppCommentPage(
+  Future<GetUserAppCommentsPageResponse> getUserAppCommentPage(
       @Query('token') String token,
       @Queries() Map<String, dynamic> getUserAppCommentsPage);
 
@@ -144,4 +148,7 @@ abstract class RestClient {
   @POST('/appQuestion/rest')
   Future<PostUserQuestionResponse> postUserQuestion(
       @Body() PostUserQuestion postUserQuestionBody);
+
+  @GET('/schoolInfo/rest/list')
+  Future<GetSchoolListResponse> getSchoolList();
 }

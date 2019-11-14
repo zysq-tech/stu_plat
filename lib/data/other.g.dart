@@ -47,6 +47,18 @@ PostUserQuestionResponse _$PostUserQuestionResponseFromJson(
     ..mess = json['mess'] as String;
 }
 
+GetSchoolListResponse _$GetSchoolListResponseFromJson(
+    Map<String, dynamic> json) {
+  return GetSchoolListResponse(
+    (json['data'] as List)
+        ?.map((e) =>
+            e == null ? null : SchoolData.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+  )
+    ..code = json['code'] as int
+    ..mess = json['mess'] as String;
+}
+
 AppVersionData _$AppVersionDataFromJson(Map<String, dynamic> json) {
   return AppVersionData(
     json['versionId'] as String,
@@ -96,4 +108,17 @@ Map<String, dynamic> _$QuestionDataToJson(QuestionData instance) =>
       'content': instance.content,
       'createTime': instance.createTime,
       'qid': instance.qid,
+    };
+
+SchoolData _$SchoolDataFromJson(Map<String, dynamic> json) {
+  return SchoolData(
+    json['schoolId'] as String,
+    json['schoolName'] as String,
+  );
+}
+
+Map<String, dynamic> _$SchoolDataToJson(SchoolData instance) =>
+    <String, dynamic>{
+      'schoolId': instance.schoolId,
+      'schoolName': instance.schoolName,
     };

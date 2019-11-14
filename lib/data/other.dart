@@ -41,6 +41,16 @@ class PostUserQuestionResponse with CommonResponseMixin {
       _$PostUserQuestionResponseFromJson(json);
 }
 
+@JsonSerializable(createToJson: false)
+class GetSchoolListResponse with CommonResponseMixin {
+  GetSchoolListResponse(this.data);
+
+  final List<SchoolData> data;
+
+  factory GetSchoolListResponse.fromJson(Map<String, dynamic> json) =>
+      _$GetSchoolListResponseFromJson(json);
+}
+
 //Data
 @JsonSerializable()
 class AppVersionData implements IToJson {
@@ -86,4 +96,18 @@ class QuestionData implements IToJson {
 
   factory QuestionData.fromJson(Map<String, dynamic> json) =>
       _$QuestionDataFromJson(json);
+}
+
+@JsonSerializable()
+class SchoolData implements IToJson {
+  SchoolData(this.schoolId, this.schoolName);
+
+  final String schoolId;
+  final String schoolName;
+
+  @override
+  Map<String, dynamic> toJson() => _$SchoolDataToJson(this);
+
+  factory SchoolData.fromJson(Map<String, dynamic> json) =>
+      _$SchoolDataFromJson(json);
 }

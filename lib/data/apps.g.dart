@@ -59,6 +59,13 @@ CommentAppResponse _$CommentAppResponseFromJson(Map<String, dynamic> json) {
     ..mess = json['mess'] as String;
 }
 
+DeleteUserAppCommentResponse _$DeleteUserAppCommentResponseFromJson(
+    Map<String, dynamic> json) {
+  return DeleteUserAppCommentResponse()
+    ..code = json['code'] as int
+    ..mess = json['mess'] as String;
+}
+
 Map<String, dynamic> _$GetUserAppCommentsPageToJson(
         GetUserAppCommentsPage instance) =>
     <String, dynamic>{
@@ -222,10 +229,18 @@ AppInfoData _$AppInfoDataFromJson(Map<String, dynamic> json) {
         : AppRecordData.fromJson(json['appUseRecord'] as Map<String, dynamic>),
     json['todayBest'] as bool,
     json['isBoutique'] as bool,
+    json['isDelete'] as bool,
     (json['appImgList'] as List)
         ?.map((e) =>
             e == null ? null : AppImgData.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    (json['appLabelRelationList'] as List)
+        ?.map((e) => e == null
+            ? null
+            : AppLabelRelationData.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    json['appVersion'] as String,
+    json['appPackName'] as String,
   )
     ..createtime = json['createtime'] as String
     ..updateTime = json['updateTime'] as String;
@@ -246,8 +261,12 @@ Map<String, dynamic> _$AppInfoDataToJson(AppInfoData instance) =>
       'downloadAddress': instance.downloadAddress,
       'appUseRecord': instance.appUseRecord,
       'appImgList': instance.appImgList,
+      'appLabelRelationList': instance.appLabelRelationList,
       'todayBest': instance.todayBest,
       'isBoutique': instance.isBoutique,
+      'isDelete': instance.isDelete,
+      'appVersion': instance.appVersion,
+      'appPackName': instance.appPackName,
     };
 
 AppRecordData _$AppRecordDataFromJson(Map<String, dynamic> json) {
@@ -349,6 +368,7 @@ AppLabelData _$AppLabelDataFromJson(Map<String, dynamic> json) {
     json['labelId'] as String,
     json['labelName'] as String,
     json['sortNum'] as String,
+    json['labelImg'] as String,
     json['parentLabelId'] as String,
   );
 }
@@ -358,6 +378,7 @@ Map<String, dynamic> _$AppLabelDataToJson(AppLabelData instance) =>
       'labelId': instance.labelId,
       'labelName': instance.labelName,
       'sortNum': instance.sortNum,
+      'labelImg': instance.labelImg,
       'parentLabelId': instance.parentLabelId,
     };
 
@@ -406,6 +427,26 @@ Map<String, dynamic> _$AppPageByLabelDataToJson(AppPageByLabelData instance) =>
       'size': instance.size,
       'number': instance.number,
       'content': instance.content,
+    };
+
+AppLabelRelationData _$AppLabelRelationDataFromJson(Map<String, dynamic> json) {
+  return AppLabelRelationData(
+    json['relationId'] as String,
+    json['appId'] as String,
+    json['labelId'] as String,
+    json['appLabel'] == null
+        ? null
+        : AppLabelData.fromJson(json['appLabel'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$AppLabelRelationDataToJson(
+        AppLabelRelationData instance) =>
+    <String, dynamic>{
+      'relationId': instance.relationId,
+      'appId': instance.appId,
+      'labelId': instance.labelId,
+      'appLabel': instance.appLabel,
     };
 
 ChoosenAppData _$ChoosenAppDataFromJson(Map<String, dynamic> json) {

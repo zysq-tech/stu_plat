@@ -271,6 +271,7 @@ class UserInfoData with CommonTimeMixin implements IToJson {
       this.userName,
       this.userPassword,
       this.userTel,
+      this.userAvatar,
       this.userType,
       this.authEmail,
       this.authEmailCreateTime,
@@ -288,6 +289,7 @@ class UserInfoData with CommonTimeMixin implements IToJson {
   final String userName;
   final String userPassword;
   final String userTel;
+  final String userAvatar;
 
   ///身份:/1学生/2教师/0:未注册信息
   final int userType;
