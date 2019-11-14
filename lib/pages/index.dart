@@ -9,3 +9,4 @@ export './UnregisterPage.dart';
 export './HelpCenterPage.dart';
 export './FeedbackPage.dart';
 export './AppDetailPage.dart';
+export './WebPage.dart';

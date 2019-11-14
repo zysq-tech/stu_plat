@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import './common.dart';
@@ -138,4 +139,18 @@ class AppDetailPageData implements IToJson {
 
   factory AppDetailPageData.fromJson(Map<String, dynamic> json) =>
       _$AppDetailPageDataFromJson(json);
+}
+
+@JsonSerializable()
+class WebPageData implements IToJson {
+  WebPageData({@required this.url, this.title = ''});
+
+  final String url;
+  final String title;
+
+  @override
+  Map<String, dynamic> toJson() => _$WebPageDataToJson(this);
+
+  factory WebPageData.fromJson(Map<String, dynamic> json) =>
+      _$WebPageDataFromJson(json);
 }

@@ -120,3 +120,16 @@ Map<String, dynamic> _$AppDetailPageDataToJson(AppDetailPageData instance) =>
       'appData': instance.appData,
       'firstShow': instance.firstShow,
     };
+
+WebPageData _$WebPageDataFromJson(Map<String, dynamic> json) {
+  return WebPageData(
+    url: json['url'] as String,
+    title: json['title'] as String,
+  );
+}
+
+Map<String, dynamic> _$WebPageDataToJson(WebPageData instance) =>
+    <String, dynamic>{
+      'url': instance.url,
+      'title': instance.title,
+    };

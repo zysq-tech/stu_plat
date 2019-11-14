@@ -15,6 +15,7 @@ class Routes {
   static String helpCenter = '/helpCenter';
   static String feedback = '/feedback';
   static String appDetail = '/appDetail';
+  static String web = '/web';
 
   static void configureRoutes(Router router) {
     router.notFoundHandler = Handler(
@@ -34,5 +35,6 @@ class Routes {
     router.define(helpCenter, handler: helpCenterHandler);
     router.define(feedback, handler: feedbackHandler);
     router.define(appDetail, handler: appDetailHandler);
+    router.define(web, handler: webHandler);
   }
 }

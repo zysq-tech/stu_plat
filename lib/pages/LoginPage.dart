@@ -474,7 +474,9 @@ class _LoginPageState extends State<LoginPage>
                   color: mainThemeColor,
                   fontWeight: FontWeight.bold)),
           onPressed: () {
-            //TODO terms page
+            var str = fluroCnParamsEncode(objectToJson(WebPageData(
+                url: 'http://www.zhiyuantech.net/', title: '致远思齐条款')));
+            Application().router.navigateTo(context, '${Routes.web}?data=$str');
           },
           padding: EdgeInsets.zero,
         )

@@ -67,3 +67,9 @@ var appDetailHandler = Handler(
           data: AppDetailPageData.fromJson(
               jsonToObject(fluroCnParamsDecode(params['data'][0]))),
         ));
+
+var webHandler = Handler(
+    handlerFunc: (_, params) => WebPage(
+          data: WebPageData.fromJson(
+              jsonToObject(fluroCnParamsDecode(params['data'][0]))),
+        ));
