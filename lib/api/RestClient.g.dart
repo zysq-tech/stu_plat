@@ -331,6 +331,25 @@ class _RestClient implements RestClient {
   }
 
   @override
+  updatePhone(token, tele) async {
+    ArgumentError.checkNotNull(token, 'token');
+    ArgumentError.checkNotNull(tele, 'tele');
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{'token': token};
+    final _data = FormData.fromMap(<String, dynamic>{'tele': tele});
+    final Response<Map<String, dynamic>> _result = await _dio.request('/tele',
+        queryParameters: queryParameters,
+        options: RequestOptions(
+            method: 'PUT',
+            headers: <String, dynamic>{},
+            extra: _extra,
+            baseUrl: baseUrl),
+        data: _data);
+    final value = UpdatePhoneResponse.fromJson(_result.data);
+    return Future.value(value);
+  }
+
+  @override
   getLeaderBoardAppPage(searchType, getLeaderBoardAppPageQueries) async {
     ArgumentError.checkNotNull(searchType, 'searchType');
     ArgumentError.checkNotNull(
@@ -604,6 +623,44 @@ class _RestClient implements RestClient {
             baseUrl: baseUrl),
         data: _data);
     final value = GetAppCommentListResponse.fromJson(_result.data);
+    return Future.value(value);
+  }
+
+  @override
+  getAppAverageRating(appId) async {
+    ArgumentError.checkNotNull(appId, 'appId');
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final Response<Map<String, dynamic>> _result = await _dio.request(
+        '/userAppraise/rest/avgPraise/$appId',
+        queryParameters: queryParameters,
+        options: RequestOptions(
+            method: 'GET',
+            headers: <String, dynamic>{},
+            extra: _extra,
+            baseUrl: baseUrl),
+        data: _data);
+    final value = GetAppAverageRatingResponse.fromJson(_result.data);
+    return Future.value(value);
+  }
+
+  @override
+  searchApp(searchAppQueries) async {
+    ArgumentError.checkNotNull(searchAppQueries, 'searchAppQueries');
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final Response<Map<String, dynamic>> _result = await _dio.request(
+        '/appInfo/rest/pageList',
+        queryParameters: queryParameters,
+        options: RequestOptions(
+            method: 'GET',
+            headers: <String, dynamic>{},
+            extra: _extra,
+            baseUrl: baseUrl),
+        data: _data);
+    final value = SearchAppResponse.fromJson(_result.data);
     return Future.value(value);
   }
 

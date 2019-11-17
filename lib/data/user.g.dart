@@ -191,6 +191,12 @@ ReadInAppNewsResponse _$ReadInAppNewsResponseFromJson(
     ..mess = json['mess'] as String;
 }
 
+UpdatePhoneResponse _$UpdatePhoneResponseFromJson(Map<String, dynamic> json) {
+  return UpdatePhoneResponse()
+    ..code = json['code'] as int
+    ..mess = json['mess'] as String;
+}
+
 LoginResponseData _$LoginResponseDataFromJson(Map<String, dynamic> json) {
   return LoginResponseData(
     json['token'] as String,

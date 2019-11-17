@@ -172,6 +172,33 @@ class GetAppCommentListResponse with CommonResponseMixin {
       _$GetAppCommentListResponseFromJson(json);
 }
 
+@JsonSerializable(createToJson: false)
+class GetAppAverageRatingResponse with CommonResponseMixin {
+  GetAppAverageRatingResponse(this.data);
+  final double data;
+
+  factory GetAppAverageRatingResponse.fromJson(Map<String, dynamic> json) =>
+      _$GetAppAverageRatingResponseFromJson(json);
+}
+
+@JsonSerializable(createFactory: false)
+class SearchApp with CommonPageRequestMixin implements IToJson {
+  SearchApp(this.appName);
+  final String appName;
+
+  @override
+  Map<String, dynamic> toJson() => _$SearchAppToJson(this);
+}
+
+@JsonSerializable(createToJson: false)
+class SearchAppResponse with CommonResponseMixin {
+  SearchAppResponse(this.data);
+  final AppInfoPageData data;
+
+  factory SearchAppResponse.fromJson(Map<String, dynamic> json) =>
+      _$SearchAppResponseFromJson(json);
+}
+
 //Data
 @JsonSerializable()
 class AppInfoPageData with CommonPageInfoMixin implements IToJson {
@@ -199,6 +226,7 @@ class AppInfoData with CommonTimeMixin implements IToJson {
       this.downloadAddress,
       this.appUseRecord,
       this.todayBest,
+      this.todayBestImg,
       this.isBoutique,
       this.isDelete,
       this.appImgList,
@@ -220,6 +248,7 @@ class AppInfoData with CommonTimeMixin implements IToJson {
 
   ///是否今日最佳
   final bool todayBest;
+  final String todayBestImg;
 
   ///是否精品
   final bool isBoutique;

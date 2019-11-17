@@ -77,6 +77,10 @@ abstract class RestClient {
   @PUT('/appUserNews/isRead/{userNewId}')
   Future<ReadInAppNewsResponse> readInAppNews(
       @Path('userNewId') String userNewId, @Query('token') String token);
+
+  @PUT('/tele')
+  Future<UpdatePhoneResponse> updatePhone(
+      @Query('token') String token, @Field() String tele);
   //
 
   //Apps
@@ -136,6 +140,13 @@ abstract class RestClient {
   Future<GetAppCommentListResponse> getAppCommentList(
       @Path('appId') String appId,
       @Body() GetAppCommentList getAppCommentListBody);
+
+  @GET('/userAppraise/rest/avgPraise/{appId}')
+  Future<GetAppAverageRatingResponse> getAppAverageRating(
+      @Path('appId') String appId);
+
+  @GET('/appInfo/rest/pageList')
+  Future<SearchAppResponse> searchApp(Map<String, dynamic> searchAppQueries);
   //
 
   //Other

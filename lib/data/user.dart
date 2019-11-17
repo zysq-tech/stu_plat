@@ -250,6 +250,14 @@ class ReadInAppNewsResponse with CommonResponseMixin {
       _$ReadInAppNewsResponseFromJson(json);
 }
 
+@JsonSerializable(createToJson: false)
+class UpdatePhoneResponse with CommonResponseMixin {
+  UpdatePhoneResponse();
+
+  factory UpdatePhoneResponse.fromJson(Map<String, dynamic> json) =>
+      _$UpdatePhoneResponseFromJson(json);
+}
+
 //Data
 @JsonSerializable()
 class LoginResponseData implements IToJson {

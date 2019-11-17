@@ -185,6 +185,31 @@ GetAppCommentListResponse _$GetAppCommentListResponseFromJson(
     ..mess = json['mess'] as String;
 }
 
+GetAppAverageRatingResponse _$GetAppAverageRatingResponseFromJson(
+    Map<String, dynamic> json) {
+  return GetAppAverageRatingResponse(
+    (json['data'] as num)?.toDouble(),
+  )
+    ..code = json['code'] as int
+    ..mess = json['mess'] as String;
+}
+
+Map<String, dynamic> _$SearchAppToJson(SearchApp instance) => <String, dynamic>{
+      'page': instance.page,
+      'size': instance.size,
+      'appName': instance.appName,
+    };
+
+SearchAppResponse _$SearchAppResponseFromJson(Map<String, dynamic> json) {
+  return SearchAppResponse(
+    json['data'] == null
+        ? null
+        : AppInfoPageData.fromJson(json['data'] as Map<String, dynamic>),
+  )
+    ..code = json['code'] as int
+    ..mess = json['mess'] as String;
+}
+
 AppInfoPageData _$AppInfoPageDataFromJson(Map<String, dynamic> json) {
   return AppInfoPageData(
     (json['content'] as List)
@@ -228,6 +253,7 @@ AppInfoData _$AppInfoDataFromJson(Map<String, dynamic> json) {
         ? null
         : AppRecordData.fromJson(json['appUseRecord'] as Map<String, dynamic>),
     json['todayBest'] as bool,
+    json['todayBestImg'] as String,
     json['isBoutique'] as bool,
     json['isDelete'] as bool,
     (json['appImgList'] as List)
@@ -263,6 +289,7 @@ Map<String, dynamic> _$AppInfoDataToJson(AppInfoData instance) =>
       'appImgList': instance.appImgList,
       'appLabelRelationList': instance.appLabelRelationList,
       'todayBest': instance.todayBest,
+      'todayBestImg': instance.todayBestImg,
       'isBoutique': instance.isBoutique,
       'isDelete': instance.isDelete,
       'appVersion': instance.appVersion,
