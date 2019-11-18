@@ -25,9 +25,9 @@ class AppLogoItem extends StatelessWidget {
               width: su.setWidth(144),
               height: su.setWidth(144),
               decoration: BoxDecoration(
-                  color: Colors.grey,
+                  // color: Colors.grey,
                   borderRadius: BorderRadius.circular(su.setWidth(20)),
-                  image: null),
+                  image: getDefaultIcon()),
             ),
             Text(
               'App Name',

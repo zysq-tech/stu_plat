@@ -128,9 +128,9 @@ class _ManagementViewState extends State<ManagementView>
               width: su.setWidth(144),
               height: su.setWidth(144),
               borderRadius: BorderRadius.circular(su.setWidth(20)),
-              color: Colors.grey,
+              // color: Colors.grey,
               boxShadow: CustomCard.noneBoxShadow,
-              image: null,
+              image: getDefaultIcon(),
             ),
             Expanded(
                 child: Container(

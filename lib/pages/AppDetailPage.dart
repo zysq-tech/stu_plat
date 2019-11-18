@@ -189,8 +189,8 @@ class _AppDetailPageState extends State<AppDetailPage>
             borderRadius: BorderRadius.circular(su.setWidth(20)),
             boxShadow: CustomCard.noneBoxShadow,
             margin: EdgeInsets.only(right: su.setWidth(35)),
-            color: Colors.grey,
-            image: null,
+            // color: Colors.grey,
+            image: getDefaultIcon(),
           ),
           Expanded(
             child: Column(

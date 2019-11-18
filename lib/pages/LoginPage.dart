@@ -199,7 +199,8 @@ class _LoginPageState extends State<LoginPage>
                   height: su.setHeight(316),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(su.setHeight(40)),
-                      color: hexToColor('#626262')),
+                      // color: hexToColor('#626262'),
+                      image: getDefaultIcon()),
                 ),
                 CustomCard(
                   width: su.setWidth(961),
@@ -475,7 +476,7 @@ class _LoginPageState extends State<LoginPage>
                   fontWeight: FontWeight.bold)),
           onPressed: () {
             var str = fluroCnParamsEncode(objectToJson(WebPageData(
-                url: 'http://www.zhiyuantech.net/', title: '致远思齐条款')));
+                url: 'https://zysqtech.netlify.com/terms/', title: '致远思齐条款')));
             Application().router.navigateTo(context, '${Routes.web}?data=$str');
           },
           padding: EdgeInsets.zero,

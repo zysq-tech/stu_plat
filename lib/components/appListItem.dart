@@ -47,8 +47,8 @@ class AppListItem extends StatelessWidget {
                 width: su.setWidth(144),
                 height: su.setWidth(144),
                 decoration: BoxDecoration(
-                    image: null,
-                    color: Colors.grey,
+                    image: getDefaultIcon(),
+                    // color: Colors.grey,
                     borderRadius: BorderRadius.circular(su.setWidth(20))),
               ),
               Expanded(

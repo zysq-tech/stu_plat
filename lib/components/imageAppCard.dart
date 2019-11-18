@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../Application.dart';
 import './customCard.dart';
 import '../data/apps.dart';
 
@@ -100,20 +101,19 @@ class ImageAppCard extends StatelessWidget {
                 child: Row(
                   children: <Widget>[
                     CustomCard(
-                      width: su.setWidth(100 * wFactor),
-                      height: su.setWidth(100 * hFactor),
-                      borderRadius:
-                          BorderRadius.circular(su.setWidth(33 * hFactor)),
-                      boxShadow: CustomCard.noneBoxShadow,
-                      color: Colors.grey,
-                      margin: EdgeInsets.only(
-                          left: su.setWidth(30),
-                          right: su.setWidth(55 * wFactor)),
-                      image: null,
-                    ),
+                        width: su.setWidth(100 * wFactor),
+                        height: su.setWidth(100 * hFactor),
+                        borderRadius:
+                            BorderRadius.circular(su.setWidth(33 * hFactor)),
+                        boxShadow: CustomCard.noneBoxShadow,
+                        // color: Colors.grey,
+                        margin: EdgeInsets.only(
+                            left: su.setWidth(30),
+                            right: su.setWidth(55 * wFactor)),
+                        image: getDefaultIcon()),
                     Flexible(
                         child: Text(
-                      'App Name App Name App Name App Name App Name',
+                      'App Name',
                       softWrap: false,
                       overflow: TextOverflow.fade,
                       style: TextStyle(

@@ -117,7 +117,14 @@ class _UserViewState extends State<UserView>
                         .router
                         .navigateTo(context, '${Routes.helpCenter}?data=$str');
                   }),
-                  buildEntranceTab('关于产品', onTap: () {}),
+                  buildEntranceTab('关于产品', onTap: () {
+                    var str = fluroCnParamsEncode(objectToJson(WebPageData(
+                        url: 'https://zysqtech.netlify.com/about/',
+                        title: '关于产品')));
+                    Application()
+                        .router
+                        .navigateTo(context, '${Routes.web}?data=$str');
+                  }),
                   buildEntranceTab('检查版本', onTap: showCheckVersionPopup),
                   buildEntranceTab('意见反馈', onTap: () {
                     String str =

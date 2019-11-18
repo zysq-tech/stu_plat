@@ -84,3 +84,8 @@ String hideEmail(String email, {String hideWith = '*'}) {
   int spliter = email.indexOf('@');
   return email.replaceRange(2, spliter, hideWith * (spliter - 2));
 }
+
+DecorationImage getDefaultIcon() {
+  return DecorationImage(
+      image: AssetImage('assets/common/icon_blue.png'), fit: BoxFit.contain);
+}
