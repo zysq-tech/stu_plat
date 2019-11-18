@@ -1,4 +1,4 @@
-package com.example.stu_plat
+package com.zysqtech.stu_plat
 
 import android.os.Bundle
 
