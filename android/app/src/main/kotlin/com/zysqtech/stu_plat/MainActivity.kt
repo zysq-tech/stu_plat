@@ -1,4 +1,4 @@
-package com.zysqtech.stu_plat
+package com.zysqTech.stu_plat
 
 import android.os.Bundle
 

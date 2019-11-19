@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
     return AppProvider().initProvider(
       context: context,
       child: MaterialApp(
-        title: 'Student Platform',
+        title: '大学生应用平台',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
             primarySwatch: Colors.lightBlue,
