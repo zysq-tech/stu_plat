@@ -10,3 +10,4 @@ export './HelpCenterPage.dart';
 export './FeedbackPage.dart';
 export './AppDetailPage.dart';
 export './WebPage.dart';
+export './MessageDetailPage.dart';

@@ -4,8 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../Application.dart';
 import '../../components/customCard.dart';
-import '../../data/apps.dart';
-import '../../data/user.dart';
+import '../../data/index.dart';
+import '../../data/page_data.dart';
 
 class MessageView extends StatefulWidget {
   @override
@@ -88,31 +88,44 @@ class _MessageViewState extends State<MessageView>
     );
   }
 
-  Widget buildMessageCard({InAppNewsData data}) {
+  Widget buildMessageCard({InAppNewsWrapperData data}) {
     return Center(
-        child: CustomCard(
-      width: su.setWidth(1013),
-      height: su.setWidth(232),
-      borderRadius: BorderRadius.circular(su.setWidth(20)),
-      margin: EdgeInsets.symmetric(vertical: su.setWidth(12)),
-      padding: EdgeInsets.symmetric(horizontal: su.setWidth(33)),
-      child: Row(
-        children: <Widget>[
-          Padding(
-            padding: EdgeInsets.only(right: su.setWidth(43)),
-            child: Image.asset(
-              'assets/icon/icon_service.png',
-              width: su.setWidth(142),
-              height: su.setWidth(142),
+        child: GestureDetector(
+      onTap: () {
+        var str = fluroCnParamsEncode(
+            objectToJson(MessageDetailPageData(data: data?.appNews)));
+        Application()
+            .router
+            .navigateTo(context, '${Routes.messageDetail}?data=$str');
+      },
+      child: CustomCard(
+        width: su.setWidth(1013),
+        height: su.setWidth(232),
+        borderRadius: BorderRadius.circular(su.setWidth(20)),
+        margin: EdgeInsets.symmetric(vertical: su.setWidth(12)),
+        padding: EdgeInsets.symmetric(horizontal: su.setWidth(33)),
+        child: Row(
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.only(right: su.setWidth(43)),
+              child: Image.asset(
+                'assets/icon/icon_service.png',
+                width: su.setWidth(142),
+                height: su.setWidth(142),
+              ),
             ),
-          ),
-          Expanded(
-              child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text.rich(
-                TextSpan(
+            Expanded(
+                child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text.rich(
+                  TextSpan(
+                    text: '大学生应用试用平台',
+                    style: TextStyle(
+                        color: _color2,
+                        fontSize: su.setSp(40),
+                        fontWeight: FontWeight.bold),
                     children: [
                       TextSpan(
                         text: '/',
@@ -129,76 +142,81 @@ class _MessageViewState extends State<MessageView>
                             fontWeight: FontWeight.bold),
                       )
                     ],
-                    text: '大学生应用试用平台',
-                    style: TextStyle(
-                        color: _color2,
-                        fontSize: su.setSp(40),
-                        fontWeight: FontWeight.bold)),
-                softWrap: false,
-                overflow: TextOverflow.ellipsis,
-              ),
-              Text(
-                'Message Content ' * 5,
-                softWrap: false,
-                overflow: TextOverflow.ellipsis,
-                style: TextStyle(
-                    color: _color2,
-                    fontSize: su.setSp(35),
-                    fontWeight: FontWeight.bold),
-              )
-            ],
-          ))
-        ],
+                  ),
+                  softWrap: false,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                Text(
+                  'Message Content ' * 5,
+                  softWrap: false,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                      color: _color2,
+                      fontSize: su.setSp(35),
+                      fontWeight: FontWeight.bold),
+                )
+              ],
+            ))
+          ],
+        ),
       ),
     ));
   }
 
   Widget buildCommentCard({AppCommentData data}) {
     return Center(
-      child: CustomCard(
-        width: su.setWidth(1013),
-        height: su.setWidth(397),
-        borderRadius: BorderRadius.circular(su.setWidth(20)),
-        margin: EdgeInsets.symmetric(vertical: su.setWidth(18)),
-        padding: EdgeInsets.symmetric(vertical: su.setWidth(26)),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Container(
-              padding: EdgeInsets.only(
-                  right: su.setWidth(39), left: su.setWidth(31)),
-              child: CustomCard(
-                width: su.setWidth(144),
-                height: su.setWidth(144),
-                borderRadius: BorderRadius.circular(su.setWidth(20)),
-                // color: Colors.grey,
-                boxShadow: CustomCard.noneBoxShadow,
-                image: getDefaultIcon(),
+      child: GestureDetector(
+        onTap: () {
+          var str = fluroCnParamsEncode(objectToJson(AppDetailPageData()));
+          Application()
+              .router
+              .navigateTo(context, '${Routes.appDetail}?data=$str');
+        },
+        child: CustomCard(
+          width: su.setWidth(1013),
+          height: su.setWidth(397),
+          borderRadius: BorderRadius.circular(su.setWidth(20)),
+          margin: EdgeInsets.symmetric(vertical: su.setWidth(18)),
+          padding: EdgeInsets.symmetric(vertical: su.setWidth(26)),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Container(
+                padding: EdgeInsets.only(
+                    right: su.setWidth(39), left: su.setWidth(31)),
+                child: CustomCard(
+                  width: su.setWidth(144),
+                  height: su.setWidth(144),
+                  borderRadius: BorderRadius.circular(su.setWidth(20)),
+                  // color: Colors.grey,
+                  boxShadow: CustomCard.noneBoxShadow,
+                  image: getDefaultIcon(),
+                ),
               ),
-            ),
-            Expanded(
-                child: Padding(
-              padding: EdgeInsets.only(right: su.setWidth(35)),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Expanded(
-                        child: buildAppNameAndCount(),
-                      ),
-                      buildCommentTime()
-                    ],
-                  ),
-                  buildComment(),
-                  buildRatingRow()
-                ],
-              ),
-            )),
-          ],
+              Expanded(
+                  child: Padding(
+                padding: EdgeInsets.only(right: su.setWidth(35)),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Expanded(
+                          child: buildAppNameAndCount(),
+                        ),
+                        buildCommentTime()
+                      ],
+                    ),
+                    buildComment(),
+                    buildRatingRow()
+                  ],
+                ),
+              )),
+            ],
+          ),
         ),
       ),
     );
@@ -227,14 +245,19 @@ class _MessageViewState extends State<MessageView>
             ),
           ),
         ),
-        GestureDetector(
-          child: Text(
-            '删除',
-            style: TextStyle(color: mainThemeColor, fontSize: su.setSp(30)),
+        Material(
+          child: InkWell(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: su.setWidth(20)),
+              child: Text(
+                '删除',
+                style: TextStyle(color: mainThemeColor, fontSize: su.setSp(30)),
+              ),
+            ),
+            onTap: () {
+              print('delete');
+            },
           ),
-          onTap: () {
-            print('delete');
-          },
         )
       ],
     );

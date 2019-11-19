@@ -71,6 +71,7 @@ class _HelpCenterPageState extends State<HelpCenterPage> {
     return Scaffold(
       backgroundColor: homeBgColor,
       appBar: AppBar(
+        centerTitle: true,
         title: Text(
           '帮助中心',
           style:

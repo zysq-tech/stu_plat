@@ -119,6 +119,7 @@ class _UnregisterPageState extends State<UnregisterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text(
           '注销账号',
           style:

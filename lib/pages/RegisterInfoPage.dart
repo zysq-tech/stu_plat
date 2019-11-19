@@ -89,6 +89,7 @@ class _RegisterInfoPageState extends State<RegisterInfoPage> {
     pr = ProgressDialog(context);
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text(
           '编辑${widget.data.type == 1 ? '学生' : '教师'}信息',
           style:

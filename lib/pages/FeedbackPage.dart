@@ -117,6 +117,7 @@ class _FeedbackPageState extends State<FeedbackPage> {
       child: Scaffold(
         backgroundColor: homeBgColor,
         appBar: AppBar(
+          centerTitle: true,
           title: Text(
             '意见反馈',
             style:

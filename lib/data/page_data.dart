@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import './common.dart';
-import './apps.dart';
+import './index.dart';
 
 part 'page_data.g.dart';
 
@@ -153,4 +153,17 @@ class WebPageData implements IToJson {
 
   factory WebPageData.fromJson(Map<String, dynamic> json) =>
       _$WebPageDataFromJson(json);
+}
+
+@JsonSerializable()
+class MessageDetailPageData implements IToJson {
+  MessageDetailPageData({this.data});
+
+  final InAppNewsData data;
+
+  @override
+  Map<String, dynamic> toJson() => _$MessageDetailPageDataToJson(this);
+
+  factory MessageDetailPageData.fromJson(Map<String, dynamic> json) =>
+      _$MessageDetailPageDataFromJson(json);
 }

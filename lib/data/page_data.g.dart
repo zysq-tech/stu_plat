@@ -133,3 +133,18 @@ Map<String, dynamic> _$WebPageDataToJson(WebPageData instance) =>
       'url': instance.url,
       'title': instance.title,
     };
+
+MessageDetailPageData _$MessageDetailPageDataFromJson(
+    Map<String, dynamic> json) {
+  return MessageDetailPageData(
+    data: json['data'] == null
+        ? null
+        : InAppNewsData.fromJson(json['data'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$MessageDetailPageDataToJson(
+        MessageDetailPageData instance) =>
+    <String, dynamic>{
+      'data': instance.data,
+    };

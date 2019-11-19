@@ -61,6 +61,7 @@ class _UserInfoPageState extends State<UserInfoPage> {
     return Scaffold(
       backgroundColor: homeBgColor,
       appBar: AppBar(
+        centerTitle: true,
         title: Text(
           '编辑个人信息',
           style:

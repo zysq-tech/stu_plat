@@ -136,6 +136,7 @@ class _EditPhoneEmailPageState extends State<EditPhoneEmailPage> {
     return Scaffold(
       backgroundColor: homeBgColor,
       appBar: AppBar(
+        centerTitle: true,
         title: Text(
           '编辑${widget.data.type == 1 ? '手机号' : '邮箱'}',
           style:
