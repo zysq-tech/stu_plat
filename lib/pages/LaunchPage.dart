@@ -1,5 +1,6 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../Application.dart';
 import '../data/page_data.dart';
@@ -33,9 +34,14 @@ class _LaunchPageState extends State<LaunchPage> {
   @override
   Widget build(BuildContext context) {
     Application().initScreenUtil(context);
+    ScreenUtil su = Application().screenUtil;
     return Scaffold(
       body: Center(
-        child: Text('Launch Page'),
+        child: Container(
+          width: su.setWidth(320),
+          height: su.setWidth(320),
+          decoration: BoxDecoration(image: getDefaultIcon()),
+        ),
       ),
     );
   }
