@@ -49,7 +49,7 @@ class _UserInfoPageState extends State<UserInfoPage> {
     Application()
         .router
         .navigateTo(context, '${Routes.editPhoneEmail}?data=$str')
-        .then((bo) => bo ? showToast('设置成功') : print(bo));
+        .then((bo) => print(bo));
   }
 
   void emptyFocus() {

@@ -52,7 +52,7 @@ class _HelpCenterPageState extends State<HelpCenterPage> {
             onPressed: () {
               Clipboard.setData(ClipboardData(text: serviceQQ)).then((d) {
                 Navigator.pop(context);
-                showToast('复制成功');
+                print('复制成功');
               });
             },
             child: Text(

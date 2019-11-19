@@ -28,7 +28,6 @@ dependencies:
   provider: any
   event_bus: ^1.1.0
   shared_preferences: ^0.4.3
-  fluttertoast: ^3.1.0
   flutter_swiper: ^1.1.6
   flutter_screenutil: ^0.5.3
   pull_to_refresh: ^1.5.4
@@ -44,6 +43,10 @@ dependencies:
     git: git://github.com/RatelHub/rflutter_alert.git
   flutter_rating_bar: any
   expandable: any
+  package_info: any
+  path_provider: any
+  install_plugin: ^2.0.1
+  flushbar: any
   #Android Only
   device_apps: any
 
