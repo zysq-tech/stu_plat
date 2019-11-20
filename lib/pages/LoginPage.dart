@@ -468,7 +468,7 @@ class _LoginPageState extends State<LoginPage>
                 color: hexToColor('#a0a0a0'),
                 fontWeight: FontWeight.bold)),
         FlatButton(
-          child: Text('《致远思齐条款》',
+          child: Text('《注册条款》',
               style: TextStyle(
                   fontSize: su.setSp(35),
                   color: mainThemeColor,
@@ -478,8 +478,7 @@ class _LoginPageState extends State<LoginPage>
                 context,
                 Routes.web,
                 WebPageData(
-                    url: 'https://zysqtech.netlify.com/terms/',
-                    title: '致远思齐条款'));
+                    url: 'https://zysqtech.netlify.com/terms/', title: '注册条款'));
           },
           padding: EdgeInsets.zero,
         )
