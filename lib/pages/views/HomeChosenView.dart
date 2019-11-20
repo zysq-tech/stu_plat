@@ -89,7 +89,7 @@ class _HomeChosenViewState extends State<HomeChosenView>
         height: su.setWidth(349),
         borderRadius: BorderRadius.circular(su.setWidth(20)),
         margin: EdgeInsets.symmetric(vertical: su.setWidth(13)),
-        padding: EdgeInsets.symmetric(horizontal: su.setWidth(80)),
+        padding: EdgeInsets.symmetric(horizontal: su.setWidth(30)),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -103,7 +103,7 @@ class _HomeChosenViewState extends State<HomeChosenView>
                   letterSpacing: su.setWidth(7)),
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
                 AppLogoItem(),
                 AppLogoItem(),

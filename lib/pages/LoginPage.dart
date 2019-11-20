@@ -120,9 +120,8 @@ class _LoginPageState extends State<LoginPage>
 
   void tryLogin() {
     // showAccountErrorDialog();
-    Application().router.navigateTo(context,
-        '${Routes.home}?data=${fluroCnParamsEncode(objectToJson(HomePageData()))}',
-        clearStack: true);
+    Application()
+        .navigateTo(context, Routes.home, HomePageData(), clearStack: true);
   }
 
   void afterGetCode() {
@@ -170,8 +169,8 @@ class _LoginPageState extends State<LoginPage>
   }
 
   void onTapInfoOption(int type) {
-    Application().router.navigateTo(context,
-        '${Routes.registerInfo}?data=${fluroCnParamsEncode(objectToJson(RegisterInfoPageData(type: type)))}');
+    Application().navigateTo(
+        context, Routes.registerInfo, RegisterInfoPageData(type: type));
   }
 
   void clearFocus() {
@@ -475,9 +474,12 @@ class _LoginPageState extends State<LoginPage>
                   color: mainThemeColor,
                   fontWeight: FontWeight.bold)),
           onPressed: () {
-            var str = fluroCnParamsEncode(objectToJson(WebPageData(
-                url: 'https://zysqtech.netlify.com/terms/', title: '致远思齐条款')));
-            Application().router.navigateTo(context, '${Routes.web}?data=$str');
+            Application().navigateTo(
+                context,
+                Routes.web,
+                WebPageData(
+                    url: 'https://zysqtech.netlify.com/terms/',
+                    title: '致远思齐条款'));
           },
           padding: EdgeInsets.zero,
         )

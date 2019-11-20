@@ -10,6 +10,7 @@ import './data/common.dart';
 import './api/RestClient.dart';
 import './api/DownloadClient.dart';
 import './config/routes.dart';
+import './Utils.dart';
 
 export './config/routes.dart';
 export './Constant.dart';
@@ -58,6 +59,19 @@ class Application {
 
   void initScreenUtil(BuildContext context) {
     _screenUtil.init(context);
+  }
+
+  Future<dynamic> navigateTo(
+    BuildContext context,
+    String route,
+    IToJson dataParam, {
+    bool replace = false,
+    bool clearStack = false,
+    TransitionType transition = TransitionType.cupertino,
+  }) {
+    String dataStr = fluroCnParamsEncode(objectToJson(dataParam));
+    return router.navigateTo(context, '$route?data=$dataStr',
+        replace: replace, clearStack: clearStack, transition: transition);
   }
 }
 

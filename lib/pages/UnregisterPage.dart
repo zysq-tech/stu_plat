@@ -95,9 +95,7 @@ class _UnregisterPageState extends State<UnregisterPage> {
             color: Colors.red,
             radius: BorderRadius.circular(su.setWidth(20)),
             onPressed: () {
-              var str = fluroCnParamsEncode(objectToJson(LoginPageData()));
-              Application().router.navigateTo(
-                  context, '${Routes.login}?data=$str',
+              Application().navigateTo(context, Routes.login, LoginPageData(),
                   clearStack: true);
             },
             child: Text(

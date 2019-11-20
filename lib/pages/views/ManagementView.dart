@@ -1,6 +1,9 @@
+import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:device_apps/device_apps.dart' as device_app;
+import 'package:stu_plat/data/index.dart';
+import 'package:stu_plat/data/page_data.dart';
 
 import '../../Application.dart';
 import '../../components/customCard.dart';
@@ -18,21 +21,23 @@ class ApkData {
       this.appName,
       this.packageName,
       this.versionName,
-      this.installedPackageInfo});
+      this.installedPackageInfo,
+      this.appInfoData});
 
-  final ApkStatus status;
+  ApkStatus status;
   //downloadInfomation
-  final int startDownloadTime;
-  final double receivedBytes;
-  final double savedBytes;
-  final double totalBytes;
+  int startDownloadTime;
+  double receivedBytes;
+  double savedBytes;
+  double totalBytes;
   final String appName;
   final String packageName;
   final String versionName;
   //packageInfomation
-  final device_app.ApplicationWithIcon installedPackageInfo;
+  device_app.ApplicationWithIcon installedPackageInfo;
   //remote app id
   final String appId;
+  AppInfoData appInfoData;
 
   //TODO speed algorithm
   String get downloadSpeed => formatBytesSize(startDownloadTime == null
@@ -100,28 +105,153 @@ class _ManagementViewState extends State<ManagementView>
             ),
           ),
           Expanded(
-            child: ListView.builder(
-              padding: EdgeInsets.symmetric(vertical: su.setWidth(10)),
-              itemCount: ApkStatus.values.length,
-              itemBuilder: (_, index) => buildManagementItem(
-                  data: ApkData(status: ApkStatus.values[index])),
-            ),
-          )
+              child: SingleChildScrollView(
+            padding: EdgeInsets.symmetric(vertical: su.setWidth(20)),
+            child: Center(
+                child: Column(
+              children: <Widget>[
+                buildDownloading([
+                  buildManagementItem(
+                      data: ApkData(status: ApkStatus.downloading)),
+                  buildManagementItem(data: ApkData(status: ApkStatus.paused)),
+                  buildManagementItem(
+                      data: ApkData(status: ApkStatus.complete)),
+                ]),
+                buildUpdates([
+                  buildManagementItem(
+                      data: ApkData(status: ApkStatus.needUpgrade)),
+                  buildManagementItem(
+                      data: ApkData(status: ApkStatus.needUpgrade)),
+                ]),
+                buildInstalled([
+                  buildManagementItem(
+                      data: ApkData(status: ApkStatus.installed))
+                ]),
+              ],
+            )),
+          ))
         ],
       ),
     );
   }
 
+  Widget buildDownloading(List<Widget> tasks) {
+    return buildGeneralCard('任务进行中', tasks);
+  }
+
+  Widget buildInstalled(List<Widget> tasks) {
+    return buildGeneralCard('已安装应用', tasks);
+  }
+
+  Widget buildUpdates(List<Widget> tasks) {
+    return tasks.isNotEmpty
+        ? CustomCard(
+            width: su.setWidth(1016),
+            padding: EdgeInsets.symmetric(
+                vertical: su.setWidth(20), horizontal: su.setWidth(32)),
+            borderRadius: BorderRadius.circular(su.setWidth(20)),
+            margin: EdgeInsets.symmetric(vertical: su.setWidth(20)),
+            child: ExpandablePanel(
+              headerAlignment: ExpandablePanelHeaderAlignment.center,
+              header: Text(
+                '应用更新',
+                style: TextStyle(
+                    color: hexToColor('#626262'),
+                    fontSize: su.setSp(50),
+                    fontWeight: FontWeight.bold),
+              ),
+              iconColor: mainThemeColor,
+              expanded: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: <Widget>[
+                      Text(
+                        'WLAN连接时自动更新',
+                        style: TextStyle(
+                            color: mainThemeColor,
+                            fontSize: su.setSp(45),
+                            fontWeight: FontWeight.bold),
+                      ),
+                      GestureDetector(
+                        onTap: () {},
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: su.setWidth(20),
+                              vertical: su.setWidth(10)),
+                          child: Image.asset(
+                            'assets/icon/icon_switch_off.png',
+                            width: su.setWidth(96),
+                            height: su.setWidth(96),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                  CustomCard.cricleEnds(
+                    width: su.setWidth(760),
+                    height: su.setWidth(119),
+                    boxShadow: CustomCard.noneBoxShadow,
+                    color: mainThemeColor,
+                    margin: EdgeInsets.symmetric(vertical: su.setWidth(20)),
+                    child: FlatButton(
+                      onPressed: () {},
+                      child: Center(
+                        child: Text(
+                          '全部更新',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: su.setSp(60),
+                          ),
+                        ),
+                      ),
+                    ),
+                  )
+                ]..insertAll(1, tasks),
+              ),
+            ),
+          )
+        : Container();
+  }
+
+  Widget buildGeneralCard(String title, List<Widget> tasks) {
+    return tasks.isNotEmpty
+        ? CustomCard(
+            width: su.setWidth(1016),
+            padding: EdgeInsets.symmetric(vertical: su.setWidth(20)),
+            borderRadius: BorderRadius.circular(su.setWidth(20)),
+            margin: EdgeInsets.symmetric(vertical: su.setWidth(20)),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  title,
+                  style: TextStyle(
+                      color: hexToColor('#626262'),
+                      fontSize: su.setSp(50),
+                      fontWeight: FontWeight.bold),
+                ),
+              ]..addAll(tasks),
+            ),
+          )
+        : Container();
+  }
+
   Widget buildManagementItem({
     @required ApkData data,
   }) {
-    return Center(
-      child: CustomCard(
-        width: su.setWidth(1016),
+    return GestureDetector(
+      onTap: () {
+        Application().navigateTo(context, Routes.appDetail,
+            AppDetailPageData(appData: data.appInfoData));
+      },
+      child: Container(
+        width: su.setWidth(950),
         height: su.setWidth(188),
-        margin: EdgeInsets.symmetric(vertical: su.setWidth(15)),
-        borderRadius: BorderRadius.circular(su.setWidth(20)),
-        padding: EdgeInsets.symmetric(horizontal: su.setWidth(32)),
+        margin: EdgeInsets.symmetric(vertical: su.setWidth(10)),
+        color: Colors.white,
         child: Row(
           children: <Widget>[
             CustomCard(

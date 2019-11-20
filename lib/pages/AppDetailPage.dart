@@ -58,8 +58,7 @@ class _AppDetailPageState extends State<AppDetailPage>
   }
 
   void onTapMoreAction() {
-    String str = fluroCnParamsEncode(objectToJson(FeedbackPageData()));
-    Application().router.navigateTo(context, '${Routes.feedback}?data=$str');
+    Application().navigateTo(context, Routes.feedback, FeedbackPageData());
     // showGeneralDialog(
     //     context: context,
     //     pageBuilder: (context, a1, a2) => WillPopScope(

@@ -92,11 +92,8 @@ class _MessageViewState extends State<MessageView>
     return Center(
         child: GestureDetector(
       onTap: () {
-        var str = fluroCnParamsEncode(
-            objectToJson(MessageDetailPageData(data: data?.appNews)));
-        Application()
-            .router
-            .navigateTo(context, '${Routes.messageDetail}?data=$str');
+        Application().navigateTo(context, Routes.messageDetail,
+            MessageDetailPageData(data: data?.appNews));
       },
       child: CustomCard(
         width: su.setWidth(1013),
@@ -167,10 +164,8 @@ class _MessageViewState extends State<MessageView>
     return Center(
       child: GestureDetector(
         onTap: () {
-          var str = fluroCnParamsEncode(objectToJson(AppDetailPageData()));
           Application()
-              .router
-              .navigateTo(context, '${Routes.appDetail}?data=$str');
+              .navigateTo(context, Routes.appDetail, AppDetailPageData());
         },
         child: CustomCard(
           width: su.setWidth(1013),

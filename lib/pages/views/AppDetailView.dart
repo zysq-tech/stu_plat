@@ -1,3 +1,4 @@
+import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -79,9 +80,24 @@ class _AppDetailViewState extends State<AppDetailView>
       ),
       Padding(
         padding: EdgeInsets.only(bottom: su.setWidth(69)),
-        child: Text(
-          'App Introduction ' * 12,
-          style: _contentStyle,
+        child: ExpandablePanel(
+          tapHeaderToExpand: false,
+          iconColor: mainThemeColor,
+          headerAlignment: ExpandablePanelHeaderAlignment.center,
+          header: Text(
+            'App Tag',
+            style: _contentStyle,
+          ),
+          collapsed: Text(
+            'App Introduction ' * 12,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+            style: _contentStyle,
+          ),
+          expanded: Text(
+            'App Introduction ' * 20,
+            style: _contentStyle,
+          ),
         ),
       ),
     ];
@@ -98,9 +114,24 @@ class _AppDetailViewState extends State<AppDetailView>
       ),
       Padding(
         padding: EdgeInsets.only(bottom: su.setWidth(69)),
-        child: Text(
-          'App Update Introduction ' * 12,
-          style: _contentStyle,
+        child: ExpandablePanel(
+          tapHeaderToExpand: false,
+          iconColor: mainThemeColor,
+          headerAlignment: ExpandablePanelHeaderAlignment.center,
+          header: Text(
+            'App Tag',
+            style: _contentStyle,
+          ),
+          collapsed: Text(
+            'App Update Introduction ' * 12,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+            style: _contentStyle,
+          ),
+          expanded: Text(
+            'App Update Introduction ' * 20,
+            style: _contentStyle,
+          ),
         ),
       ),
     ];
@@ -116,9 +147,37 @@ class _AppDetailViewState extends State<AppDetailView>
         ),
       ),
       Padding(
-        padding: EdgeInsets.only(bottom: su.setWidth(69)),
+        padding: EdgeInsets.only(bottom: su.setWidth(30)),
         child: Text(
-          'App Infomation\n' * 6,
+          '资费  提供应用内购买项目',
+          style: _contentStyle,
+        ),
+      ),
+      Padding(
+        padding: EdgeInsets.only(bottom: su.setWidth(30)),
+        child: Text(
+          '大小  0.0M',
+          style: _contentStyle,
+        ),
+      ),
+      Padding(
+        padding: EdgeInsets.only(bottom: su.setWidth(30)),
+        child: Text(
+          '版本  1.0.1',
+          style: _contentStyle,
+        ),
+      ),
+      Padding(
+        padding: EdgeInsets.only(bottom: su.setWidth(30)),
+        child: Text(
+          '时间  2019/10/10',
+          style: _contentStyle,
+        ),
+      ),
+      Padding(
+        padding: EdgeInsets.only(bottom: su.setWidth(30)),
+        child: Text(
+          '开发  某某科技有限公司',
           style: _contentStyle,
         ),
       ),

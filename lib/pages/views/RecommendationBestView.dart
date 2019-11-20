@@ -27,9 +27,8 @@ class _RecommendationBestViewState extends State<RecommendationBestView>
   }
 
   void onTapApp([AppInfoData data]) {
-    var str =
-        fluroCnParamsEncode(objectToJson(AppDetailPageData(appData: data)));
-    Application().router.navigateTo(context, '${Routes.appDetail}?data=$str');
+    Application().navigateTo(
+        context, Routes.appDetail, AppDetailPageData(appData: data));
   }
 
   @override

@@ -44,11 +44,9 @@ class _UserInfoPageState extends State<UserInfoPage> {
 
   void tryUpdatePhoneOrEmail(int type) {
     emptyFocus();
-    var str =
-        fluroCnParamsEncode(objectToJson(EditPhoneEmailPageData(type: type)));
     Application()
-        .router
-        .navigateTo(context, '${Routes.editPhoneEmail}?data=$str')
+        .navigateTo(
+            context, Routes.editPhoneEmail, EditPhoneEmailPageData(type: type))
         .then((bo) => print(bo));
   }
 

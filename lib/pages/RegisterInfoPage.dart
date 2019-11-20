@@ -179,17 +179,17 @@ class _RegisterInfoPageState extends State<RegisterInfoPage> {
               ),
             ),
             onTap: () {
-              var str = fluroCnParamsEncode(objectToJson(AppealPageData(
-                  phone: '123456',
-                  school: selectedSchool ?? schoolList[0],
-                  code: 'code',
-                  name: 'name',
-                  collegeName: 'college',
-                  className: 'class',
-                  type: widget.data.type)));
-              Application()
-                  .router
-                  .navigateTo(context, '${Routes.appealInfo}?data=$str');
+              Application().navigateTo(
+                  context,
+                  Routes.appealInfo,
+                  AppealPageData(
+                      phone: '123456',
+                      school: selectedSchool ?? schoolList[0],
+                      code: 'code',
+                      name: 'name',
+                      collegeName: 'college',
+                      className: 'class',
+                      type: widget.data.type));
             },
           ),
         )

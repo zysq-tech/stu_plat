@@ -144,10 +144,8 @@ class SearchView extends SearchDelegate {
                           vertical: su.setWidth(20),
                         ),
                         onTap: () {
-                          var str = fluroCnParamsEncode(
-                              objectToJson(AppDetailPageData()));
-                          Application().router.navigateTo(
-                              context, '${Routes.appDetail}?data=$str');
+                          Application().navigateTo(
+                              context, Routes.appDetail, AppDetailPageData());
                         },
                       ),
                     ),

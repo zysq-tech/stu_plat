@@ -25,8 +25,7 @@ class _LaunchPageState extends State<LaunchPage> {
 
   void exitLaunchPage() {
     Future.delayed(Duration(seconds: 2)).then((_) {
-      Application().router.navigateTo(context,
-          '${Routes.login}?data=${fluroCnParamsEncode(objectToJson(LoginPageData()))}',
+      Application().navigateTo(context, Routes.login, LoginPageData(),
           replace: true, transition: TransitionType.fadeIn);
     });
   }

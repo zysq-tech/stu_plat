@@ -32,9 +32,8 @@ class _UserViewState extends State<UserView>
   }
 
   void logout() {
-    Application().router.navigateTo(context,
-        '${Routes.login}?data=${fluroCnParamsEncode(objectToJson(LoginPageData()))}',
-        clearStack: true);
+    Application()
+        .navigateTo(context, Routes.login, LoginPageData(), clearStack: true);
   }
 
   void showChooseImagePopup() {
@@ -110,35 +109,34 @@ class _UserViewState extends State<UserView>
             child: Center(
               child: Column(
                 children: <Widget>[
-                  buildEntranceTab('帮助中心', onTap: () {
-                    String str =
-                        fluroCnParamsEncode(objectToJson(HelpCenterPageData()));
-                    Application()
-                        .router
-                        .navigateTo(context, '${Routes.helpCenter}?data=$str');
+                  buildEntranceTab('帮助中心',
+                      leadingPath: 'assets/icon/icon_helpCenter.png',
+                      onTap: () {
+                    Application().navigateTo(
+                        context, Routes.helpCenter, HelpCenterPageData());
                   }),
-                  buildEntranceTab('关于产品', onTap: () {
-                    var str = fluroCnParamsEncode(objectToJson(WebPageData(
-                        url: 'https://zysqtech.netlify.com/about/',
-                        title: '关于产品')));
-                    Application()
-                        .router
-                        .navigateTo(context, '${Routes.web}?data=$str');
+                  buildEntranceTab('关于产品',
+                      leadingPath: 'assets/icon/icon_about.png', onTap: () {
+                    Application().navigateTo(
+                        context,
+                        Routes.web,
+                        WebPageData(
+                            url: 'https://zysqtech.netlify.com/about/',
+                            title: '关于产品'));
                   }),
-                  buildEntranceTab('检查版本', onTap: showCheckVersionPopup),
-                  buildEntranceTab('意见反馈', onTap: () {
-                    String str =
-                        fluroCnParamsEncode(objectToJson(FeedbackPageData()));
-                    Application()
-                        .router
-                        .navigateTo(context, '${Routes.feedback}?data=$str');
+                  buildEntranceTab('检查版本',
+                      leadingPath: 'assets/icon/icon_checkVersion.png',
+                      onTap: showCheckVersionPopup),
+                  buildEntranceTab('意见反馈',
+                      leadingPath: 'assets/icon/icon_feedback.png', onTap: () {
+                    Application().navigateTo(
+                        context, Routes.feedback, FeedbackPageData());
                   }),
-                  buildEntranceTab('注销账号', onTap: () {
-                    String str =
-                        fluroCnParamsEncode(objectToJson(UnregisterPageData()));
-                    Application()
-                        .router
-                        .navigateTo(context, '${Routes.unregister}?data=$str');
+                  buildEntranceTab('注销账号',
+                      leadingPath: 'assets/icon/icon_unregister.png',
+                      onTap: () {
+                    Application().navigateTo(
+                        context, Routes.unregister, UnregisterPageData());
                   }),
                   buildLogoutBtn(),
                 ],
@@ -183,8 +181,8 @@ class _UserViewState extends State<UserView>
           ),
           GestureDetector(
             onTap: () {
-              Application().router.navigateTo(context,
-                  '${Routes.userInfo}?data=${fluroCnParamsEncode(objectToJson(UserInfoPageData()))}');
+              Application()
+                  .navigateTo(context, Routes.userInfo, UserInfoPageData());
             },
             child: CustomCard.cricleEnds(
               width: su.setWidth(153),
@@ -229,7 +227,7 @@ class _UserViewState extends State<UserView>
   }
 
   Widget buildEntranceTab(String tempLabel,
-      {Function onTap, TabInfoData data}) {
+      {@required String leadingPath, Function onTap, TabInfoData data}) {
     return CustomCard(
       width: su.setWidth(1009),
       height: su.setWidth(233),
@@ -243,8 +241,17 @@ class _UserViewState extends State<UserView>
           child: Center(
             child: Row(
               children: <Widget>[
-                Image.asset('assets/icon/icon_service.png',
-                    width: su.setWidth(142), height: su.setWidth(142)),
+                Container(
+                  width: su.setWidth(130),
+                  height: su.setWidth(130),
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage('assets/icon/icon_iconBg.png'),
+                          fit: BoxFit.contain)),
+                  alignment: Alignment.center,
+                  child: Image.asset(leadingPath,
+                      width: su.setWidth(96), height: su.setWidth(96)),
+                ),
                 Expanded(
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: su.setWidth(76)),
