@@ -73,7 +73,7 @@ class _ManagementViewState extends State<ManagementView>
     super.initState();
     su = Application().screenUtil;
     _smallTextStyle =
-        TextStyle(color: hexToColor('#262626'), fontSize: su.setSp(26));
+        TextStyle(color: hexToColor('#262626'), fontSize: su.setSp(30));
   }
 
   @override
@@ -157,7 +157,7 @@ class _ManagementViewState extends State<ManagementView>
                 '应用更新',
                 style: TextStyle(
                     color: hexToColor('#626262'),
-                    fontSize: su.setSp(50),
+                    fontSize: su.setSp(46),
                     fontWeight: FontWeight.bold),
               ),
               iconColor: mainThemeColor,
@@ -230,7 +230,7 @@ class _ManagementViewState extends State<ManagementView>
                   title,
                   style: TextStyle(
                       color: hexToColor('#626262'),
-                      fontSize: su.setSp(50),
+                      fontSize: su.setSp(46),
                       fontWeight: FontWeight.bold),
                 ),
               ]..addAll(tasks),
@@ -277,7 +277,7 @@ class _ManagementViewState extends State<ManagementView>
                     softWrap: false,
                     overflow: TextOverflow.fade,
                     style: TextStyle(
-                        color: hexToColor('#262626'), fontSize: su.setSp(35)),
+                        color: hexToColor('#262626'), fontSize: su.setSp(40)),
                   ),
                 ]..addAll(data.isDone
                     ? [
@@ -331,11 +331,17 @@ class _ManagementViewState extends State<ManagementView>
                   ? hexToColor('#8a8a8a')
                   : mainThemeColor,
               boxShadow: CustomCard.noneBoxShadow,
-              child: FlatButton(
-                onPressed: () {},
-                child: Text(
-                  getOperateBtnText(data),
-                  style: TextStyle(fontSize: su.setSp(26), color: Colors.white),
+              child: Material(
+                color: Colors.transparent,
+                child: InkWell(
+                  onTap: () {},
+                  child: Center(
+                    child: Text(
+                      getOperateBtnText(data),
+                      style: TextStyle(
+                          fontSize: su.setSp(30), color: Colors.white),
+                    ),
+                  ),
                 ),
               ),
               borderRadius: BorderRadius.circular(su.setWidth(10)),

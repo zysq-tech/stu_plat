@@ -227,7 +227,7 @@ class _MessageViewState extends State<MessageView>
           ),
           itemCount: 5,
           initialRating: 1,
-          itemSize: su.setWidth(35),
+          itemSize: su.setWidth(40),
           onRatingUpdate: (d) {},
           ignoreGestures: true,
         ),
@@ -236,7 +236,7 @@ class _MessageViewState extends State<MessageView>
             padding: EdgeInsets.only(left: su.setWidth(52)),
             child: Text(
               '(1.0.1)',
-              style: TextStyle(color: _color1, fontSize: su.setSp(26)),
+              style: TextStyle(color: _color1, fontSize: su.setSp(30)),
             ),
           ),
         ),
@@ -246,7 +246,7 @@ class _MessageViewState extends State<MessageView>
               padding: EdgeInsets.symmetric(horizontal: su.setWidth(20)),
               child: Text(
                 '删除',
-                style: TextStyle(color: mainThemeColor, fontSize: su.setSp(30)),
+                style: TextStyle(color: mainThemeColor, fontSize: su.setSp(35)),
               ),
             ),
             onTap: () {
@@ -261,7 +261,7 @@ class _MessageViewState extends State<MessageView>
   Widget buildComment() {
     return Text(
       'App Comment ' * 10,
-      style: TextStyle(color: _color1, fontSize: su.setSp(30), height: 1.33),
+      style: TextStyle(color: _color1, fontSize: su.setSp(35), height: 1.33),
       maxLines: 2,
       overflow: TextOverflow.ellipsis,
     );
@@ -272,7 +272,7 @@ class _MessageViewState extends State<MessageView>
       padding: EdgeInsets.only(top: su.setWidth(50)),
       child: Text(
         '2019/11/11 11:11',
-        style: TextStyle(color: mainThemeColor, fontSize: su.setSp(25)),
+        style: TextStyle(color: mainThemeColor, fontSize: su.setSp(28)),
       ),
     );
   }
@@ -281,14 +281,14 @@ class _MessageViewState extends State<MessageView>
     return Column(
       children: <Widget>[
         Padding(
-          padding: EdgeInsets.only(top: su.setWidth(38)),
+          padding: EdgeInsets.only(top: su.setWidth(24)),
           child: Text(
             'App Name',
             softWrap: false,
             overflow: TextOverflow.fade,
             style: TextStyle(
                 color: _color1,
-                fontSize: su.setSp(40),
+                fontSize: su.setSp(45),
                 fontWeight: FontWeight.bold),
           ),
         ),
@@ -297,7 +297,7 @@ class _MessageViewState extends State<MessageView>
           child: Text(
             '评论(1234)条',
             style:
-                TextStyle(color: hexToColor('#707070'), fontSize: su.setSp(26)),
+                TextStyle(color: hexToColor('#707070'), fontSize: su.setSp(30)),
           ),
         )
       ],

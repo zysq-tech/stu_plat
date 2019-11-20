@@ -100,51 +100,54 @@ class _UserViewState extends State<UserView>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return Column(
-      children: <Widget>[
-        buildUserInfoDisplay(context),
-        Expanded(
-          child: SingleChildScrollView(
-            padding: EdgeInsets.symmetric(vertical: su.setWidth(10)),
-            child: Center(
-              child: Column(
-                children: <Widget>[
-                  buildEntranceTab('帮助中心',
-                      leadingPath: 'assets/icon/icon_helpCenter.png',
-                      onTap: () {
-                    Application().navigateTo(
-                        context, Routes.helpCenter, HelpCenterPageData());
-                  }),
-                  buildEntranceTab('关于产品',
-                      leadingPath: 'assets/icon/icon_about.png', onTap: () {
-                    Application().navigateTo(
-                        context,
-                        Routes.web,
-                        WebPageData(
-                            url: 'https://zysqtech.netlify.com/about/',
-                            title: '关于产品'));
-                  }),
-                  buildEntranceTab('检查版本',
-                      leadingPath: 'assets/icon/icon_checkVersion.png',
-                      onTap: showCheckVersionPopup),
-                  buildEntranceTab('意见反馈',
-                      leadingPath: 'assets/icon/icon_feedback.png', onTap: () {
-                    Application().navigateTo(
-                        context, Routes.feedback, FeedbackPageData());
-                  }),
-                  buildEntranceTab('注销账号',
-                      leadingPath: 'assets/icon/icon_unregister.png',
-                      onTap: () {
-                    Application().navigateTo(
-                        context, Routes.unregister, UnregisterPageData());
-                  }),
-                  buildLogoutBtn(),
-                ],
+    return SafeArea(
+      child: Column(
+        children: <Widget>[
+          buildUserInfoDisplay(context),
+          Expanded(
+            child: SingleChildScrollView(
+              padding: EdgeInsets.symmetric(vertical: su.setWidth(10)),
+              child: Center(
+                child: Column(
+                  children: <Widget>[
+                    buildEntranceTab('帮助中心',
+                        leadingPath: 'assets/icon/icon_helpCenter.png',
+                        onTap: () {
+                      Application().navigateTo(
+                          context, Routes.helpCenter, HelpCenterPageData());
+                    }),
+                    buildEntranceTab('关于产品',
+                        leadingPath: 'assets/icon/icon_about.png', onTap: () {
+                      Application().navigateTo(
+                          context,
+                          Routes.web,
+                          WebPageData(
+                              url: 'https://zysqtech.netlify.com/about/',
+                              title: '关于产品'));
+                    }),
+                    buildEntranceTab('检查版本',
+                        leadingPath: 'assets/icon/icon_checkVersion.png',
+                        onTap: showCheckVersionPopup),
+                    buildEntranceTab('意见反馈',
+                        leadingPath: 'assets/icon/icon_feedback.png',
+                        onTap: () {
+                      Application().navigateTo(
+                          context, Routes.feedback, FeedbackPageData());
+                    }),
+                    buildEntranceTab('注销账号',
+                        leadingPath: 'assets/icon/icon_unregister.png',
+                        onTap: () {
+                      Application().navigateTo(
+                          context, Routes.unregister, UnregisterPageData());
+                    }),
+                    buildLogoutBtn(),
+                  ],
+                ),
               ),
             ),
-          ),
-        )
-      ],
+          )
+        ],
+      ),
     );
   }
 
@@ -158,7 +161,7 @@ class _UserViewState extends State<UserView>
               image: AssetImage('assets/img/bg_selfTop.png'),
               alignment: Alignment.topCenter,
               fit: BoxFit.fitWidth)),
-      padding: EdgeInsets.only(top: su.setWidth(84), bottom: su.setWidth(71)),
+      padding: EdgeInsets.only(top: su.setWidth(60), bottom: su.setWidth(40)),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
@@ -185,15 +188,15 @@ class _UserViewState extends State<UserView>
                   .navigateTo(context, Routes.userInfo, UserInfoPageData());
             },
             child: CustomCard.cricleEnds(
-              width: su.setWidth(153),
-              height: su.setWidth(51),
+              width: su.setWidth(180),
+              height: su.setWidth(68),
               color: Colors.black.withOpacity(0.4),
               boxShadow: CustomCard.noneBoxShadow,
               child: Text(
                 '完善信息',
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: su.setSp(26),
+                    fontSize: su.setSp(34),
                     letterSpacing: su.setWidth(2.6)),
               ),
             ),
@@ -209,7 +212,7 @@ class _UserViewState extends State<UserView>
       height: su.setWidth(139),
       boxShadow: CustomCard.noneBoxShadow,
       color: mainThemeColor,
-      margin: EdgeInsets.symmetric(vertical: su.setWidth(15)),
+      margin: EdgeInsets.symmetric(vertical: su.setWidth(25)),
       child: FlatButton(
         onPressed: logout,
         child: Center(

@@ -155,7 +155,7 @@ class _HelpCenterPageState extends State<HelpCenterPage> {
           horizontal: su.setWidth(33), vertical: su.setWidth(54)),
       child: Text(
         desc,
-        style: TextStyle(color: hexToColor('#707070'), fontSize: su.setSp(35)),
+        style: TextStyle(color: hexToColor('#707070'), fontSize: su.setSp(40)),
       ),
     );
   }

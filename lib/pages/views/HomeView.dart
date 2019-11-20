@@ -43,7 +43,7 @@ class _HomeViewState extends State<HomeView>
                   fontSize: su.setSp(40), fontWeight: FontWeight.bold),
               unselectedLabelColor: hexToColor('#949494'),
               indicatorSize: TabBarIndicatorSize.label,
-              tabs: <Widget>[Tab(text: '精挑细选'), Tab(text: '分类')],
+              tabs: <Widget>[Tab(text: '热门'), Tab(text: '分类')],
               onTap: onTabTapped,
             ),
             decoration: BoxDecoration(

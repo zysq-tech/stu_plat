@@ -553,7 +553,7 @@ class _LoginPageState extends State<LoginPage>
               height: su.setHeight(88),
               color: _tabIndex == 1 ? mainThemeColor : Colors.white,
               child: Text(
-                '团 体',
+                '机 构',
                 style: TextStyle(
                     color: _tabIndex == 1 ? Colors.white : Colors.black,
                     fontSize: su.setSp(40),

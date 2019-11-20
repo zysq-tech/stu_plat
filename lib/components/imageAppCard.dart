@@ -127,7 +127,7 @@ class ImageAppCard extends StatelessWidget {
                         'Tag/Tag',
                         softWrap: false,
                         overflow: TextOverflow.visible,
-                        style: TextStyle(fontSize: su.setSp(35)),
+                        style: TextStyle(fontSize: su.setSp(40)),
                       ),
                     )
                   ],

@@ -177,7 +177,7 @@ class _EditPhoneEmailPageState extends State<EditPhoneEmailPage> {
     return <Widget>[
       buildInputContainer(
           header:
-              '${setNew ? firstSet ? '' : '新' : '旧'}${setPhone ? '手机号' : '邮箱'}:',
+              '${setNew ? firstSet ? '' : '新' : '原'}${setPhone ? '手机号' : '邮箱'}:',
           mainChild: buildTextField(phoneEmailController, phoneEmailFocus,
               hintText: '请输入',
               lengthLimit: setPhone ? 11 : 30,
@@ -217,7 +217,7 @@ class _EditPhoneEmailPageState extends State<EditPhoneEmailPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(
-                  '麻烦了，手机号无法使用?',
+                  '手机号无法使用?试试',
                   style: TextStyle(
                       color: hexToColor('#434343'),
                       fontSize: su.setSp(40),

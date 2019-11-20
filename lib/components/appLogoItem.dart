@@ -34,7 +34,7 @@ class AppLogoItem extends StatelessWidget {
               softWrap: false,
               overflow: TextOverflow.fade,
               style: TextStyle(
-                  color: hexToColor('#262626'), fontSize: su.setSp(30)),
+                  color: hexToColor('#262626'), fontSize: su.setSp(35)),
             )
           ],
         ),

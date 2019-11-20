@@ -66,13 +66,13 @@ class AppListItem extends StatelessWidget {
                         overflow: TextOverflow.fade,
                         style: TextStyle(
                             color: hexToColor('#262626'),
-                            fontSize: su.setSp(35)),
+                            fontSize: su.setSp(42)),
                       ),
                       Text(
                         'App main Tag',
                         style: TextStyle(
                             color: hexToColor('#262626'),
-                            fontSize: su.setSp(26)),
+                            fontSize: su.setSp(30)),
                       ),
                       Text(
                         'App Description ' * 5,
@@ -80,7 +80,7 @@ class AppListItem extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                             color: hexToColor('#898989'),
-                            fontSize: su.setSp(26)),
+                            fontSize: su.setSp(34)),
                       )
                     ]..removeAt(showTag ? 0 : 2),
                   ),
@@ -91,7 +91,7 @@ class AppListItem extends StatelessWidget {
                 child: Text(
                   '12.3M',
                   style:
-                      TextStyle(fontSize: su.setSp(30), color: mainThemeColor),
+                      TextStyle(fontSize: su.setSp(34), color: mainThemeColor),
                 ),
               )
             ],
