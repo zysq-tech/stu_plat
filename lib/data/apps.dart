@@ -199,6 +199,33 @@ class SearchAppResponse with CommonResponseMixin {
       _$SearchAppResponseFromJson(json);
 }
 
+@JsonSerializable(createFactory: false)
+class RecordApp implements IToJson {
+  RecordApp(this.appId, this.useType, {this.recordId});
+
+  final String appId;
+
+  /// 1: 下载完成; 2: 安装完成
+  final int useType;
+
+  ///useType == 2时非null
+  final String recordId;
+
+  @override
+  Map<String, dynamic> toJson() => _$RecordAppToJson(this);
+}
+
+@JsonSerializable(createToJson: false)
+class RecordAppResponse with CommonResponseMixin {
+  RecordAppResponse({this.data});
+
+  ///recordId
+  final String data;
+
+  factory RecordAppResponse.fromJson(Map<String, dynamic> json) =>
+      _$RecordAppResponseFromJson(json);
+}
+
 //Data
 @JsonSerializable()
 class AppInfoPageData with CommonPageInfoMixin implements IToJson {

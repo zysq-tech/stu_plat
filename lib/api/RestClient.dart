@@ -147,6 +147,10 @@ abstract class RestClient {
 
   @GET('/appInfo/rest/pageList')
   Future<SearchAppResponse> searchApp(Map<String, dynamic> searchAppQueries);
+
+  @POST('/appInfo/appRecord')
+  Future<RecordAppResponse> recordApp(
+      @Query('token') String token, @Body() RecordApp recordAppBody);
   //
 
   //Other

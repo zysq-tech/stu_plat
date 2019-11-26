@@ -210,6 +210,20 @@ SearchAppResponse _$SearchAppResponseFromJson(Map<String, dynamic> json) {
     ..mess = json['mess'] as String;
 }
 
+Map<String, dynamic> _$RecordAppToJson(RecordApp instance) => <String, dynamic>{
+      'appId': instance.appId,
+      'useType': instance.useType,
+      'recordId': instance.recordId,
+    };
+
+RecordAppResponse _$RecordAppResponseFromJson(Map<String, dynamic> json) {
+  return RecordAppResponse(
+    data: json['data'] as String,
+  )
+    ..code = json['code'] as int
+    ..mess = json['mess'] as String;
+}
+
 AppInfoPageData _$AppInfoPageDataFromJson(Map<String, dynamic> json) {
   return AppInfoPageData(
     (json['content'] as List)
